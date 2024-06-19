@@ -1,0 +1,26 @@
+services:
+    strapi:
+        build:
+            context: .
+            dockerfile: ./docker/strapi/Dockerfile
+        ports:
+            - '1337:1337'
+        volumes:
+            - ./strapi-portefolio:/app
+        environment:
+            DATABASE_CLIENT: sqlite
+            DATABASE_FILENAME: ./data/data.db
+            JWT_SECRET: your_jwt_secret
+            ADMIN_JWT_SECRET: your_admin_jwt_secret
+            NODE_ENV: development
+
+    nextjs:
+        build:
+            context: .
+            dockerfile: ./docker/nextjs/Dockerfile
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./nextjs:/app
+        environment:
+            NODE_ENV: development
