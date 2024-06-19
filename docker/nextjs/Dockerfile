@@ -9,6 +9,7 @@ COPY ./nextjs/package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -g next
 
 # Copy the rest of the application code
 COPY ./nextjs ./
