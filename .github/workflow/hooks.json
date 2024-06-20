@@ -1,0 +1,7 @@
+[
+  {
+    "id": "deploy",
+    "execute-command": "./deploy.sh",
+    "command-working-directory": "~/dev/portefolio"
+  }
+]
