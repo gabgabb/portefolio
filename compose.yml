@@ -1,9 +1,7 @@
 services:
 
     strapi:
-        build:
-            context: .
-            dockerfile: ./docker/strapi/Dockerfile
+        image: gabgabb/portefolio-strapi
         restart: always
         ports:
             - '1337:1337'
@@ -17,9 +15,7 @@ services:
             - .env
 
     nextjs:
-        build:
-            context: .
-            dockerfile: ./docker/nextjs/Dockerfile
+        image: gabgabb/portefolio-nextjs
         restart: always
         ports:
             - '3000:3000'
