@@ -23,18 +23,13 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Strapi Docker image
-        env:
-          DOCKER_IMAGE: gabgabb/portefolio-strapi
         run: |
-          docker build -t $DOCKER_IMAGE:latest -f ./docker/strapi/Dockerfile .
-          docker push $DOCKER_IMAGE:latest
+          docker buildx create --use
+          docker buildx build --platform linux/amd64,linux/arm64 -t gabgabb/portefolio-strapi:latest -f ./docker/strapi/Dockerfile --push .
 
       - name: Build and push Next.js Docker image
-        env:
-          DOCKER_IMAGE: gabgabb/portefolio-nextjs
         run: |
-          docker build -t $DOCKER_IMAGE:latest -f ./docker/nextjs/Dockerfile .
-          docker push $DOCKER_IMAGE:latest
+          docker buildx build --platform linux/amd64,linux/arm64 -t gabgabb/portefolio-nextjs:latest -f ./docker/nextjs/Dockerfile --push .
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
@@ -48,4 +43,4 @@ jobs:
             sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             sudo docker compose down
             sudo docker compose pull
-            sudo docker compose up -d
+            sudo docker compose up -d --remove-orphans
