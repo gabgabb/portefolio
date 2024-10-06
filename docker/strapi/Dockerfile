@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ./strapi/package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --force
 RUN npm install -g strapi
 
 # Copy the rest of the application code
