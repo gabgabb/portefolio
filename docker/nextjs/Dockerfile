@@ -5,11 +5,11 @@ FROM node:20
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY ./nextjs/package*.json ./
+COPY ./nextjs/package.json ./
+COPY ./nextjs/yarn.lock ./
 
 # Install dependencies
-RUN npm install
-RUN npm install -g next
+RUN yarn install
 
 # Copy the rest of the application code
 COPY ./nextjs ./
@@ -18,4 +18,4 @@ COPY ./nextjs ./
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then yarn build && yarn start; else yarn dev; fi"]

@@ -9,7 +9,7 @@ COPY ./strapi/package*.json ./
 
 # Install dependencies
 RUN npm install --force
-RUN npm install -g strapi
+RUN npm install -g @strapi/strapi
 
 # Copy the rest of the application code
 COPY ./strapi ./
@@ -19,3 +19,4 @@ EXPOSE 1337
 
 # Start the Strapi server
 CMD ["npm", "run", "develop"]
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build && npm run start; else npm run dev; fi"]

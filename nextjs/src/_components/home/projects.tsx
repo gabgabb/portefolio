@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState, useMemo, useCallback } from 'react';
-import ProjectCard from '@/_components/elements/projectCard';
-import {Button} from "@nextui-org/react";
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import { Button } from "@nextui-org/react";
+import ProjectCard from "@/_components/elements/projectCard";
+import {Project} from "@/_utils/types";
 
-export default function Projects() {
-    const [projects, setProjects] = useState([]);
+const Projects: React.FC = () => {
+    const [projects, setProjects] = useState<Project[]>([]);
     const [visibleProjects, setVisibleProjects] = useState(3);
     const [loading, setLoading] = useState(false);
 
@@ -47,14 +48,14 @@ export default function Projects() {
 
     return (
         <div>
-            <h1 className="text-4xl font-bold text-left mb-5">Mes projets</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {visibleProjectsMemo.map(project => (
+            <h1 className="mb-5 text-left text-4xl font-bold">Mes projets</h1>
+            <div className="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
+                {visibleProjectsMemo.map((project: Project) => (
                     <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
             {visibleProjects < projects.length && (
-                <div className="flex justify-center mt-4">
+                <div className="mt-4 flex justify-center">
                     <Button onClick={handleLoadMore} disabled={loading}>
                         {loading ? 'Chargement...' : 'Voir plus'}
                     </Button>
@@ -63,3 +64,5 @@ export default function Projects() {
         </div>
     );
 }
+
+export default Projects;

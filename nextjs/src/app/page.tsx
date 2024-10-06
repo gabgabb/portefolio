@@ -1,13 +1,12 @@
-import Image from "next/image";
 import Header from "@/_components/general/header";
 import Footer from "@/_components/general/footer";
 import AboutMe from "@/_components/home/aboutMe";
 import Projects from "@/_components/home/projects";
 import Contact from "@/_components/home/contact";
+import React from "react";
 
-export default function Home() {
-  return (
-      <div>
+const Home: React.FC = () => {    return (
+    <div>
         <Header/>
         <main className="container mx-auto py-12">
             <AboutMe/>
@@ -15,6 +14,8 @@ export default function Home() {
             <Contact/>
         </main>
         <Footer/>
-      </div>
-  );
+    </div>
+);
 }
+
+export default Home;

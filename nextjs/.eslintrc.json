@@ -1,3 +1,15 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": [
+    "plugin:tailwindcss/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "next/core-web-vitals"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+      "react": {
+        "version": "detect"
+      }
+  }
 }
