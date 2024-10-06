@@ -11,10 +11,6 @@
     "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
-    "@capacitor/android": "^6.1.2",
-    "@capacitor/core": "^6.1.2",
-    "@capacitor/ios": "^6.1.2",
-    "@google-pay/button-react": "^3.1.0",
     "@nextui-org/autocomplete": "^2.1.7",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/card": "^2.0.34",
@@ -28,14 +24,11 @@
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/table": "^2.0.40",
     "@nextui-org/theme": "^2.2.11",
-    "@trapezedev/configure": "^7.0.10",
     "autoprefixer": "^10.4.20",
     "date-fns": "^4.1.0",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.9.0",
-    "html-react-parser": "^5.1.16",
     "jetifier": "^2.0.0",
-    "js-cookie": "^3.0.5",
     "next": "14.2.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -48,7 +41,6 @@
     "webpack": "^5.95.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "^6.1.2",
     "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.11.1",
     "@types/js-cookie": "^3.0.6",
@@ -64,7 +56,6 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "serve": "^14.2.3",
-    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.8.0"
