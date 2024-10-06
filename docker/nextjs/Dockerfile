@@ -1,6 +1,9 @@
 # Dockerfile pour Next.js
 FROM node:20
 
+# Enable Corepack
+RUN corepack enable
+
 # Set working directory
 WORKDIR /app
 
@@ -9,7 +12,7 @@ COPY ./nextjs/package.json ./
 COPY ./nextjs/yarn.lock ./
 
 # Install dependencies
-RUN yarn install
+RUN corepack yarn install
 
 # Copy the rest of the application code
 COPY ./nextjs ./
@@ -18,4 +21,4 @@ COPY ./nextjs ./
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then yarn build && yarn start; else yarn dev; fi"]
+CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then corepack yarn build && corepack yarn start; else corepack yarn dev; fi"]
