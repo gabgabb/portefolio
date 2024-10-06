@@ -42,6 +42,10 @@
         "videos",
         "audios"
       ]
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
     }
   }
 }

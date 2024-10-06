@@ -815,6 +815,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    shortDescription: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -845,6 +846,12 @@ export interface ApiTechnologieTechnologie extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
+    logo: Attribute.Media<'images'> & Attribute.Required;
+    type: Attribute.Relation<
+      'api::technologie.technologie',
+      'manyToOne',
+      'api::type.type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -858,6 +865,33 @@ export interface ApiTechnologieTechnologie extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTypeType extends Schema.CollectionType {
+  collectionName: 'types';
+  info: {
+    singularName: 'type';
+    pluralName: 'types';
+    displayName: 'Type';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    technologies: Attribute.Relation<
+      'api::type.type',
+      'oneToMany',
+      'api::technologie.technologie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::type.type', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -882,6 +916,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::project.project': ApiProjectProject;
       'api::technologie.technologie': ApiTechnologieTechnologie;
+      'api::type.type': ApiTypeType;
     }
   }
 }
