@@ -31,3 +31,245 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Regular and Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Regular-trial.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Italic-trial.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Bold and Bold Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Bold-trial.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Bold-Italic-trial.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Medium and Medium Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Medium-trial.ttf') format('truetype');
+    font-weight: 500; /* Medium */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Medium-Italic-trial.ttf') format('truetype');
+    font-weight: 500; /* Medium */
+    font-style: italic;
+}
+
+/* Semibold and Semibold Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Semibold-trial.ttf') format('truetype');
+    font-weight: 600; /* Semibold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Semibold-Italic-trial.ttf') format('truetype');
+    font-weight: 600; /* Semibold */
+    font-style: italic;
+}
+
+/* Light and Light Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Light-trial.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Light-Italic-trial.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: italic;
+}
+
+/* ExtraBold, ExtraBold Italic, ExtraLight, and ExtraLight Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Extrabold-trial.ttf') format('truetype');
+    font-weight: 800; /* ExtraBold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Extrabold-Italic-trial.ttf') format('truetype');
+    font-weight: 800; /* ExtraBold */
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Extralight-trial.ttf') format('truetype');
+    font-weight: 200; /* ExtraLight */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Extralight-Italic-trial.ttf') format('truetype');
+    font-weight: 200; /* ExtraLight */
+    font-style: italic;
+}
+
+/* Thin and Thin Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Thin-trial.ttf') format('truetype');
+    font-weight: 100; /* Thin */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Thin-Italic-trial.ttf') format('truetype');
+    font-weight: 100; /* Thin */
+    font-style: italic;
+}
+
+/* Black and Black Italic */
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Black-trial.ttf') format('truetype');
+    font-weight: 900; /* Black */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bogart';
+    src: url('/fonts/Bogart-Black-Italic-trial.ttf') format('truetype');
+    font-weight: 900; /* Black */
+    font-style: italic;
+}
+
+.h1 {
+    @apply font-bogart text-[40px] font-black leading-[100%] tracking-normal text-yellow-50;
+}
+.h2 {
+    @apply font-bogart text-[32px] font-black leading-[110%] tracking-normal text-yellow-50;
+}
+.h3 {
+    @apply font-bogart text-2xl font-black leading-[110%] tracking-normal text-yellow-50;
+}
+.h4 {
+    @apply font-bogart text-lg font-black leading-[110%] tracking-normal text-yellow-50;
+}
+.h5 {
+    @apply font-bogart text-base font-bold leading-[120%] tracking-normal text-yellow-50;
+}
+
+.desktop-active {
+    @apply font-bogart text-base font-bold leading-[100%] tracking-[0.8px] text-white-50;
+}
+.desktop-inactive {
+    @apply font-bogart text-base font-normal leading-[100%] tracking-[0.8px] text-gray-300;
+}
+.mobile-active {
+    @apply font-bogart text-xl font-bold leading-[100%] tracking-[1.8px] text-white-50;
+}
+.mobile-inactive {
+    @apply font-bogart text-xl font-normal leading-[100%] tracking-[1.8px] text-white-50;
+}
+.tab-bar {
+    @apply font-bogart text-[10px] font-medium leading-[100%] tracking-[0.2px] text-white-50;
+}
+.footer-med {
+    @apply font-bogart text-sm font-medium leading-[120%] tracking-[-0.7px] text-gray-50;
+}
+.footer-reg {
+    @apply font-bogart text-sm font-normal leading-[120%] tracking-[-0.7px] text-white-50;
+}
+.footer-light {
+    @apply font-bogart text-sm font-light leading-[24px] tracking-normal text-gray-50;
+}
+.button-primary {
+    @apply font-bogart text-base font-bold leading-normal tracking-normal text-white-50;
+}
+.button-primary-small {
+    @apply font-bogart text-sm font-bold leading-normal tracking-normal text-white-50;
+}
+.button-secondary {
+    @apply font-bogart text-sm font-extrabold leading-[110%] tracking-normal text-white-50;
+}
+.button-tertiary {
+    @apply font-bogart text-sm font-medium leading-[120%] tracking-normal text-white-50;
+}
+.xxl46-impact {
+    @apply font-bogart text-[46px] font-black leading-[100%] tracking-normal text-white-50;
+}
+.xl18-bold {
+    @apply font-bogart text-lg font-bold leading-[100%] tracking-normal text-white-50;
+}
+.l16-black {
+    @apply font-bogart text-base font-black leading-[110%] tracking-normal text-white-50;
+}
+.l16-extra-bold {
+    @apply font-bogart text-base font-extrabold leading-[110%] tracking-normal text-white-50;
+}
+.l16-bold {
+    @apply font-bogart text-base font-bold leading-[100%] tracking-[0.8px] text-white-50;
+}
+.l16-text-reg {
+    @apply font-bogart text-[120%] font-normal leading-[150%] tracking-normal text-white-50;
+}
+.m14-extra-bold {
+    @apply font-bogart text-sm font-extrabold leading-[110%] tracking-normal uppercase text-white-50;
+}
+.m14-bold-spacing {
+    @apply font-bogart text-sm font-bold leading-[100%] tracking-[0.7px] text-white-50;
+}
+.m14-bold {
+    @apply font-bogart text-sm font-bold leading-[100%] tracking-normal text-white-50;
+}
+.m14-regular-text {
+    @apply font-bogart text-sm font-normal leading-[150%] tracking-normal text-white-50;
+}
+.m14-regular {
+    @apply font-bogart text-sm font-normal leading-[100%] tracking-[0.28px] text-white-50;
+}
+.s12-bold {
+    @apply font-bogart text-xs font-bold leading-[100%] tracking-[0.6px] uppercase text-white-50;
+}
+.s12-semi-bold {
+    @apply font-bogart text-xs font-semibold leading-[100%] tracking-[0.24px] text-white-50;
+}
+.s12-medium {
+    @apply font-bogart text-xs font-medium leading-[100%] tracking-normal text-white-50;
+}
+.s12-regular {
+    @apply font-bogart text-xs font-normal leading-[100%] tracking-normal text-white-50;
+}
+.s12-regular-any {
+    @apply font-bogart text-xs font-normal leading-[100%] tracking-[0.6px] text-white-50;
+}
+.xs10-extra-bold {
+    @apply font-bogart text-[10px] font-extrabold leading-[100%] tracking-[0.2px] text-white-50;
+}
+.xxs8-semi-bold {
+    @apply font-bogart text-[8px] font-semibold leading-[100%] tracking-[0.4px] uppercase text-white-50;
+}
+

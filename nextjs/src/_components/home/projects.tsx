@@ -47,8 +47,8 @@ const Projects: React.FC = () => {
     }, [projects, visibleProjects]);
 
     return (
-        <div>
-            <h1 className="mb-5 text-left text-4xl font-bold">Mes projets</h1>
+        <div className="min-h-screen">
+            <h2 className="h2 text-center">Mes projets</h2>
             <div className="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
                 {visibleProjectsMemo.map((project: Project) => (
                     <ProjectCard key={project.id} project={project} />

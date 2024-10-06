@@ -37,7 +37,19 @@ const config = {
                     50: "#EEF1F9",
                     200: "#D4D7E4"
                 },
-                black: "#0B0A0F",
+                yellow : {
+                    50 : "#E9B219",
+                    100 : "#FFD700",
+                    200 : "#FFC400",
+                    300 : "#FFB200",
+                    400 : "#FFA400",
+                    500 : "#FF9300",
+                    600 : "#FF8200",
+                    700 : "#FF7000",
+                    800 : "#FF5E00",
+                    900 : "#FF3A00",
+                },
+                black: "#202530",
                 tickets: {
                		blue: "#4DBCEA33",
                		red: "#FF5E5E33",
@@ -176,7 +188,9 @@ const config = {
                 },
             },
             boxShadow: {},
-            fontFamily: {},
+            fontFamily: {
+                'bogart': ['Bogart', 'sans-serif']
+            },
             backgroundImage: (theme: (arg0: string) => any) => ({})
         },
     },

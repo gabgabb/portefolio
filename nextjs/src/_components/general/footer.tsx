@@ -5,7 +5,7 @@ import React from "react";
 const Footer: React.FC = () => {
     return (
         <footer>
-            <div className="flex flex-row items-center justify-center py-5">
+            <div className="flex flex-row items-center justify-center py-5 border-t border-whiteStroke/10">
                 <div className="mr-40 flex items-center space-x-6">
                     <Link href="https://www.linkedin.com/in/gabriel-filiot-475277209/" target="_blank"
                         rel="noopener noreferrer"><Image src="/linkedin.png" width="40" height="40" alt="linkedin"/></Link>

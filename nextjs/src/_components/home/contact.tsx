@@ -30,17 +30,17 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className="mx-auto my-10 max-w-md rounded-lg bg-white-50 p-6 text-black shadow-md">
-            <h2 className="mb-6 text-2xl font-bold">Contactez-moi</h2>
-            <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
-                <Input type="text" label="Prénom" name="name" required />
-                <Input type="text" label="Nom" name="firstname" required />
-                <Input type="email" label="Email" name="email" required />
-                <Textarea name="message" label="Message"></Textarea>
-                <div>
-                    <Button type="submit" color="primary">Envoyer</Button>
-                </div>
-            </form>
+        <div className="min-h-screen bg-yellow-50">
+            <h2 className="h2 pt-10 text-center !text-black">Contactez-moi</h2>
+            <div className="mx-auto my-10 max-w-md rounded-lg bg-white-50 p-6 text-black shadow-md">
+                <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-5">
+                    <Input className="button-tertiary" type="text" label="Prénom" name="name" required />
+                    <Input className="button-tertiary"  type="text" label="Nom" name="firstname" required />
+                    <Input className="button-tertiary"  type="email" label="Email" name="email" required />
+                    <Textarea className="button-tertiary"  name="message" label="Message"></Textarea>
+                    <Button type="submit" className="button-primary mx-auto bg-black !text-white-50 hover:bg-gray-900">Envoyer</Button>
+                </form>
+            </div>
         </div>
     );
 };
