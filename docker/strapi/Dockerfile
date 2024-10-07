@@ -18,5 +18,4 @@ COPY ./strapi ./
 EXPOSE 1337
 
 # Start the Strapi server
-CMD ["npm", "run", "develop"]
 CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build && npm run start; else npm run dev; fi"]
