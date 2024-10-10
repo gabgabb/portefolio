@@ -2,15 +2,15 @@ import AboutMe from "@/_components/home/aboutMe";
 import Projects from "@/_components/home/projects";
 import Contact from "@/_components/home/contact";
 import React from "react";
+import {Experiences} from "@/_components/home/experiences";
 
 const Home: React.FC = () => {    return (
-    <div>
-        <main className="container mx-auto py-12">
-            <AboutMe/>
-            <Projects/>
-            <Contact/>
-        </main>
-    </div>
+    <>
+        <AboutMe/>
+        <Experiences/>
+        <Projects/>
+        <Contact/>
+    </>
 );
 }
 

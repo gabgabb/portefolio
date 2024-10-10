@@ -9,7 +9,9 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
     project 
 }) => {
-    const { name, shortDescription, technologies, illustrations, createdAt } = project.attributes;
+    const attributes = project?.attributes;
+    console.log("ProjectCard -> attributes", attributes)
+    const { name, shortDescription, technologies, illustrations, createdAt } = attributes;
     const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
     const imageUrl = useMemo(() => {
         return illustrations?.data?.[0]?.attributes?.formats?.medium?.url;

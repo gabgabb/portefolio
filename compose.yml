@@ -1,7 +1,7 @@
 services:
 
     strapi:
-        image: gabgabb/portefolio-strapi
+        image: gabgabb/portefolio-strapi:latest
         restart: always
         ports:
             - '1337:1337'
@@ -15,7 +15,7 @@ services:
             - .env
 
     nextjs:
-        image: gabgabb/portefolio-nextjs
+        image: gabgabb/portefolio-nextjs:latest
         restart: always
         ports:
             - '3000:3000'
