@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "presentations",
+  "info": {
+    "singularName": "presentation",
+    "pluralName": "presentations",
+    "displayName": "presentation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "shortDescription": {
+      "type": "string"
+    }
+  }
+}
