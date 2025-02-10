@@ -15,7 +15,7 @@ RUN mkdir -p /app/.next /app/.yarn \
 USER node
 
 # Copy package.json and yarn.lock before installing dependencies
-COPY --chown=node:node ./nextjs/package.json ./nextjs/yarn.lock ./
+COPY --chown=node:node ./package.json ./yarn.lock ./
 
 # Install dependencies
 RUN corepack yarn install
