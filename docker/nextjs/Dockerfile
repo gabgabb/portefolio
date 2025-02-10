@@ -1,4 +1,4 @@
-# Dockerfile pour Next.js
+# Dockerfile for Next.js
 FROM node:20
 
 # Enable Corepack
@@ -7,11 +7,11 @@ RUN corepack enable
 # Set working directory
 WORKDIR /app
 
-# Set the user to "node" (non-root user)
-USER node
+# Create the .next directory and ensure write permissions (as root)
+RUN mkdir -p /app/.next && chown -R node:node /app/.next
 
-# Create the .next directory and ensure write permissions
-RUN mkdir -p /app/.next && chmod -R 777 /app/.next
+# Switch to non-root user
+USER node
 
 # Copy package.json and yarn.lock before installing dependencies
 COPY --chown=node:node ./nextjs/package.json ./nextjs/yarn.lock ./
