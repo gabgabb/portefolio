@@ -1,5 +1,5 @@
 # Dockerfile pour Next.js
-FROM node:20
+FROM node:22
 
 # Enable Corepack
 RUN corepack enable
