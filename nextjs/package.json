@@ -11,6 +11,7 @@
     "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^15.1.6",
     "@nextui-org/autocomplete": "^2.3.9",
     "@nextui-org/button": "^2.2.9",
     "@nextui-org/card": "^2.2.9",
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.6",
     "@eslint/js": "^9.20.0",
+    "@tailwindcss/postcss": "^4.0.6",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.13.1",
     "@types/react": "19.0.8",

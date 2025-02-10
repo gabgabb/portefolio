@@ -8,6 +8,7 @@ RUN corepack enable
 WORKDIR /app
 
 # Copy package.json and package-lock.json
+COPY --chown=nextjs:nodejs --from=builder /app/ ./
 COPY ./nextjs/package.json ./
 COPY ./nextjs/yarn.lock ./
 
