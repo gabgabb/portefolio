@@ -7,8 +7,9 @@ RUN corepack enable
 # Set working directory
 WORKDIR /app
 
-# Create the .next directory and ensure write permissions (as root)
-RUN mkdir -p /app/.next && chown -R node:node /app/.next
+# Create necessary directories and set correct permissions BEFORE switching user
+RUN mkdir -p /app/.next /app/.yarn \
+    && chown -R node:node /app/.next /app/.yarn /app
 
 # Switch to non-root user
 USER node
