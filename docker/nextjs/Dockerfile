@@ -7,16 +7,20 @@ RUN corepack enable
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY --chown=nextjs:nodejs --from=builder /app/ ./
-COPY ./nextjs/package.json ./
-COPY ./nextjs/yarn.lock ./
+# Set the user to "node" (non-root user)
+USER node
+
+# Create the .next directory and ensure write permissions
+RUN mkdir -p /app/.next && chmod -R 777 /app/.next
+
+# Copy package.json and yarn.lock before installing dependencies
+COPY --chown=node:node ./nextjs/package.json ./nextjs/yarn.lock ./
 
 # Install dependencies
 RUN corepack yarn install
 
 # Copy the rest of the application code
-COPY ./nextjs ./
+COPY --chown=node:node ./nextjs ./
 
 # Expose the Next.js port
 EXPOSE 3000
