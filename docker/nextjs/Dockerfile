@@ -8,14 +8,15 @@ RUN corepack enable
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY ./nextjs/package.json ./
-COPY ./nextjs/yarn.lock ./
+COPY ./nextjs/package.json ./nextjs/yarn.lock ./
 
 # Install dependencies
-RUN corepack yarn install
+RUN corepack yarn install --immutable
 
 # Copy the rest of the application code
 COPY ./nextjs ./
+
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Expose the Next.js port
 EXPOSE 3000
