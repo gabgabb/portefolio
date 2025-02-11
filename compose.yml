@@ -20,12 +20,10 @@ services:
             - '3000:3000'
         volumes:
             - ./nextjs:/app
-            - nextjs_cache:/app/.next  # Monte le volume `.next`
         environment:
             - NODE_ENV=${NODE_ENV}
         env_file:
             - .env
-        user: "node"  # Assure que le conteneur tourne sous l'utilisateur node
 
 volumes:
     nextjs_cache:
