@@ -24,6 +24,3 @@ services:
             - NODE_ENV=${NODE_ENV}
         env_file:
             - .env
-
-volumes:
-    nextjs_cache:
