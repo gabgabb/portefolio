@@ -1,4 +1,4 @@
-# Dockerfile for Next.js
+# Dockerfile pour Next.js
 FROM node:20
 
 # Enable Corepack
@@ -7,24 +7,26 @@ RUN corepack enable
 # Set working directory
 WORKDIR /app
 
-# Create necessary directories and set correct permissions BEFORE switching user
-RUN mkdir -p /app/.next /app/.yarn \
-    && chown -R node:node /app/.next /app/.yarn /app
+# ✅ Créer tous les dossiers nécessaires et donner les bons droits AVANT de changer d'utilisateur
+RUN mkdir -p /app/.next /app/.yarn /app/node_modules /app/public \
+    && touch /app/next-env.d.ts \
+    && chown -R node:node /app /app/.next /app/.yarn /app/node_modules /app/public /app/next-env.d.ts \
+    && chmod -R 777 /app /app/.next /app/.yarn /app/node_modules /app/public /app/next-env.d.ts
 
-# Switch to non-root user
+# ✅ Passer à l'utilisateur node après avoir corrigé les permissions
 USER node
 
-# Copy package.json and yarn.lock before installing dependencies
+# Copier package.json et yarn.lock
 COPY --chown=node:node ./nextjs/package.json ./nextjs/yarn.lock ./
 
-# Install dependencies
+# Installer les dépendances
 RUN corepack yarn install
 
-# Copy the rest of the application code
+# Copier le reste du projet
 COPY --chown=node:node ./nextjs ./
 
-# Expose the Next.js port
+# Exposer le port Next.js
 EXPOSE 3000
 
-# Start the Next.js server
+# Lancer Next.js
 CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then corepack yarn build && corepack yarn start; else corepack yarn dev; fi"]
