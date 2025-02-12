@@ -11,7 +11,7 @@ WORKDIR /app
 COPY ./nextjs/package.json ./nextjs/yarn.lock ./
 
 # Install dependencies
-RUN corepack yarn install --immutable
+RUN corepack yarn install
 
 # Copy the rest of the application code
 COPY ./nextjs ./
