@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  strapi:
+    image: gabgabb/portefolio-strapi:latest
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "1337:1337"
+
+  nextjs:
+    image: gabgabb/portefolio-nextjs:latest
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
