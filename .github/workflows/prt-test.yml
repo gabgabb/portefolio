@@ -45,7 +45,7 @@ jobs:
 
       - name: Test if Strapi is running
         run: |
-          curl --fail http://localhost:1337/_health || (echo "Strapi did not start correctly" && exit 1)
+          curl --fail http://localhost:1337 || (echo "Strapi did not start correctly" && exit 1)
 
       - name: Test if Next.js is running
         run: |
