@@ -53,8 +53,8 @@ const Projects: React.FC = () => {
     }, [projects, visibleProjects]);
 
     return (
-        <section id={"projects"} className="min-h-screen s-pho:px-4 l-pho:px-4">
-            <h2 className="h2 text-center">Mes projets</h2>
+        <section id={"projects"} className="min-h-screen text-center s-pho:px-4 l-pho:px-4">
+            <h2 className="font-extrabold text-3xl">Mes projets</h2>
 
             {loading && !isLoadingComplete && (
                 <div className="flex min-h-screen items-center justify-center">

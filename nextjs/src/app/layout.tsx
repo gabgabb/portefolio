@@ -51,7 +51,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
                 <link rel="icon" href="/favicon.ico" />
                 <title></title>
             </head>
-            <body className="bg-black">
+            <body className="!bg-black text-white font-bogart">
                 <Header/>
                 <ToastContainer
                     position="top-right"
