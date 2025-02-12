@@ -1,30 +1,38 @@
 import Link from 'next/link'
 import React from "react";
+import {ArrowRight} from "@/app/icons";
 
 const Header: React.FC = () => {
     return (
-        <header className="flex flex-row items-center justify-between border-b border-whiteStroke px-4 py-5 s-pho:justify-center l-pho:justify-center">
-            <div className="flex">
-                <h1 className="h1">Gabriel Filiot</h1>
+        <header
+            className="flex flex-row items-center justify-between px-16 pt-8 s-pho:justify-center l-pho:justify-center text-white">
+            <div className="flex flex-col">
+                <h1 className="font-bold text-xl h-5">Gabriel Filiot</h1>
+                <h2 className="font-medium text-sm">Full stack developer</h2>
             </div>
-            <div className="flex flex-row gap-10 s-pho:hidden l-pho:hidden">
-                <Link href="#about" className="button-primary group !text-yellow-50 transition duration-300">
-                    À propos
-                    <span
-                        className="block h-0.5 max-w-0 bg-yellow-50 transition-all duration-500 group-hover:max-w-full"/>
-                </Link>
-                <Link href="#experiences" className="button-primary group !text-yellow-50 transition duration-300">Expériences
-                    <span
-                        className="block h-0.5 max-w-0 bg-yellow-50 transition-all duration-500 group-hover:max-w-full"/>
-                </Link>
-                <Link href="#projects" className="button-primary group !text-yellow-50 transition duration-300">Projets
-                    <span
-                        className="block h-0.5 max-w-0 bg-yellow-50 transition-all duration-500 group-hover:max-w-full"/>
-                </Link>
-                <Link href="#contact" className="button-primary group !text-yellow-50 transition duration-300">Contact
-                    <span
-                        className="block h-0.5 max-w-0 bg-yellow-50 transition-all duration-500 group-hover:max-w-full"/>
-                </Link>
+            <div className={"flex flex-row gap-4"}>
+                <div className="flex flex-row gap-4 s-pho:hidden l-pho:hidden text-xl font-bold ">
+                    <Link href={"https://github.com/gabgabb"}
+                          className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
+                        Github
+                        <ArrowRight/>
+                    </Link>
+                    <Link href={""}
+                          className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
+                        CV
+                        <ArrowRight/>
+                    </Link>
+                    <Link href={"https://www.linkedin.com/in/gabriel-filiot-475277209/"} target={"_blank"}
+                          className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
+                        Linkedin
+                        <ArrowRight/>
+                    </Link>
+                </div>
+                <div className={"flex flex-row gap-2 s-pho:flex l-pho:flex text-xl font-bold"}>
+                    <div className={"cursor-pointer underline underline-offset-4"}>FR</div>
+                    <div>•</div>
+                    <div className={"cursor-pointer"}>EN</div>
+                </div>
             </div>
         </header>
     )

@@ -1,33 +1,17 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import Image from "next/image";
 
 export default function AboutMe() {
     return (
-        <section id={"about"} className="flex flex-col items-center gap-5">
-            {/*<Marquee speed={200} className="h-28 bg-whiteAlpha-100 uppercase">
-                <h1 className="h1 mr-12">full stack</h1>
-                <h1 className="h1 mr-12">Php</h1>
-                <h1 className="h1 mr-12">react</h1>
-                <h1 className="h1 mr-12">JS</h1>
-                <h1 className="h1 mr-12">POSTGRES</h1>
-                <h1 className="h1">NEXT</h1>
-            </Marquee>*/}
-
-            <div className="flex flex-col items-center justify-center gap-3 py-6 s-pho:px-4 l-pho:px-4">
-                <h2 className="h2">À propos de moi</h2>
-                <div className="flex flex-col items-center justify-center text-center">
-                    <p className="l16-text-reg">Je suis un étudiant en informatique passionné par le développement full stack.</p>
-                    <p className="l16-text-reg">Je suis actuellement alternance chez Ozzak et en dernière année d&apos;étude pour le...</p>
+        <section className="flex flex-col items-center gap-5 py-20">
+            <div className="flex items-center justify-center gap-20 py-6 s-pho:px-4 l-pho:px-4 font-medium text-left">
+                <div className="flex flex-col items-center justify-center gap-6 w-[570px]">
+                    <p className="l16-text-reg">Développeur Full Stack français basé à Nantes passionné par la création de solutions innovantes et efficaces. </p>
+                    <p className="l16-text-reg">Avec plusieurs années d'expérience dans le développement web, je m'efforce de transformer des idées en réalité grâce à des technologies de pointe.</p>
                 </div>
+                <Image src={"/image.jpg"} alt={"Image de présentation"} width={217} height={217} className="rounded-full"/>
             </div>
-            {/*<Marquee direction={"right"} speed={200} className="flex h-36 gap-2 bg-whiteAlpha-100 uppercase">
-                <h1 className="h1 mr-12">full stack</h1>
-                <h1 className="h1 mr-12">Php</h1>
-                <h1 className="h1 mr-12">react</h1>
-                <h1 className="h1 mr-12">JS</h1>
-                <h1 className="h1 mr-12">POSTGRES</h1>
-                <h1 className="h1">NEXT</h1>
-            </Marquee>*/}
         </section>
     );
 }

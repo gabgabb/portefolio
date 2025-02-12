@@ -146,14 +146,25 @@ html {
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes fontWeightIncrease {
+  0% {
+    font-weight: 600;
+  }
+  100% {
+    font-weight: 800;
+  }
+}
+
+.weightGrow {
+    transition: text-shadow 0.2s ease-in-out;
+}
+
+.weightGrow:hover {
+    text-shadow:
+        -0.2px -0.2px 0 #EAF3F6,
+         0.2px -0.2px 0 #EAF3F6,
+        -0.2px  0.2px 0 #EAF3F6,
+         0.2px  0.2px 0 #EAF3F6;
 }
 
 @layer utilities {
@@ -236,9 +247,13 @@ body {
   font-style: normal;
 }
 
-
 @theme {
-    --color-yellow-50: #E9B219;
+    --color-white: #EAF3F6;
+    --color-black: #111A27;
+    --color-stroke: #383838;
+    --color-gray: rgba(242, 117, 0, 0.06);
+    --color-gray-light: rgba(234, 243, 246, 0.7);
+    --color-purple: #5469BA;
 
     --font-bogart: "Bogart", sans-serif;
 }
