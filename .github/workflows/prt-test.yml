@@ -43,13 +43,13 @@ jobs:
           sleep 10  # Attendre quelques secondes pour laisser Strapi et Next.js démarrer
           docker ps
 
-#      - name: Test if Strapi is running
-#        run: |
-#          curl --fail http://localhost:1337 || (echo "Strapi did not start correctly" && exit 1)
-#
-#      - name: Test if Next.js is running
-#        run: |
-#          curl --fail http://localhost:3000 || (echo "Next.js did not start correctly" && exit 1)
+      - name: Install Playwright
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
 
       - name: Stop and clean up
         run: |

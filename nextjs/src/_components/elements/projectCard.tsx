@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import React, { useMemo } from "react";
 import {Project} from "@/_utils/types";
 
