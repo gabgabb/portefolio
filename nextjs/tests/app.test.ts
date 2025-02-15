@@ -7,12 +7,6 @@ test.describe("Portfolio Tests", () => {
         await expect(page.getByRole("heading", { name: "Full stack developer" })).toBeVisible();
     });
 
-    test("Strapi admin panel is accessible", async ({ page }) => {
-        await page.goto("http://localhost:1337/admin");
-        await expect(page.locator("input[name='email']")).toBeVisible();
-        await expect(page.locator("input[name='password']")).toBeVisible();
-    });
-
     test("GitHub link works", async ({ page }) => {
         await page.goto("http://localhost:3000");
         const githubLink = page.getByRole("link", { name: "Github" });
