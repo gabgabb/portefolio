@@ -13,6 +13,7 @@ const Header: React.FC = () => {
             <div className={"flex flex-row gap-4"}>
                 <div className="flex flex-row gap-4 text-xl font-bold">
                     <Link href={"https://github.com/gabgabb"}
+                          target={"_blank"}
                           className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
                         Github
                         <ArrowRight/>
@@ -22,7 +23,8 @@ const Header: React.FC = () => {
                         CV
                         <ArrowRight/>
                     </Link>
-                    <Link href={"https://www.linkedin.com/in/gabriel-filiot-475277209/"} target={"_blank"}
+                    <Link href={"https://www.linkedin.com/in/gabriel-filiot-475277209/"}
+                          target={"_blank"}
                           className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
                         Linkedin
                         <ArrowRight/>
