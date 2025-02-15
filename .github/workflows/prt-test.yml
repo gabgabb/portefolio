@@ -45,7 +45,7 @@ jobs:
 
       - name: Install Playwright
         run: |
-          npm install -g @playwright/test
+          npm ci
           npx playwright install --with-deps
 
       - name: Run Playwright tests
