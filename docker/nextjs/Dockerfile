@@ -1,6 +1,8 @@
 # Dockerfile pour Next.js
 FROM node:20
 
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
 # Enable Corepack
 RUN corepack enable
 

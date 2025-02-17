@@ -50,7 +50,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
             <head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title></title>
+                <title>Gabriel Filiot</title>
             </head>
             <body className="!bg-black text-white font-bogart">
                 <Header/>
