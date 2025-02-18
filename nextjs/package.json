@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@heroui/react": "^2.6.14",
-    "@heroui/system": "2.4.7",
-    "@heroui/theme": "2.4.6",
+    "@heroui/system": "2.4.10",
+    "@heroui/theme": "2.4.9",
     "@next/bundle-analyzer": "^15.1.6",
     "autoprefixer": "^10.4.20",
     "date-fns": "^4.1.0",
