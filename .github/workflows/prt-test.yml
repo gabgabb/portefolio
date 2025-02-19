@@ -45,10 +45,13 @@ jobs:
 
       - name: Install Playwright
         run: |
+          cd nextjs
           npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: |
+          cd nextjs
+          npx playwright test
 
       - name: Stop and clean up
         run: |
