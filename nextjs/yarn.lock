@@ -7677,6 +7677,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-ctrf-json-reporter@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "playwright-ctrf-json-reporter@npm:0.0.18"
+  checksum: 10c0/d259eaf9118164cc6230bccb861eb0a8089a406c349cfbd1a90c9467b4226b77b5f483211049a3aaea582b98b4a2a2c63c43813997f6e0b1b9f08ff8f16195cd
+  languageName: node
+  linkType: hard
+
 "playwright@npm:1.50.1":
   version: 1.50.1
   resolution: "playwright@npm:1.50.1"
@@ -7720,6 +7727,7 @@ __metadata:
     globals: "npm:^15.14.0"
     jetifier: "npm:^2.0.0"
     next: "npm:15.1.7"
+    playwright-ctrf-json-reporter: "npm:^0.0.18"
     postcss: "npm:^8.5.1"
     react: "npm:19.0.0"
     react-dom: "npm:19.0.0"

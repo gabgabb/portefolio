@@ -48,7 +48,7 @@ jobs:
                 run: |
                     docker exec portefolio-nextjs-1 npx playwright test
                     mkdir -p test-results
-                    docker cp portefolio-nextjs-1:/app/report/test-results.json test-results/
+                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/
             
             -   name: Publish Test Summary Results
                 run: npx github-actions-ctrf test-results/test-results.json
