@@ -1,7 +1,4 @@
-# Dockerfile pour Next.js
-FROM node:20
-
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+FROM node:22
 
 # Enable Corepack
 RUN corepack enable
@@ -9,19 +6,18 @@ RUN corepack enable
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copier package.json et yarn.lock en premier (meilleur cache Docker)
 COPY ./nextjs/package.json ./nextjs/yarn.lock ./
 
-# Install dependencies
-RUN corepack yarn install
+RUN npx playwright install --with-deps
 
-# Copy the rest of the application code
+# Copier le reste du code
 COPY ./nextjs ./
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Expose the Next.js port
+# Expose le port Next.js
 EXPOSE 3000
 
-# Start the Next.js server
+# Commande de lancement
 CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then corepack yarn build && corepack yarn start; else corepack yarn dev; fi"]
