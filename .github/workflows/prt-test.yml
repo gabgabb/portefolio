@@ -51,7 +51,7 @@ jobs:
                     docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/
             
             -   name: Publish Test Summary Results
-                run: npx github-actions-ctrf test-results/test-results.json
+                run: npx github-actions-ctrf test-results/ctrf-report.json
 
             -   name: Stop and clean up
                 run: |
