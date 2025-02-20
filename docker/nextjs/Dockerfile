@@ -9,6 +9,8 @@ WORKDIR /app
 # Copier package.json et yarn.lock en premier (meilleur cache Docker)
 COPY ./nextjs/package.json ./nextjs/yarn.lock ./
 
+RUN npx playwright install --with-deps
+
 # Copier le reste du code
 COPY ./nextjs ./
 
