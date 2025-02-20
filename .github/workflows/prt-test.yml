@@ -46,6 +46,7 @@ jobs:
             -   name: Run Playwright tests inside Next.js container
                 id: tests
                 run: |
+                    docker exec portefolio-nextjs-1 npx playwright install
                     docker exec portefolio-nextjs-1 npx playwright test
                     
                     # Copier les résultats des tests
