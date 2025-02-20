@@ -43,15 +43,9 @@ jobs:
           sleep 10  # Attendre quelques secondes pour laisser Strapi et Next.js démarrer
           docker ps
 
-      - name: Install Playwright
+      - name: Run Playwright tests inside Docker
         run: |
-          cd nextjs
-          npx playwright install --with-deps
-
-      - name: Run Playwright tests
-        run: |
-          cd nextjs
-          npx playwright test
+          docker compose -f docker-compose.ci.yml up tests
 
       - name: Stop and clean up
         run: |

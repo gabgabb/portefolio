@@ -2,15 +2,35 @@ version: '3.8'
 
 services:
   strapi:
-    image: gabgabb/portefolio-strapi:latest
-    environment:
-      - NODE_ENV=development
+    image: portefolio-strapi:latest
     ports:
       - "1337:1337"
+    environment:
+      - NODE_ENV=test
+    networks:
+      - app_network
 
   nextjs:
-    image: gabgabb/portefolio-nextjs:latest
-    environment:
-      - NODE_ENV=development
+    image: portefolio-nextjs:latest
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=test
+    networks:
+      - app_network
+
+  tests:
+    image: mcr.microsoft.com/playwright:v1.50.1
+    depends_on:
+      - nextjs
+      - strapi
+    networks:
+      - app_network
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: npx playwright test
+
+networks:
+  app_network:
+    driver: bridge
