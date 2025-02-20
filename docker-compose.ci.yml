@@ -2,35 +2,15 @@ version: '3.8'
 
 services:
   strapi:
-    image: portefolio-strapi:test
+    image: gabgabb/portefolio-strapi:latest
     ports:
       - "1337:1337"
     environment:
-      - NODE_ENV=test
-    networks:
-      - app_network
+      - NODE_ENV=development
 
   nextjs:
-    image: portefolio-nextjs:test
+    image: gabgabb/portefolio-nextjs:latest
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=test
-    networks:
-      - app_network
-
-  tests:
-    image: mcr.microsoft.com/playwright:v1.50.1
-    depends_on:
-      - nextjs
-      - strapi
-    networks:
-      - app_network
-    working_dir: /app/nextjs
-    volumes:
-      - .:/app
-    command: sh -c "yarn install --immutable && npx playwright install --with-deps && npx playwright test"
-
-networks:
-  app_network:
-    driver: bridge
+      - NODE_ENV=development
