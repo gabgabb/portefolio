@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   strapi:
-    image: gabgabb/portefolio-strapi:latest
+    image: portefolio-strapi:test
     ports:
       - "1337:1337"
     environment:
@@ -11,7 +11,7 @@ services:
       - app_network
 
   nextjs:
-    image: gabgabb/portefolio-nextjs:latest
+    image: portefolio-nextjs:test
     ports:
       - "3000:3000"
     environment:
@@ -26,10 +26,10 @@ services:
       - strapi
     networks:
       - app_network
-    working_dir: /app
+    working_dir: /app/nextjs
     volumes:
       - .:/app
-    command: npx playwright test
+    command: sh -c "yarn install --immutable && npx playwright install --with-deps && npx playwright test"
 
 networks:
   app_network:

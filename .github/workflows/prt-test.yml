@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Playwright tests inside Docker
         run: |
-          docker compose -f docker-compose.ci.yml up tests
+          docker compose -f docker-compose.ci.yml up tests --exit-code-from tests
 
       - name: Stop and clean up
         run: |
