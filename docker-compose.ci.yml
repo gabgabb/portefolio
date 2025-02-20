@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   strapi:
-    image: portefolio-strapi:latest
+    image: gabgabb/portefolio-strapi:latest
     ports:
       - "1337:1337"
     environment:
@@ -11,7 +11,7 @@ services:
       - app_network
 
   nextjs:
-    image: portefolio-nextjs:latest
+    image: gabgabb/portefolio-nextjs:latest
     ports:
       - "3000:3000"
     environment:
