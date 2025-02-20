@@ -56,3 +56,16 @@ jobs:
             -   name: Stop and clean up
                 run: |
                     docker compose -f docker-compose.ci.yml down -v
+
+    auto-merge:
+        needs: test
+        runs-on: ubuntu-latest
+        if: github.actor == 'renovate[bot]'
+        steps:
+            - name: Enable auto-merge for Renovate PRs
+              run: gh pr merge --auto --squash "$GITHUB_REF"
+              env:
+                  GH_TOKEN: ${{ secrets.GH_PAT }}
+
+                    
+                    
