@@ -8,10 +8,7 @@
     "start": "next start",
     "lint": "eslint ./src",
     "lint:debug": "eslint ./src --debug",
-    "lint:fix": "eslint ./src --fix",
-    "test": "playwright test --browser=all",
-    "test-html-report": "playwright test --browser=all --reporter=html",
-    "test-json-report": "PLAYWRIGHT_JSON_OUTPUT_NAME=results.json playwright test --browser=chromium --reporter=json"
+    "lint:fix": "eslint ./src --fix"
   },
   "dependencies": {
     "@heroui/react": "^2.6.14",

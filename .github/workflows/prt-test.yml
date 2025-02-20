@@ -47,18 +47,9 @@ jobs:
                 id: tests
                 run: |
                     docker exec portefolio-nextjs-1 npx playwright test
-                    
-                    # Copier les résultats des tests
-                    mkdir -p playwright-report
-                    docker cp portefolio-nextjs-1:/app/playwright-report ./playwright-report || echo "No report found"
-                    
-                    # Lire les résultats et extraire le nombre de tests échoués
-                    if [ -f ./playwright-report/result.txt ]; then
-                      export count=$(grep "Failed" ./playwright-report/result.txt | cut -d ':' -f 2 | tr -d ' ')
-                    else
-                      export count="0"
-                    fi
-                    echo "fail_count=$count" >> "$GITHUB_OUTPUT"
+            
+            -   name: Publish Test Summary Results
+                run: npx github-actions-ctrf report/test-results.json
 
             -   name: Stop and clean up
                 run: |
