@@ -23,7 +23,7 @@ jobs:
                     password: ${{ secrets.DOCKER_PASSWORD }}
 
             -   name: Start services
-                run: docker compose -f docker-compose.ci.yml up -d
+                run: docker compose -f compose.yml up -d
 
             -   name: Vérifier les containers en cours d'exécution
                 run: docker ps -a
