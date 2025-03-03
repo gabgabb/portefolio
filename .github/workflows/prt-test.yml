@@ -22,16 +22,8 @@ jobs:
                     username: ${{ secrets.DOCKER_USERNAME }}
                     password: ${{ secrets.DOCKER_PASSWORD }}
 
-            -   name: Build Strapi and Next.js images
-                run: |
-                    docker buildx build --platform linux/amd64 \
-                      -t gabgabb/portefolio-strapi:latest \
-                      -f ./docker/strapi/Dockerfile \
-                      --load .
-                    docker buildx build --platform linux/amd64 \
-                      -t gabgabb/portefolio-nextjs:latest \
-                      -f ./docker/nextjs/Dockerfile \
-                      --load .
+            -   name: Start services
+                run: docker compose -f docker-compose.ci.yml up -d
 
             -   name: Vérifier les containers en cours d'exécution
                 run: docker ps -a
