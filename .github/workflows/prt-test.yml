@@ -37,6 +37,11 @@ jobs:
             -   name: Vérifier les containers en cours d'exécution
                 run: docker ps -a
 
+            -   name: Logs docker containers
+                run: |
+                    docker logs portefolio-strapi-1
+                    docker logs portefolio-nextjs-1
+
             -   name: Run Playwright tests inside Next.js container
                 id: tests
                 run: |
