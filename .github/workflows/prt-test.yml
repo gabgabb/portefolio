@@ -37,6 +37,15 @@ jobs:
                 run: |
                     docker compose -f docker-compose.ci.yml up -d
 
+            - name: Vérifier les images Docker
+              run: docker images | grep gabgabb
+
+            -   name: Vérifier les containers en cours d'exécution
+                run: docker ps -a
+
+            -   name: Afficher les logs de Docker Compose
+                run: docker compose -f docker-compose.ci.yml logs
+
             -   name: Wait for services to be ready
                 run: |
                     echo "Waiting for services to start..."
