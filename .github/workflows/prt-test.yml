@@ -25,17 +25,17 @@ jobs:
             -   name: Build Strapi and Next.js images
                 run: |
                     docker buildx build --platform linux/amd64 \
-                      -t portefolio-strapi:test \
+                      -t gabgabb/portefolio-strapi:latest \
                       -f ./docker/strapi/Dockerfile \
                       --load .
                     docker buildx build --platform linux/amd64 \
-                      -t portefolio-nextjs:test \
+                      -t gabgabb/portefolio-nextjs:latest \
                       -f ./docker/nextjs/Dockerfile \
                       --load .
 
             -   name: Start services with Docker Compose
                 run: |
-                    docker compose -f docker-compose.yml up -d
+                    docker compose -f docker-compose.ci.yml up -d
 
             -   name: Wait for services to be ready
                 run: |
