@@ -36,6 +36,12 @@ jobs:
             -   name: Vérifier les containers en cours d'exécution
                 run: docker ps -a
 
+            -   name: Vérifier les logs des containers
+                run: |
+                    docker logs portefolio-strapi-1 || echo "Strapi container not found"
+                    docker logs portefolio-nextjs-1 || echo "Next.js container not found"
+
+
             -   name: Run Playwright tests inside Next.js container
                 id: tests
                 run: |
