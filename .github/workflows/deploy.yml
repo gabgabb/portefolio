@@ -57,7 +57,6 @@ jobs:
                     username: ${{ secrets.SSH_USERNAME }}
                     key: ${{ secrets.SSH_PRIVATE_KEY }}
                     script: |
-                        set -e  # Arrête le script en cas d'erreur
                         cd dev/portefolio/
                         git stash
                         git stash clear
