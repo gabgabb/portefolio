@@ -32,6 +32,7 @@ jobs:
                     echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "TRANSFER_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> nextjs/.env
 
             -   name: Install dependencies
                 run: |
