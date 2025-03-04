@@ -2,7 +2,7 @@ name: Cleanup GitHub Actions Runs
 
 on:
     schedule:
-        -   cron: '0 0 * * 0'  # Exécute tous les dimanches à minuit
+        -   cron: '0 0 * * *'  # Exécute tous les dimanches à minuit
     workflow_dispatch:  # Permet un lancement manuel si nécessaire
 
 jobs:
@@ -14,5 +14,5 @@ jobs:
                 with:
                     token: ${{ secrets.GH_PAT }}
                     repository: ${{ github.repository }}
-                    retain_days: 7   # Supprime les exécutions de plus de 7 jours
+                    retain_days: 2   # Supprime les exécutions de plus de 7 jours
                     keep_minimum_runs: 5  # Garde au moins 5 exécutions récentes

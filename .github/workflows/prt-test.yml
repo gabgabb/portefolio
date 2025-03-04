@@ -46,12 +46,6 @@ jobs:
             -   name: Start services with local images
                 run: docker compose -f compose.ci.yml up -d
 
-            - name: Debugging - Logs de Strapi
-              run: docker logs portefolio-strapi-1 || echo "No logs available"
-
-            - name: Debugging - Logs de Next.js
-              run: docker logs portefolio-nextjs-1 || echo "No logs available"
-
             -   name: Wait for services to be ready
                 run: |
                     sleep 5
@@ -63,7 +57,7 @@ jobs:
                     docker exec portefolio-nextjs-1 npx playwright test
                     mkdir -p test-results
                     docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/
-            
+
             -   name: Publish Test Summary Results
                 run: npx github-actions-ctrf test-results/ctrf-report.json
 
@@ -76,10 +70,13 @@ jobs:
         runs-on: ubuntu-latest
         if: github.actor == 'renovate[bot]'
         steps:
-            - name: Enable auto-merge for Renovate PRs
-              run: gh pr merge --auto --squash "$GITHUB_REF"
-              env:
-                  GH_TOKEN: ${{ secrets.GH_PAT }}
+            -   name: Checkout repository
+                uses: actions/checkout@v4
+
+            -   name: Enable auto-merge for Renovate PRs
+                run: gh pr merge --auto --squash "$GITHUB_REF"
+                env:
+                    GH_TOKEN: ${{ secrets.GH_PAT }}
 
                     
                     
