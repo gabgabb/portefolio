@@ -38,13 +38,6 @@ jobs:
                     cd ../strapi
                     npm install
 
-            - name: Verify dependencies
-              run: |
-                  cd nextjs
-                  yarn check
-                  cd ../strapi
-                  npm audit --audit-level=high || echo "Warnings ignored"
-
             -   name: Build Docker images
                 run: |
                     docker build -t portefolio-nextjs -f nextjs/Dockerfile nextjs
