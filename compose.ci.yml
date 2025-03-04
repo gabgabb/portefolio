@@ -1,19 +1,19 @@
 services:
-  nextjs:
-    image: portefolio-nextjs
-    ports:
-      - '1337:1337'
-    environment:
-      - NODE_ENV=dev
-      - DATABASE_CLIENT=sqlite
-      - DATABASE_FILENAME=./data/data.db
-    env_file:
-      - .env
-  strapi:
-    image: portefolio-strapi
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=dev
-    env_file:
-      - .env
+    nextjs:
+        image: portefolio-nextjs
+        ports:
+            - '1337:1337'
+        environment:
+            - NODE_ENV=dev
+            - DATABASE_CLIENT=sqlite
+            - DATABASE_FILENAME=./data/data.db
+        env_file:
+            - .env
+    strapi:
+        image: portefolio-strapi
+        ports:
+            - '3000:3000'
+        environment:
+            - NODE_ENV=dev
+        env_file:
+            - .env

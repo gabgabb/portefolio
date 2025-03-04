@@ -31,7 +31,8 @@ build: ## Build Docker images
 	docker build -t $(STRAPI_IMAGE):latest -f docker/strapi/Dockerfile strapi
 
 push: ## Push Docker images to Docker Hub
-	docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+	@echo "Connexion à Docker..."
+	@echo "$$DOCKER_PASSWORD" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
 	docker push $(NEXTJS_IMAGE):latest
 	docker push $(STRAPI_IMAGE):latest
 
