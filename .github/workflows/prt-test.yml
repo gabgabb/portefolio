@@ -28,6 +28,7 @@ jobs:
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
                     echo "APP_KEYS=myKeyA,myKeyB" >> strapi/.env
+                    echo "JWT_SECRET=your_random_secret_key" >> strapi/.env
 
             -   name: Install dependencies
                 run: |
