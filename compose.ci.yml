@@ -1,0 +1,5 @@
+services:
+  nextjs:
+    image: portefolio-nextjs
+  strapi:
+    image: portefolio-strapi

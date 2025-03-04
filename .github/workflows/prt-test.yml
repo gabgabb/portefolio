@@ -16,18 +16,13 @@ jobs:
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v3
 
-            -   name: Login to DockerHub
-                uses: docker/login-action@v3
-                with:
-                    username: ${{ secrets.DOCKER_USERNAME }}
-                    password: ${{ secrets.DOCKER_PASSWORD }}
-
             -   name: Create missing .env files
                 run: |
                     cp .env.dist .env
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
-                    echo "APP_KEYS=myKeyA,myKeyB" >> strapi/.env
+                    
+                    echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
                     echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
@@ -43,17 +38,31 @@ jobs:
                     cd ../strapi
                     npm install
 
-            -   name: Start services
-                run: docker compose -f compose.yml up -d
+            - name: Verify dependencies
+              run: |
+                  cd nextjs
+                  yarn check
+                  cd ../strapi
+                  npm audit --audit-level=high || echo "Warnings ignored"
 
-            -   name: Sleep for 30 seconds
-                run: sleep 10
+            -   name: Build Docker images
+                run: |
+                    docker build -t portefolio-nextjs -f nextjs/Dockerfile nextjs
+                    docker build -t portefolio-strapi -f strapi/Dockerfile strapi
 
-            -   name: Vérifier les containers en cours d'exécution
-                run: docker ps -a
+            -   name: Start services with local images
+                run: docker compose -f compose.ci.yml up -d
 
-            -   name: Logs docker containers for debugging
-                run: docker logs portefolio-strapi-1
+            - name: Debugging - Logs de Strapi
+              run: docker logs portefolio-strapi-1 || echo "No logs available"
+
+            - name: Debugging - Logs de Next.js
+              run: docker logs portefolio-nextjs-1 || echo "No logs available"
+
+            -   name: Wait for services to be ready
+                run: |
+                    sleep 15
+                    docker ps -a
 
             -   name: Run Playwright tests inside Next.js container
                 id: tests
