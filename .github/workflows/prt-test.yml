@@ -40,8 +40,8 @@ jobs:
 
             -   name: Build Docker images
                 run: |
-                    cd nextjs && docker build -t portefolio-nextjs -f ../docker/nextjs/Dockerfile . && cd ..
-                    cd strapi && docker build -t portefolio-strapi -f ../docker/strapi/Dockerfile . && cd ..
+                    portefolio-nextjs -f ../docker/nextjs/Dockerfile .
+                    docker build -t portefolio-strapi -f ../docker/strapi/Dockerfile .
 
             -   name: Start services with local images
                 run: docker compose -f compose.ci.yml up -d
