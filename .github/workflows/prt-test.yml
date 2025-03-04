@@ -27,15 +27,12 @@ jobs:
                     cp .env.dist .env
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
-
-            - name: Enable Corepack
-              run: corepack enable
-
-            - name: Set up correct Yarn version
-              run: corepack prepare yarn@stable --activate
+                    echo "APP_KEYS=myKeyA,myKeyB" >> strapi/.env
 
             -   name: Install dependencies
                 run: |
+                    corepack enable
+                    corepack prepare yarn@stable --activate
                     cd nextjs
                     yarn install
                     cd ../strapi
@@ -52,9 +49,6 @@ jobs:
 
             -   name: Logs docker containers for debugging
                 run: docker logs portefolio-strapi-1
-
-            -   name: Logs docker containers for debugging
-                run: docker logs portefolio-nextjs-1
 
             -   name: Run Playwright tests inside Next.js container
                 id: tests
