@@ -68,5 +68,6 @@ jobs:
             sudo docker system prune -f 
             cd nextjs
             npm install -g yarn
+            corepack prepare yarn@stable --activate
             corepack enable
             yarn install
