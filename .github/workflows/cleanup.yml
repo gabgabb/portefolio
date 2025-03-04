@@ -1,0 +1,18 @@
+name: Cleanup GitHub Actions Runs
+
+on:
+    schedule:
+        -   cron: '0 0 * * 0'  # Exécute tous les dimanches à minuit
+    workflow_dispatch:  # Permet un lancement manuel si nécessaire
+
+jobs:
+    cleanup:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Supprimer les anciennes exécutions
+                uses: Mattraks/delete-workflow-runs@v2
+                with:
+                    token: ${{ secrets.GH_PAT }}
+                    repository: ${{ github.repository }}
+                    retain_days: 7   # Supprime les exécutions de plus de 7 jours
+                    keep_minimum_runs: 5  # Garde au moins 5 exécutions récentes
