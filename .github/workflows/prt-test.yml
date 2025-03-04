@@ -28,6 +28,12 @@ jobs:
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
 
+            - name: Enable Corepack
+              run: corepack enable
+
+            - name: Set up correct Yarn version
+              run: corepack prepare yarn@stable --activate
+
             -   name: Install dependencies
                 run: |
                     cd nextjs
