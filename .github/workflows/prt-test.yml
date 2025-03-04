@@ -66,6 +66,7 @@ jobs:
                     docker compose -f compose.ci.yml down -v
 
     auto-approve:
+        needs: test
         runs-on: ubuntu-latest
         if: github.actor == 'renovate[bot]'
         steps:
