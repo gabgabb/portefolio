@@ -28,19 +28,27 @@ jobs:
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
 
+            -   name: Install dependencies
+                run: |
+                    cd nextjs
+                    yarn install
+                    cd ../strapi
+                    npm install
+
             -   name: Start services
                 run: docker compose -f compose.yml up -d
 
             -   name: Sleep for 30 seconds
-                run: sleep 30
+                run: sleep 10
 
             -   name: Vérifier les containers en cours d'exécution
                 run: docker ps -a
 
-            -   name: Logs docker containers
-                run: |
-                    docker logs portefolio-strapi-1
-                    docker logs portefolio-nextjs-1
+            -   name: Logs docker containers for debugging
+                run: docker logs portefolio-strapi-1
+
+            -   name: Logs docker containers for debugging
+                run: docker logs portefolio-nextjs-1
 
             -   name: Run Playwright tests inside Next.js container
                 id: tests
