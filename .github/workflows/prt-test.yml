@@ -40,7 +40,7 @@ jobs:
 
             -   name: Build Docker images
                 run: |
-                    docker build portefolio-nextjs -f docker/nextjs/Dockerfile .
+                    docker build -t portefolio-nextjs -f docker/nextjs/Dockerfile .
                     docker build -t portefolio-strapi -f docker/strapi/Dockerfile .
 
             -   name: Start services with local images
