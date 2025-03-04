@@ -1,7 +1,7 @@
 name: CI Test for PRs
 
 on:
-    pull_request_target:
+    pull_request:
         branches:
             - main
 
@@ -73,7 +73,7 @@ jobs:
             -   name: Auto-approve PR
                 uses: hmarr/auto-approve-action@v4
                 with:
-                    github-token: ${{ secrets.GITHUB_TOKEN }}
+                    github-token: ${{ secrets.GH_PAT  }}
 
     auto-merge:
         needs: auto-approve
@@ -83,7 +83,7 @@ jobs:
             -   name: Enable auto-merge for Renovate PRs
                 run: gh pr merge --auto --squash "$GITHUB_HEAD_REF"
                 env:
-                    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    GH_TOKEN: ${{ secrets.GH_PAT }}
 
                     
                     
