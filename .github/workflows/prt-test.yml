@@ -65,18 +65,24 @@ jobs:
                 run: |
                     docker compose -f compose.ci.yml down -v
 
-    auto-merge:
-        needs: test
+    auto-approve:
         runs-on: ubuntu-latest
         if: github.actor == 'renovate[bot]'
         steps:
-            -   name: Checkout repository
-                uses: actions/checkout@v4
+            -   name: Auto-approve PR
+                uses: hmarr/auto-approve-action@v4
+                with:
+                    github-token: ${{ secrets.GITHUB_TOKEN }}
 
+    auto-merge:
+        needs: auto-approve
+        runs-on: ubuntu-latest
+        if: github.actor == 'renovate[bot]'
+        steps:
             -   name: Enable auto-merge for Renovate PRs
-                run: gh pr merge --auto --squash "$GITHUB_REF"
+                run: gh pr merge --auto --squash "$GITHUB_HEAD_REF"
                 env:
-                    GH_TOKEN: ${{ secrets.GH_PAT }}
+                    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
                     
                     
