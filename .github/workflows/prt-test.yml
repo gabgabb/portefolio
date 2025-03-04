@@ -16,32 +16,46 @@ jobs:
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v3
 
-            -   name: Login to DockerHub
-                uses: docker/login-action@v3
-                with:
-                    username: ${{ secrets.DOCKER_USERNAME }}
-                    password: ${{ secrets.DOCKER_PASSWORD }}
-
-            -   name: Build Strapi and Next.js images
+            -   name: Create missing .env files
                 run: |
-                    docker buildx build --platform linux/amd64 \
-                      -t portefolio-strapi:test \
-                      -f ./docker/strapi/Dockerfile \
-                      --load .
-                    docker buildx build --platform linux/amd64 \
-                      -t portefolio-nextjs:test \
-                      -f ./docker/nextjs/Dockerfile \
-                      --load .
+                    cp .env.dist .env
+                    cp nextjs/.env.dist nextjs/.env
+                    cp strapi/.env.dist strapi/.env
+                    
+                    echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
+                    echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "TRANSFER_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
 
-            -   name: Start services with Docker Compose
+            -   name: Install dependencies
                 run: |
-                    docker compose -f docker-compose.ci.yml up -d
+                    corepack enable
+                    corepack prepare yarn@stable --activate
+                    cd nextjs
+                    yarn install
+                    cd ../strapi
+                    npm install
+
+            -   name: Build Docker images
+                run: |
+                    docker build -t portefolio-nextjs -f docker/nextjs/Dockerfile .
+                    docker build -t portefolio-strapi -f docker/strapi/Dockerfile .
+
+            -   name: Start services with local images
+                run: docker compose -f compose.ci.yml up -d
+
+            - name: Debugging - Logs de Strapi
+              run: docker logs portefolio-strapi-1 || echo "No logs available"
+
+            - name: Debugging - Logs de Next.js
+              run: docker logs portefolio-nextjs-1 || echo "No logs available"
 
             -   name: Wait for services to be ready
                 run: |
-                    echo "Waiting for services to start..."
-                    sleep 10  # Attendre quelques secondes pour laisser Strapi et Next.js démarrer
-                    docker ps
+                    sleep 5
+                    docker ps -a
 
             -   name: Run Playwright tests inside Next.js container
                 id: tests
@@ -55,4 +69,17 @@ jobs:
 
             -   name: Stop and clean up
                 run: |
-                    docker compose -f docker-compose.ci.yml down -v
+                    docker compose -f compose.ci.yml down -v
+
+    auto-merge:
+        needs: test
+        runs-on: ubuntu-latest
+        if: github.actor == 'renovate[bot]'
+        steps:
+            - name: Enable auto-merge for Renovate PRs
+              run: gh pr merge --auto --squash "$GITHUB_REF"
+              env:
+                  GH_TOKEN: ${{ secrets.GH_PAT }}
+
+                    
+                    
