@@ -58,29 +58,41 @@ jobs:
                     key: ${{ secrets.SSH_PRIVATE_KEY }}
                     script: |
                         cd dev/portefolio/
+                        
                         git stash
                         git stash clear
                         git pull
+                        
                         sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
                         sudo docker compose down
                         sudo docker compose pull
                         sudo docker compose up -d --remove-orphans
                         sudo docker system prune -f 
                         
-                        # Installer Yarn proprement
-                        npm install -g yarn --prefix ~/.local
-                        echo "export PATH=$HOME/.local/bin:$PATH" >> $HOME/.bashrc
-                        echo "export PATH=$HOME/.local/bin:$PATH" >> $HOME/.zshrc
-                        source $HOME/.bashrc
-                        source $HOME/.zshrc
+                        # Vérifier les chemins et les versions des outils
+                        echo "Chemin de corepack : $(which corepack)"
+                        echo "Chemin de yarn : $(which yarn)"
+                        echo "Version de corepack : $(corepack --version)"
+                        echo "Version de yarn : $(yarn --version)"
                         
-                        corepack enable || npm install -g corepack
-                        corepack prepare yarn@stable --activate
-                        
-                        # Vérifier Yarn
-                        which yarn
+                        if ! command -v yarn &> /dev/null; then
+                            npm install -g yarn --prefix ~/.local
+                            echo "export PATH=$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+                            echo "export PATH=$HOME/.local/bin:$PATH" >> $HOME/.zshrc
+                            source $HOME/.bashrc
+                            source $HOME/.zshrc
+                        fi
+                    
+                        # Activer Corepack et préparer Yarn
+                        if ! command -v corepack &> /dev/null; then
+                            npm install -g corepack
+                        fi
+                        corepack enable
+                        corepack prepare yarn@4.6.0 --activate
+                    
+                        # Vérifier que Yarn est correctement installé
                         yarn --version
-                        
+                    
                         # Installer les dépendances Next.js
                         cd nextjs
                         yarn install
