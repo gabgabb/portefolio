@@ -70,16 +70,22 @@ jobs:
         runs-on: ubuntu-latest
         if: github.actor == 'renovate[bot]'
         steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
             -   name: Auto-approve PR
                 uses: hmarr/auto-approve-action@v4
                 with:
-                    github-token: ${{ secrets.GH_PAT  }}
+                    github-token: ${{ secrets.GH_PAT }}
 
     auto-merge:
         needs: auto-approve
         runs-on: ubuntu-latest
         if: github.actor == 'renovate[bot]'
         steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
             -   name: Enable auto-merge for Renovate PRs
                 run: gh pr merge --auto --squash "$GITHUB_HEAD_REF"
                 env:
