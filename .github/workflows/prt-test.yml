@@ -90,6 +90,3 @@ jobs:
                 run: gh pr merge --auto --squash "$GITHUB_HEAD_REF"
                 env:
                     GH_TOKEN: ${{ secrets.GH_PAT }}
-
-                    
-                    
