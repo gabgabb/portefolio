@@ -14,5 +14,5 @@ jobs:
                 with:
                     token: ${{ secrets.GH_PAT }}
                     repository: ${{ github.repository }}
-                    retain_days: 2   # Supprime les exécutions de plus de 7 jours
+                    retain_days: 30   # Supprime les exécutions de plus de 30 jours
                     keep_minimum_runs: 5  # Garde au moins 5 exécutions récentes
