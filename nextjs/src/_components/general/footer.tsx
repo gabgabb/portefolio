@@ -4,9 +4,9 @@ import React from "react";
 
 const Footer: React.FC = () => {
     return (
-        <footer>
+        <footer className="border-t border-stroke px-4">
             <div
-                className="flex flex-col items-start py-8 border-t border-stroke px-4 l-pho:px-4 gap-4 s-pho:px-4 s-pho:flex-col l-pho:flex-col">
+                className="flex flex-col items-start py-8 px-4 gap-4 mx-auto w-full max-w-[1000px]">
                 <div className="flex items-center justify-center gap-3">
                     <Link href="https://github.com/gabgabb" target="_blank" rel="noopener noreferrer">
                         <Image src="/github_white.png" width="40" height="40" alt="github"/>
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
                         <Image src="/linkedin.png" width="40" height="40" alt="linkedin"/>
                     </Link>
                 </div>
-                <div className="flex items-center justify-center font-black gap-2 text-2xl">
+                <div className="flex items-center justify-center font-extrabold gap-2 text-2xl">
                     <span>Build with</span>
                     <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
                         <Image src={"/nextJs.png"} alt={"Next.js image"} width={40} height={40}/>
