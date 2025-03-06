@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
         STRAPI_TOKEN: process.env.NEXT_PUBLIC_STRAPI_TOKEN,
         NEXT_ENV: process.env.NEXT_ENV,
     },
-    sassOptions: {
-        includePaths: [path.join(__dirname, 'styles')],
-    },
-    //output: 'export',
     eslint: {
         ignoreDuringBuilds: true,
     },
@@ -46,6 +42,7 @@ const nextConfig: NextConfig = {
         turbo: {
             resolveAlias: {
                 'next-intl/config': './path/to/i18n.ts',
+                canvas: './empty-module.ts',
             },
         }
     },

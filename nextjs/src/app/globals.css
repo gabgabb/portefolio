@@ -1,133 +1,5 @@
 @import "tailwindcss";
 
-/*@layer base {*/
-/*  h1 {*/
-/*    @apply font-bogart text-[40px] font-black leading-[100%] tracking-normal text-yellow-50;*/
-/*  }*/
-
-/*  h2 {*/
-/*    @apply font-bogart text-[32px] font-black leading-[110%] tracking-normal text-yellow-50;*/
-/*  }*/
-
-/*  h3 {*/
-/*    @apply font-bogart text-2xl font-black leading-[110%] tracking-normal text-yellow-50;*/
-/*  }*/
-
-/*  h4 {*/
-/*    @apply font-bogart text-lg font-black leading-[110%] tracking-normal text-yellow-50;*/
-/*  }*/
-
-/*  h5 {*/
-/*    @apply font-bogart text-base font-bold leading-[120%] tracking-normal text-yellow-50;*/
-/*  }*/
-/*}*/
-
-/*@layer utilities {*/
-/*  .tab-bar {*/
-/*    @apply font-bogart text-[10px] font-medium leading-[100%] tracking-[0.2px] text-white-50;*/
-/*  }*/
-
-/*  .footer-med {*/
-/*    @apply font-bogart text-sm font-medium leading-[120%] tracking-[-0.7px] text-gray-50;*/
-/*  }*/
-
-/*  .footer-reg {*/
-/*    @apply font-bogart text-sm font-normal leading-[120%] tracking-[-0.7px] text-white-50;*/
-/*  }*/
-
-/*  .footer-light {*/
-/*    @apply font-bogart text-sm font-light leading-[24px] tracking-normal text-gray-50;*/
-/*  }*/
-
-/*  .button-primary {*/
-/*    @apply font-bogart text-base font-bold leading-normal tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .button-primary-small {*/
-/*    @apply font-bogart text-sm font-bold leading-normal tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .button-secondary {*/
-/*    @apply font-bogart text-sm font-extrabold leading-[110%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .button-tertiary {*/
-/*    @apply font-bogart text-sm font-medium leading-[120%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .xxl46-impact {*/
-/*    @apply font-bogart text-[46px] font-black leading-[100%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .xl18-bold {*/
-/*    @apply font-bogart text-lg font-bold leading-[100%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .l16-black {*/
-/*    @apply font-bogart text-base font-black leading-[110%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .l16-extra-bold {*/
-/*    @apply font-bogart text-base font-extrabold leading-[110%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .l16-bold {*/
-/*    @apply font-bogart text-base font-bold leading-[100%] tracking-[0.8px] text-white-50;*/
-/*  }*/
-
-/*  .l16-text-reg {*/
-/*    @apply font-bogart text-[120%] font-normal leading-[150%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .m14-extra-bold {*/
-/*    @apply font-bogart text-sm font-extrabold leading-[110%] tracking-normal uppercase text-white-50;*/
-/*  }*/
-
-/*  .m14-bold-spacing {*/
-/*    @apply font-bogart text-sm font-bold leading-[100%] tracking-[0.7px] text-white-50;*/
-/*  }*/
-
-/*  .m14-bold {*/
-/*    @apply font-bogart text-sm font-bold leading-[100%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .m14-regular-text {*/
-/*    @apply font-bogart text-sm font-normal leading-[150%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .m14-regular {*/
-/*    @apply font-bogart text-sm font-normal leading-[100%] tracking-[0.28px] text-white-50;*/
-/*  }*/
-
-/*  .s12-bold {*/
-/*    @apply font-bogart text-xs font-bold leading-[100%] tracking-[0.6px] uppercase text-white-50;*/
-/*  }*/
-
-/*  .s12-semi-bold {*/
-/*    @apply font-bogart text-xs font-semibold leading-[100%] tracking-[0.24px] text-white-50;*/
-/*  }*/
-
-/*  .s12-medium {*/
-/*    @apply font-bogart text-xs font-medium leading-[100%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .s12-regular {*/
-/*    @apply font-bogart text-xs font-normal leading-[100%] tracking-normal text-white-50;*/
-/*  }*/
-
-/*  .s12-regular-any {*/
-/*    @apply font-bogart text-xs font-normal leading-[100%] tracking-[0.6px] text-white-50;*/
-/*  }*/
-
-/*  .xs10-extra-bold {*/
-/*    @apply font-bogart text-[10px] font-extrabold leading-[100%] tracking-[0.2px] text-white-50;*/
-/*  }*/
-
-/*  .xxs8-semi-bold {*/
-/*    @apply font-bogart text-[8px] font-semibold leading-[100%] tracking-[0.4px] uppercase text-white-50;*/
-/*  }*/
-/*}*/
-
 html {
   scroll-behavior: smooth;
 }
@@ -146,25 +18,12 @@ html {
   }
 }
 
-@keyframes fontWeightIncrease {
-  0% {
-    font-weight: 600;
-  }
-  100% {
-    font-weight: 800;
-  }
-}
-
 .weightGrow {
     transition: text-shadow 0.2s ease-in-out;
 }
 
 .weightGrow:hover {
-    text-shadow:
-        -0.2px -0.2px 0 #EAF3F6,
-         0.2px -0.2px 0 #EAF3F6,
-        -0.2px  0.2px 0 #EAF3F6,
-         0.2px  0.2px 0 #EAF3F6;
+    text-shadow: 0px 0px 2px #EAF3F6;
 }
 
 @layer utilities {
@@ -253,6 +112,7 @@ html {
     --color-stroke: #383838;
     --color-gray: rgba(242, 117, 0, 0.06);
     --color-gray-light: rgba(234, 243, 246, 0.7);
+    --color-blue-gray: rgba(123, 126, 252, 0.14);
     --color-purple: #5469BA;
 
     --font-bogart: "Bogart", sans-serif;
