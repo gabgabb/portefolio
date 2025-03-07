@@ -35,6 +35,7 @@ jobs:
                     corepack prepare yarn@stable --activate
                     cd nextjs
                     yarn install
+                    npx playwright install
                     cd ../strapi
                     npm install
 
