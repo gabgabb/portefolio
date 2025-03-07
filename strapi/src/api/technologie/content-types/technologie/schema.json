@@ -22,12 +22,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "type": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::type.type",
-      "inversedBy": "technologies"
     }
   }
 }
