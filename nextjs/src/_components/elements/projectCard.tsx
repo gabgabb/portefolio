@@ -4,7 +4,7 @@ import {Card, Image, Button} from "@heroui/react";
 import React from "react";
 import {Project} from "@/_utils/types";
 import Badge from "@/_components/elements/badge";
-import {ArrowSquare} from "@/app/icons";
+import {SquareArrowOutUpRight} from "lucide-react";
 
 interface ProjectCardProps {
     project: Project;
@@ -30,7 +30,7 @@ const ProjectCard = ({
                         <Badge title={"ReactJS"} image={"/react.png"} />
                         <Badge title={"ReactJS"} image={"/react.png"} />
                     </div>
-                    <Button className="rounded-xl bg-purple h-14 flex w-[580px] mx-auto items-center mt-4" endContent={<ArrowSquare/>}>
+                    <Button className="rounded-xl bg-purple hover:bg-purple/90 focus:border-none active:border-none h-14 flex w-[580px] mx-auto items-center mt-4 cursor-pointer" endContent={<SquareArrowOutUpRight color={"#EAF3F6"}/>}>
                         <span className="font-extrabold text-lg">Voir plus</span>
                     </Button>
                 </div>
