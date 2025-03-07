@@ -1,5 +1,4 @@
 import React from "react";
-import Badge from "@/_components/elements/badge";
 import Experience from "@/_components/elements/experience";
 
 export const Experiences: React.FC = () => {
@@ -21,4 +20,4 @@ export const Experiences: React.FC = () => {
             </div>
         </div>
     );
-}
+};

@@ -8,10 +8,14 @@ export const Technologies: React.FC = () => {
             <div className="h-[220px] rounded-xl bg-gray border border-stroke p-4">
                 <div className="h-max flex flex-wrap gap-2">
                     {[...Array(10)].map((_, index) => (
-                        <Badge key={index} image={"/react.png"} title={"ReactJS"} />
+                        <Badge
+                            key={index}
+                            image={"/react.png"}
+                            title={"ReactJS"}
+                        />
                     ))}
                 </div>
             </div>
         </div>
     );
-}
+};

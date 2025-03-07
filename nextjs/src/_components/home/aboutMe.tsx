@@ -6,8 +6,15 @@ export default function AboutMe() {
         <section className="flex flex-col items-center gap-5 md:py-20 sm:py-10">
             <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20 text-left">
                 <div className="flex flex-col items-center justify-center gap-6 w-full">
-                    <p className="text-base sm:text-lg md:text-xl text-center md:text-left">Développeur Full Stack français basé à Nantes passionné par la création de solutions innovantes et efficaces. </p>
-                    <p className="text-base sm:text-lg md:text-xl text-center md:text-left">Avec plusieurs années d'expérience dans le développement web, je m'efforce de transformer des idées en réalité grâce à des technologies de pointe.</p>
+                    <p className="text-base sm:text-lg md:text-xl text-center md:text-left">
+                        Développeur Full Stack français basé à Nantes passionné
+                        par la création de solutions innovantes et efficaces.{" "}
+                    </p>
+                    <p className="text-base sm:text-lg md:text-xl text-center md:text-left">
+                        Avec plusieurs années d'expérience dans le développement
+                        web, je m'efforce de transformer des idées en réalité
+                        grâce à des technologies de pointe.
+                    </p>
                 </div>
                 {/* Image */}
                 <Image
