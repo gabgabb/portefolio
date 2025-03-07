@@ -2,7 +2,7 @@
 
 import React, {useState} from "react";
 import {Document, Page, pdfjs} from 'react-pdf'
-import {Button} from "@heroui/react";
+import {Button, Card, Skeleton} from "@heroui/react";
 import {saveAs} from "file-saver";
 import 'react-pdf/dist/esm/Page/TextLayer.css'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
@@ -13,9 +13,11 @@ pdfjs.GlobalWorkerOptions.workerSrc = '//unpkg.com/pdfjs-dist@4.8.69/build/pdf.w
 const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
+    const [loading, setLoading] = useState<boolean>(true);
 
     function onDocumentLoadSuccess({numPages}: { numPages: number }): void {
         setNumPages(numPages);
+        setLoading(false);
     }
 
     function nextPage(): void {
@@ -39,8 +41,13 @@ const Cv: React.FC = () => {
         <div className="flex flex-col items-center mt-8 relative pb-16">
             {/* Document avec ombre */}
             <div className="relative group">
+                {/*{loading && (*/}
+                {/*<Skeleton />*/}
+                {/*)}*/}
                 <Document
-                    className="rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)]"
+                    className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
+                        loading ? "hidden" : "" /* Cache le PDF tant qu'il charge */
+                    }`}
                     file="/CV_Gabriel_FR.pdf"
                     onLoadSuccess={onDocumentLoadSuccess}
                 >
@@ -79,7 +86,7 @@ const Cv: React.FC = () => {
             {/* Bouton de téléchargement (placé sous le CV) */}
             <Button
                 onPress={downloadPdf}
-                className="mt-6 cursor-pointer flex items-center px-4 py-2 bg-purple hover:bg-purple/90  text-white font-bold rounded-lg shadow-lg"
+                className="mt-6 cursor-pointer flex items-center px-4 py-2 bg-purple hover:bg-purple/90 shadow-sm shadow-white/40 text-white font-bold rounded-lg"
             >
                 <Download size={20}/><span>Télécharger</span>
             </Button>

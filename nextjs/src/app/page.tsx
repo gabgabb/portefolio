@@ -8,8 +8,7 @@ const Home: React.FC = () => {
     return (
         <div className="flex flex-col justify-center items-center mx-auto w-full max-w-[1000px]">
             {/* Dégradé en fond */}
-            <div className="bg-gradient-to-b from-[#27325a] to-transparent absolute left-0 right-0 top-0 h-[480px] opacity-60 z-[-1]"></div>
-
+            <div className="bg-gradient-to-b from-[#27325a] to-transparent absolute left-0 right-0 top-0 h-[480px] opacity-60 z-[-1]"/>
             {/* Section À Propos */}
             <AboutMe/>
             {/* Section Technologies & Expériences */}
@@ -17,7 +16,6 @@ const Home: React.FC = () => {
                 <Technologies/>
                 <Experiences />
             </div>
-
             {/* Projets */}
             <Projects/>
         </div>
