@@ -369,12 +369,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
-  collectionName: 'presentations';
+export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
+  collectionName: 'companies';
   info: {
-    displayName: 'presentation';
-    pluralName: 'presentations';
-    singularName: 'presentation';
+    description: '';
+    displayName: 'Company';
+    pluralName: 'companies';
+    singularName: 'company';
   };
   options: {
     draftAndPublish: true;
@@ -386,11 +387,104 @@ export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::presentation.presentation'
+      'api::company.company'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'files' | 'images'> &
+      Schema.Attribute.Required;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    shortDescription: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
+  collectionName: 'experiences';
+  info: {
+    description: '';
+    displayName: 'Experience';
+    pluralName: 'experiences';
+    singularName: 'experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    company: Schema.Attribute.Relation<'oneToOne', 'api::company.company'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dateBegin: Schema.Attribute.Date & Schema.Attribute.Required;
+    dateEnd: Schema.Attribute.Date;
+    isMission: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    job: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
+  collectionName: 'presentations';
+  info: {
+    description: '';
+    displayName: 'presentation';
+    pluralName: 'presentations';
+    singularName: 'presentation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::presentation.presentation'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1010,6 +1104,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::company.company': ApiCompanyCompany;
+      'api::experience.experience': ApiExperienceExperience;
       'api::presentation.presentation': ApiPresentationPresentation;
       'api::project.project': ApiProjectProject;
       'api::technologie.technologie': ApiTechnologieTechnologie;
