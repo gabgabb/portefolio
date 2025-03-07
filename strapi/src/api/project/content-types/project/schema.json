@@ -22,7 +22,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "unique": true
     },
     "isDisplay": {
       "type": "boolean",
@@ -30,16 +31,7 @@
       "required": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "description": {
-      "type": "blocks",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -47,9 +39,10 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
-      }
+      },
+      "unique": true
     },
     "technologies": {
       "type": "relation",
@@ -59,16 +52,14 @@
     "illustrations": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ],
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -80,6 +71,11 @@
           "localized": true
         }
       }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

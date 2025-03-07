@@ -10,15 +10,17 @@
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "5.10.4",
-    "@strapi/plugin-users-permissions": "5.10.4",
+    "@_sh/strapi-plugin-ckeditor": "^5.0.1",
     "@strapi/plugin-cloud": "5.10.4",
+    "@strapi/plugin-users-permissions": "5.10.4",
+    "@strapi/strapi": "5.10.4",
     "better-sqlite3": "11.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-slugify": "^2.3.8",
+    "strapi-v5-plugin-populate-deep": "^4.0.5",
     "styled-components": "^6.0.0"
   },
   "author": {
