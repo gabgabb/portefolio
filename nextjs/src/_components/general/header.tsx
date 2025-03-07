@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from "react";
-import {ArrowRight} from "@/app/icons";
+import {MoveUpRight} from "lucide-react";
 
 const Header: React.FC = () => {
     return (
@@ -20,13 +20,13 @@ const Header: React.FC = () => {
                           target={"_blank"}
                           className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
                         Github
-                        <ArrowRight/>
+                        <MoveUpRight size={18} color="#EAF3F6"/>
                     </Link>
                     <Link href={"https://www.linkedin.com/in/gabriel-filiot-475277209/"}
                           target={"_blank"}
                           className="button-primary group transition duration-300 flex justify-center items-center weightGrow">
                         Linkedin
-                        <ArrowRight/>
+                        <MoveUpRight size={18} color="#EAF3F6"/>
                     </Link>
                 </div>
                 <div className={"flex flex-row gap-2 s-pho:flex l-pho:flex text-xl font-bold"}>

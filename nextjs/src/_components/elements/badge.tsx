@@ -15,7 +15,7 @@ const Badge: React.FC<BadgeProps> = ({
     title
 }) => {
     return (
-        <Chip className="flex bg-blue-gray h-max rounded-md p-2" startContent={<Image width={25} height={25} src={image}/>} variant="faded">
+        <Chip className="flex bg-blue-gray h-max rounded-md p-2 gap-2" startContent={<Image width={25} height={25} src={image}/>} variant="faded">
             <span className="font-semibold">
                 {title}
             </span>
