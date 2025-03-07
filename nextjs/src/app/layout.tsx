@@ -1,13 +1,13 @@
 import "./globals.css";
-import {ToastContainer} from "react-toastify";
 import React from "react";
 import Header from "@/_components/general/header";
 import Footer from "@/_components/general/footer";
+import {HeroUIProvider} from "@heroui/system";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
     description: "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
-    authors: [{ name: "Gabriel Filiot" }],
+    authors: [{name: "Gabriel Filiot"}],
     keywords: [
         "Gabriel Filiot",
         "Développeur Full Stack",
@@ -44,30 +44,21 @@ interface RootLayoutProps {
     children: React.ReactNode;
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: React.FC<RootLayoutProps> = ({children}) => {
     return (
         <html lang="fr">
-            <head>
-                <link rel="icon" href="/favicon.ico" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Gabriel Filiot</title>
-            </head>
-            <body className="!bg-black text-white font-bogart">
+        <head>
+            <link rel="icon" href="/favicon.ico"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Gabriel Filiot</title>
+        </head>
+        <body className="!bg-black text-white font-bogart">
+            <HeroUIProvider>
                 <Header/>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    newestOnTop
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss={false}
-                    draggable
-                    pauseOnHover={false}
-                />
                 {children}
                 <Footer/>
-            </body>
+            </HeroUIProvider>
+        </body>
         </html>
     );
 }
