@@ -32,6 +32,19 @@ html {
   }
 }
 
+.data-\[loaded\=true\]\:opacity-100 {
+  opacity: 1; /*TODO : Check https://github.com/heroui-inc/heroui/issues/4534*/
+}
+
+.react-pdf__Page.prevPage {
+  position: absolute !important;
+  z-index: 1;
+}
+
+.react-pdf__Document{
+  height: 950px;
+}
+
 /* Regular and Italic */
 /* Importation des différentes variantes de Bogart */
 
