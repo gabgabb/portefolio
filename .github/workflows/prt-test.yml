@@ -59,9 +59,11 @@ jobs:
                     docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/
 
             -   name: Publish Test Summary Results
+                if: always()
                 run: npx github-actions-ctrf test-results/ctrf-report.json
 
             -   name: Stop and clean up
+                if: always()
                 run: |
                     docker compose -f compose.ci.yml down -v
 
