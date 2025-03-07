@@ -16,7 +16,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <Image
                 alt={project.name}
                 className={
-                    "object-cover rounded-t-2xl border-stroke border-t-2 border-x-2"
+                    "object-cover object-top rounded-t-2xl border-stroke border-t-2 border-x-2"
                 }
                 width={1200}
                 height={320}
