@@ -1,9 +1,23 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { Button, Spinner } from "@heroui/react";
 import ProjectCard from "@/_components/elements/projectCard";
 import { Project } from "@/_utils/types";
+
+const mockProjects = [
+        {
+            name: "Refonte du site Ozzak",
+            description: "Refonte total du site Ozzak",
+            technologies: ["ReactJS", "Next.js", "Symfony", "API Platform"],
+            image: "/ozzak-project1.png",
+        },
+        {
+            name: "Actualités cinéma Ozzak",
+            description: "Développement de la section actualités avec Twig et Symfony.",
+            technologies: ["Symfony", "Twig", "ReactJS"],
+            image: "/ozzak-project2.png",
+        },
+    ];
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -44,41 +58,14 @@ const Projects: React.FC = () => {
         fetchProjet();
     }, [fetchProjects]);
 
-    const handleLoadMore = useCallback(() => {
-        setVisibleProjects(prevVisibleProjects => prevVisibleProjects + 3);
-    }, []);
-
-    const visibleProjectsMemo = useMemo(() => {
-        return projects.slice(0, visibleProjects);
-    }, [projects, visibleProjects]);
-
     return (
-        <section id={"projects"} className="min-h-screen text-center s-pho:px-4 l-pho:px-4">
-            <h2 className="font-extrabold text-3xl">Mes projets</h2>
-
-            {loading && !isLoadingComplete && (
-                <div className="flex min-h-screen items-center justify-center">
-                    <Spinner size="lg" />
-                    <p>Chargement des projets...</p>
-                </div>
-            )}
-
-            {isLoadingComplete && (
-                <>
-                    <div className="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
-                        {visibleProjectsMemo.map((project: Project) => (
-                            <ProjectCard key={project.id} project={project} />
-                        ))}
-                    </div>
-                    {visibleProjects < projects.length && (
-                        <div className="mt-4 flex justify-center">
-                            <Button onClick={handleLoadMore} disabled={loading}>
-                                {loading ? 'Chargement...' : 'Voir plus'}
-                            </Button>
-                        </div>
-                    )}
-                </>
-            )}
+        <section id={"projects"} className="mt-10 w-full pb-10 flex flex-col gap-2">
+            <h2 className="font-extrabold text-3xl">Projets</h2>
+            <div className="flex flex-col gap-6">
+                {mockProjects.map((mockProject, index) => (
+                    <ProjectCard key={index} project={mockProject}/>
+                ))}
+            </div>
         </section>
     );
 }
