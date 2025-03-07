@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
                 port: "",
             },
         ],
+        domains: ["localhost", "127.0.0.1"],
     },
     compress: true,
     bundlePagesRouterDependencies: true,

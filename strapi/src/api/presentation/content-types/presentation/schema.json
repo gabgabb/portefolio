@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "description": {
+    "description1": {
       "type": "text",
       "required": true,
       "pluginOptions": {
@@ -38,6 +38,15 @@
           "localized": true
         }
       }
+    },
+    "description2": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
     }
   }
 }

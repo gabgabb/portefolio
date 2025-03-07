@@ -1,65 +1,41 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import ProjectCard from "@/_components/elements/projectCard";
 import { Project } from "@/_utils/types";
 
-const mockProjects = [
-    {
-        name: "Refonte du site Ozzak",
-        description: "Refonte total du site Ozzak",
-        technologies: ["ReactJS", "Next.js", "Symfony", "API Platform"],
-        image: "/ozzak-project1.png",
-    },
-    {
-        name: "Actualités cinéma Ozzak",
-        description:
-            "Développement de la section actualités avec Twig et Symfony.",
-        technologies: ["Symfony", "Twig", "ReactJS"],
-        image: "/ozzak-project2.png",
-    },
-];
-
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
-    const [visibleProjects, setVisibleProjects] = useState(3);
-    const [loading, setLoading] = useState(false);
-    const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-
     const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
 
-    const fetchProjects = useCallback(async () => {
-        setLoading(true);
-        try {
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?pLevel`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
                     },
-                },
-            );
-            const result = await response.json();
-            if (result && Array.isArray(result.data)) {
-                setProjects(result.data);
-            } else {
-                console.error("Unexpected data format:", result);
+                );
+
+                const json = await res.json();
+                if (json.data) {
+                    setProjects(json.data);
+                }
+            } catch (error) {
+                console.error(
+                    "Erreur lors de la récupération des données :",
+                    error,
+                );
             }
-        } catch (error) {
-            console.error("Error fetching projects:", error);
-        } finally {
-            setLoading(false);
-            setIsLoadingComplete(true);
-        }
+        };
+        fetchData();
     }, [token]);
 
-    useEffect(() => {
-        const fetchProjet = async () => {
-            await fetchProjects();
-        };
-        fetchProjet();
-    }, [fetchProjects]);
+    if (!projects.length) return <p>Chargement...</p>;
 
     return (
         <section
@@ -68,8 +44,8 @@ const Projects: React.FC = () => {
         >
             <h2 className="font-extrabold text-3xl">Projets</h2>
             <div className="flex flex-col gap-6">
-                {mockProjects.map((mockProject, index) => (
-                    <ProjectCard key={index} project={mockProject} />
+                {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
         </section>

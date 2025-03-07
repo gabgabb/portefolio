@@ -13,13 +13,19 @@ interface BadgeProps {
 const Badge: React.FC<BadgeProps> = ({ image, title }) => {
     return (
         <Chip
-            className="flex bg-blue-gray h-max rounded-md p-2 gap-2"
+            className="flex bg-blue-gray h-max rounded-md px-3 py-2 gap-2"
             startContent={
-                <Image alt={"Badge image"} width={25} height={25} src={image} />
+                <Image
+                    alt={"Badge de " + { title }}
+                    width={30}
+                    height={30}
+                    src={image}
+                    className="w-6 h-6 object-contain"
+                />
             }
             variant="faded"
         >
-            <span className="font-semibold">{title}</span>
+            <span className="font-semibold text-lg">{title}</span>
         </Chip>
     );
 };

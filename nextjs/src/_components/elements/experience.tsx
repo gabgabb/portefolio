@@ -35,7 +35,7 @@ const Experience: React.FC<ExperienceProps> = ({
             <div className="flex gap-2 items-center">
                 <Image
                     alt={"Logo de " + companyName}
-                    src={logo}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${logo}`}
                     className="rounded-full my-auto"
                     width={35}
                     height={35}
