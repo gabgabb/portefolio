@@ -22,7 +22,7 @@ export default [
             prettier,
         },
         rules: {
-            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false }],
+            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false, endOfLine: "auto" }],
             camelcase: "off",
             "import/prefer-default-export": "off",
             "react/jsx-filename-extension": "off",
