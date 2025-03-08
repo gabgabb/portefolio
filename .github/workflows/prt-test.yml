@@ -58,17 +58,29 @@ jobs:
                 id: tests
                 run: |
                     mkdir -p test-results
-                    docker exec portefolio-nextjs-1 npx playwright test || true
-                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/ || touch test-results/ctrf-report.json
+                    docker exec portefolio-nextjs-1 npx playwright test || TEST_FAILED=true
+                    
+                    # Toujours essayer de copier le fichier de rapport Playwright
+                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/ || echo '{}' > test-results/ctrf-report.json
+                    
+                    # Stocker le statut d'échec pour plus tard
+                    if [ "$TEST_FAILED" = true ]; then
+                      echo "TEST_FAILED=true" >> $GITHUB_ENV
+                    fi
 
             -   name: Publish Test Summary Results
-                if: always()
+                if: always()  # S'exécute même si les tests échouent
                 run: |
                     if [ -f "test-results/ctrf-report.json" ]; then
                       npx github-actions-ctrf test-results/ctrf-report.json
                     else
                       echo "⚠️ Aucun fichier de résultats trouvé, skipping..."
-                    fi
+                    fi          
+
+            -   name: Fail if tests failed
+                if: env.TEST_FAILED == 'true'
+                run: exit 1
+
 
             -   name: Stop and clean up
                 if: always()
