@@ -66,10 +66,12 @@ jobs:
                     curl -i http://localhost:1337/api/
 
             -   name: Test Strapi API with Token
-                run: |
-                  curl -i -H "Authorization: Bearer $STRAPI_TOKEN" http://localhost:1337/api/
+                if: always()
+                run: |        
+                    curl -i -H "Authorization: Bearer $STRAPI_TOKEN" http://localhost:1337/api/
 
             -   name: Run Playwright tests inside Next.js container
+                if: always()
                 id: tests
                 run: |
                     mkdir -p test-results
