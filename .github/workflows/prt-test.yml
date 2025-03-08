@@ -21,7 +21,7 @@ jobs:
                     cp .env.dist .env
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
-                    
+                                       
                     echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
                     echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
@@ -35,6 +35,7 @@ jobs:
                     corepack prepare yarn@stable --activate
                     cd nextjs
                     yarn install
+                    npx playwright install
                     cd ../strapi
                     npm install
 
@@ -48,20 +49,40 @@ jobs:
 
             -   name: Wait for services to be ready
                 run: |
-                    sleep 5
+                    sleep 15
                     docker ps -a
 
             -   name: Run Playwright tests inside Next.js container
+                if: always()
                 id: tests
                 run: |
-                    docker exec portefolio-nextjs-1 npx playwright test
                     mkdir -p test-results
-                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/
+                    docker exec portefolio-nextjs-1 npx playwright test || TEST_FAILED=true
+                    
+                    # Toujours essayer de copier le fichier de rapport Playwright
+                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/ || echo '{}' > test-results/ctrf-report.json
+                    
+                    # Stocker le statut d'échec pour plus tard
+                    if [ "$TEST_FAILED" = true ]; then
+                      echo "TEST_FAILED=true" >> $GITHUB_ENV
+                    fi
 
             -   name: Publish Test Summary Results
-                run: npx github-actions-ctrf test-results/ctrf-report.json
+                if: always()  # S'exécute même si les tests échouent
+                run: |
+                    if [ -f "test-results/ctrf-report.json" ]; then
+                      npx github-actions-ctrf test-results/ctrf-report.json
+                    else
+                      echo "⚠️ Aucun fichier de résultats trouvé, skipping..."
+                    fi          
+
+            -   name: Fail if tests failed
+                if: env.TEST_FAILED == 'true'
+                run: exit 1
+
 
             -   name: Stop and clean up
+                if: always()
                 run: |
                     docker compose -f compose.ci.yml down -v
 

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * type service
+ * experience service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::type.type');
+module.exports = createCoreService('api::experience.experience');

@@ -1,86 +1,55 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { Button, Spinner } from "@heroui/react";
+import React, { useEffect, useState } from "react";
 import ProjectCard from "@/_components/elements/projectCard";
 import { Project } from "@/_utils/types";
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
-    const [visibleProjects, setVisibleProjects] = useState(3);
-    const [loading, setLoading] = useState(false);
-    const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-
     const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
 
-    const fetchProjects = useCallback(async () => {
-        setLoading(true);
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?pLevel`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                    },
+                );
+
+                const json = await res.json();
+                if (json.data) {
+                    setProjects(json.data);
                 }
-            });
-            const result = await response.json();
-            if (result && Array.isArray(result.data)) {
-                setProjects(result.data);
-            } else {
-                console.error('Unexpected data format:', result);
+            } catch (error) {
+                console.error(
+                    "Erreur lors de la récupération des données :",
+                    error,
+                );
             }
-        } catch (error) {
-            console.error('Error fetching projects:', error);
-        } finally {
-            setLoading(false);
-            setIsLoadingComplete(true);
-        }
+        };
+        fetchData();
     }, [token]);
 
-    useEffect(() => {
-        const fetchProjet = async () => {
-            await fetchProjects();
-
-        }
-        fetchProjet();
-    }, [fetchProjects]);
-
-    const handleLoadMore = useCallback(() => {
-        setVisibleProjects(prevVisibleProjects => prevVisibleProjects + 3);
-    }, []);
-
-    const visibleProjectsMemo = useMemo(() => {
-        return projects.slice(0, visibleProjects);
-    }, [projects, visibleProjects]);
+    if (!projects.length) return <p>Chargement...</p>;
 
     return (
-        <section id={"projects"} className="min-h-screen text-center s-pho:px-4 l-pho:px-4">
-            <h2 className="font-extrabold text-3xl">Mes projets</h2>
-
-            {loading && !isLoadingComplete && (
-                <div className="flex min-h-screen items-center justify-center">
-                    <Spinner size="lg" />
-                    <p>Chargement des projets...</p>
-                </div>
-            )}
-
-            {isLoadingComplete && (
-                <>
-                    <div className="md:grid-cols-2 lg:grid-cols-3 grid grid-cols-1 gap-4">
-                        {visibleProjectsMemo.map((project: Project) => (
-                            <ProjectCard key={project.id} project={project} />
-                        ))}
-                    </div>
-                    {visibleProjects < projects.length && (
-                        <div className="mt-4 flex justify-center">
-                            <Button onClick={handleLoadMore} disabled={loading}>
-                                {loading ? 'Chargement...' : 'Voir plus'}
-                            </Button>
-                        </div>
-                    )}
-                </>
-            )}
+        <section
+            id={"projects"}
+            className="mt-10 w-full pb-10 flex flex-col gap-2"
+        >
+            <h2 className="font-extrabold text-3xl">Projets</h2>
+            <div className="flex flex-col gap-6">
+                {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+            </div>
         </section>
     );
-}
+};
 
 export default Projects;

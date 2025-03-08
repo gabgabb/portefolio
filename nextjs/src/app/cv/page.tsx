@@ -1,0 +1,102 @@
+"use client";
+
+import React, { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import { Button } from "@heroui/react";
+import { saveAs } from "file-saver";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { Download } from "lucide-react";
+
+pdfjs.GlobalWorkerOptions.workerSrc =
+    "//unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs";
+
+const Cv: React.FC = () => {
+    const [numPages, setNumPages] = useState<number>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+        setNumPages(numPages);
+        setLoading(false);
+    }
+
+    function nextPage(): void {
+        if (pageNumber < (numPages || 1)) {
+            setPageNumber((prevPageNumber) => prevPageNumber + 1);
+        }
+    }
+
+    function prevPage(): void {
+        if (pageNumber > 1) {
+            setPageNumber((prevPageNumber) => prevPageNumber - 1);
+        }
+    }
+
+    const downloadPdf = () => {
+        const fileUrl = "/CV_Gabriel_FR.pdf";
+        saveAs(fileUrl, "CV_Gabriel_FR.pdf");
+    };
+
+    return (
+        <div className="flex flex-col items-center mt-8 relative pb-16">
+            {/* Document avec ombre */}
+            <div className="relative group">
+                {/*{loading && (*/}
+                {/*<Skeleton />*/}
+                {/*)}*/}
+                <Document
+                    className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
+                        loading
+                            ? "hidden"
+                            : "" /* Cache le PDF tant qu'il charge */
+                    }`}
+                    file="/CV_Gabriel_FR.pdf"
+                    onLoadSuccess={onDocumentLoadSuccess}
+                >
+                    <Page pageNumber={pageNumber} scale={1.2} />
+                </Document>
+
+                {/* Barre de navigation */}
+                <div className="absolute bottom-[50px] left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-[#1e293b] p-3 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <Button
+                        onPress={prevPage}
+                        disabled={pageNumber <= 1}
+                        className={`px-4 py-2 rounded-md ${
+                            pageNumber <= 1
+                                ? "opacity-50 cursor-not-allowed"
+                                : "hover:bg-gray-700"
+                        }`}
+                    >
+                        ◀
+                    </Button>
+                    <p className="text-white font-bold">
+                        {pageNumber} of {numPages}
+                    </p>
+                    <Button
+                        onPress={nextPage}
+                        disabled={pageNumber >= (numPages || 1)}
+                        className={`px-4 py-2 rounded-md ${
+                            pageNumber >= (numPages || 1)
+                                ? "opacity-50 cursor-not-allowed"
+                                : "hover:bg-gray-700"
+                        }`}
+                    >
+                        ▶
+                    </Button>
+                </div>
+            </div>
+
+            {/* Bouton de téléchargement (placé sous le CV) */}
+            <Button
+                onPress={downloadPdf}
+                className="mt-6 cursor-pointer flex items-center px-4 py-2 bg-purple hover:bg-purple/90 shadow-sm shadow-white/40 text-white font-bold rounded-lg"
+            >
+                <Download size={20} />
+                <span>Télécharger</span>
+            </Button>
+        </div>
+    );
+};
+
+export default Cv;

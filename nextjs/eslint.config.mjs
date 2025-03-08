@@ -1,26 +1,66 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import ts from "typescript-eslint";
-import tseslint from "typescript-eslint";
-import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-import { fixupConfigRules } from "@eslint/compat";
-import tailwind from "eslint-plugin-tailwindcss";
+/* eslint-disable import/no-anonymous-default-export */
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import typescriptEslintEslintPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import prettier from "eslint-plugin-prettier";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all,
+});
 
 export default [
+    ...compat.extends("next", "next/core-web-vitals", "prettier"),
     {
-        files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-        languageOptions: {
-            parserOptions: { ecmaFeatures: { jsx: true } },
-            globals: globals.browser,
+        plugins: {
+            prettier,
         },
         rules: {
-            indent: ["error", 4],
-
+            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false }],
+            camelcase: "off",
+            "import/prefer-default-export": "off",
+            "react/jsx-filename-extension": "off",
+            "react/jsx-props-no-spreading": "off",
+            "react/no-unused-prop-types": "off",
+            "react/require-default-props": "off",
+            "react/no-unescaped-entities": "off",
+            "import/extensions": [
+                "error",
+                "ignorePackages",
+                {
+                    ts: "never",
+                    tsx: "never",
+                    js: "never",
+                    jsx: "never",
+                },
+            ],
         },
     },
-    pluginJs.configs.recommended,
-    ...tseslint.configs.recommended,
-    ...fixupConfigRules(pluginReactConfig),
-    ...ts.configs.recommended,
-    ...tailwind.configs["flat/recommended"],
+    ...compat.extends("plugin:@typescript-eslint/recommended", "prettier").map((config) => ({
+        ...config,
+        files: ["**/*.+(ts|tsx)"],
+    })),
+    {
+        files: ["**/*.+(ts|tsx)"],
+        plugins: {
+            "@typescript-eslint": typescriptEslintEslintPlugin,
+        },
+        languageOptions: {
+            parser: tsParser,
+        },
+        rules: {
+            "@typescript-eslint/explicit-function-return-type": "off",
+            "@typescript-eslint/explicit-module-boundary-types": "off",
+            "no-use-before-define": [0],
+            "@typescript-eslint/no-use-before-define": [1],
+            "@typescript-eslint/no-explicit-any": "off",
+            "@typescript-eslint/no-var-requires": "off",
+        },
+    },
 ];

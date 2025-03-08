@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * type controller
+ * company controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::type.type');
+module.exports = createCoreController('api::company.company');

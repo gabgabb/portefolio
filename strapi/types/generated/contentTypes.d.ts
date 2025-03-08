@@ -369,12 +369,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
-  collectionName: 'presentations';
+export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
+  collectionName: 'companies';
   info: {
-    displayName: 'presentation';
-    pluralName: 'presentations';
-    singularName: 'presentation';
+    description: '';
+    displayName: 'Company';
+    pluralName: 'companies';
+    singularName: 'company';
   };
   options: {
     draftAndPublish: true;
@@ -386,11 +387,111 @@ export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::presentation.presentation'
+      'api::company.company'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'files' | 'images'> &
+      Schema.Attribute.Required;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    shortDescription: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
+  collectionName: 'experiences';
+  info: {
+    description: '';
+    displayName: 'Experience';
+    pluralName: 'experiences';
+    singularName: 'experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    company: Schema.Attribute.Relation<'oneToOne', 'api::company.company'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dateBegin: Schema.Attribute.Date & Schema.Attribute.Required;
+    dateEnd: Schema.Attribute.Date;
+    isMission: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    job: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPresentationPresentation extends Struct.SingleTypeSchema {
+  collectionName: 'presentations';
+  info: {
+    description: '';
+    displayName: 'presentation';
+    pluralName: 'presentations';
+    singularName: 'presentation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description1: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description2: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::presentation.presentation'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -408,27 +509,51 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    illustrations: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    illustrations: Schema.Attribute.Media<'images' | 'files', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     isDisplay: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
       Schema.Attribute.DefaultTo<false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::project.project'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    shortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    shortDescription: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     technologies: Schema.Attribute.Relation<
       'oneToMany',
       'api::technologie.technologie'
@@ -436,7 +561,13 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url: Schema.Attribute.String;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
@@ -464,37 +595,6 @@ export interface ApiTechnologieTechnologie extends Struct.CollectionTypeSchema {
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Relation<'manyToOne', 'api::type.type'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTypeType extends Struct.CollectionTypeSchema {
-  collectionName: 'types';
-  info: {
-    description: '';
-    displayName: 'Type';
-    pluralName: 'types';
-    singularName: 'type';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::type.type'> &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    technologies: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::technologie.technologie'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -735,6 +835,44 @@ export interface PluginReviewWorkflowsWorkflowStage
       'manyToOne',
       'plugin::review-workflows.workflow'
     >;
+  };
+}
+
+export interface PluginSlugifySlug extends Struct.CollectionTypeSchema {
+  collectionName: 'slugs';
+  info: {
+    displayName: 'slug';
+    pluralName: 'slugs';
+    singularName: 'slug';
+  };
+  options: {
+    comment: '';
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    count: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::slugify.slug'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1010,15 +1148,17 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::company.company': ApiCompanyCompany;
+      'api::experience.experience': ApiExperienceExperience;
       'api::presentation.presentation': ApiPresentationPresentation;
       'api::project.project': ApiProjectProject;
       'api::technologie.technologie': ApiTechnologieTechnologie;
-      'api::type.type': ApiTypeType;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::review-workflows.workflow': PluginReviewWorkflowsWorkflow;
       'plugin::review-workflows.workflow-stage': PluginReviewWorkflowsWorkflowStage;
+      'plugin::slugify.slug': PluginSlugifySlug;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;

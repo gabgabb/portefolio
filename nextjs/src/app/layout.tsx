@@ -1,12 +1,13 @@
 import "./globals.css";
-import {ToastContainer} from "react-toastify";
 import React from "react";
 import Header from "@/_components/general/header";
 import Footer from "@/_components/general/footer";
+import { HeroUIProvider } from "@heroui/system";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
-    description: "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
+    description:
+        "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
     authors: [{ name: "Gabriel Filiot" }],
     keywords: [
         "Gabriel Filiot",
@@ -22,22 +23,24 @@ export const metadata = {
         "HTML",
         "CSS",
         "Tailwind CSS",
-        "Next.js"
+        "Next.js",
     ],
     openGraph: {
         title: "Gabriel Filiot - Full Stack Developer Portfolio",
-        description: "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
+        description:
+            "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
         url: "https://gabriaile.dev/",
         type: "website",
-        images: ["https://www.gabrielfiliot.com/og-image.jpg"]
+        images: ["https://www.gabrielfiliot.com/og-image.jpg"],
     },
     twitter: {
         card: "summary_large_image",
         site: "@gabrielfiliot",
         title: "Gabriel Filiot - Full Stack Developer Portfolio",
-        description: "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
-        images: ["https://www.gabrielfiliot.com/twitter-image.jpg"]
-    }
+        description:
+            "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
+        images: ["https://www.gabrielfiliot.com/twitter-image.jpg"],
+    },
 };
 
 interface RootLayoutProps {
@@ -49,27 +52,21 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         <html lang="fr">
             <head>
                 <link rel="icon" href="/favicon.ico" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
                 <title>Gabriel Filiot</title>
             </head>
             <body className="!bg-black text-white font-bogart">
-                <Header/>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    newestOnTop
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss={false}
-                    draggable
-                    pauseOnHover={false}
-                />
-                {children}
-                <Footer/>
+                <HeroUIProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </HeroUIProvider>
             </body>
         </html>
     );
-}
+};
 
 export default RootLayout;

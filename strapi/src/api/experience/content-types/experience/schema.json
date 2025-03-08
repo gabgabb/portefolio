@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "experiences",
+  "info": {
+    "singularName": "experience",
+    "pluralName": "experiences",
+    "displayName": "Experience",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "job": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "company": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::company.company"
+    },
+    "dateBegin": {
+      "type": "date",
+      "required": true
+    },
+    "dateEnd": {
+      "type": "date"
+    },
+    "isMission": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

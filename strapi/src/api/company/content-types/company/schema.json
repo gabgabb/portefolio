@@ -1,16 +1,15 @@
 {
   "kind": "collectionType",
-  "collectionName": "technologies",
+  "collectionName": "companies",
   "info": {
-    "singularName": "technologie",
-    "pluralName": "technologies",
-    "displayName": "Technologie",
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Company",
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
-  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string"
@@ -20,6 +19,7 @@
       "multiple": false,
       "required": true,
       "allowedTypes": [
+        "files",
         "images"
       ]
     }
