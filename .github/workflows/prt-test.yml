@@ -55,10 +55,11 @@ jobs:
             -   name: Run Playwright tests inside Next.js container
                 id: tests
                 run: |
-                    docker exec portefolio-nextjs-1 npx playwright test || true  # Empêche l'arrêt du pipeline en cas d'échec
                     mkdir -p test-results
+                    docker exec portefolio-nextjs-1 npx playwright test
+                    test_exit_code=$?  # Capture le statut de sortie de Playwright
                     docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/ || touch test-results/ctrf-report.json
-            
+                    exit $test_exit_code  # Fait échouer cette étape si Playwright a échoué
 
             -   name: Publish Test Summary Results
                 if: always()
