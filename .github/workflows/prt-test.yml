@@ -57,6 +57,18 @@ jobs:
                     sleep 5
                     docker ps -a
 
+            -   name: Check Strapi Logs
+                run: docker logs portefolio-strapi-1
+
+            -   name: Test Strapi API Connection
+                run: |
+                    sleep 10  # Attendre un peu plus longtemps si Strapi met du temps à démarrer
+                    curl -i http://localhost:1337/api/
+
+            -   name: Test Strapi API with Token
+                run: |
+                  curl -i -H "Authorization: Bearer $STRAPI_TOKEN" http://localhost:1337/api/
+
             -   name: Run Playwright tests inside Next.js container
                 id: tests
                 run: |
