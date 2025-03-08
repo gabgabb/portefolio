@@ -42,10 +42,10 @@ test.describe("Portfolio Tests", () => {
         expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
     });
 
-    // test("About Me section is visible", async ({ page }) => {
-    //     await page.goto("http://localhost:3000");
-    //     await expect(page.getByText(/Développeur Full Stack français basé à Nantes/)).toBeVisible();
-    // });
+    test("About Me section is visible", async ({ page }) => {
+        await page.goto("http://localhost:3000");
+        await expect(page.getByText(/Développeur Full Stack français basé à Nantes/)).toBeVisible();
+    });
 
     //test("Projects section loads", async ({ page }) => {
     //  await page.goto("http://localhost:3000");
