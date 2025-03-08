@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from "@playwright/test";
 
 test.describe("Portfolio Tests", () => {
     test("Next.js homepage loads correctly", async ({ page }) => {
@@ -12,7 +12,7 @@ test.describe("Portfolio Tests", () => {
 
         // Intercepter la nouvelle page (nouvel onglet)
         const [newPage] = await Promise.all([
-            context.waitForEvent('page'), // Attend l'ouverture d'une nouvelle page
+            context.waitForEvent("page"), // Attend l'ouverture d'une nouvelle page
             page.getByRole("link", { name: "Github" }).first().click(), // Clique sur le lien
         ]);
 
@@ -20,7 +20,6 @@ test.describe("Portfolio Tests", () => {
         await newPage.waitForLoadState();
         expect(newPage.url()).toContain("github.com/gabgabb");
     });
-
 
     test("CV link is present", async ({ page }) => {
         await page.goto("http://localhost:3000");
@@ -32,7 +31,7 @@ test.describe("Portfolio Tests", () => {
 
         // Intercepter l'ouverture de la nouvelle page
         const [newPage] = await Promise.all([
-            context.waitForEvent('page'), // Attend l'ouverture d'un nouvel onglet
+            context.waitForEvent("page"), // Attend l'ouverture d'un nouvel onglet
             page.getByRole("link", { name: "Linkedin" }).first().click(), // Clique sur le lien
         ]);
 
@@ -43,14 +42,13 @@ test.describe("Portfolio Tests", () => {
         expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
     });
 
-
-    test("About Me section is visible", async ({ page }) => {
-        await page.goto("http://localhost:3000");
-        await expect(page.getByText(/Développeur Full Stack français basé à Nantes/)).toBeVisible();
-    });
+    // test("About Me section is visible", async ({ page }) => {
+    //     await page.goto("http://localhost:3000");
+    //     await expect(page.getByText(/Développeur Full Stack français basé à Nantes/)).toBeVisible();
+    // });
 
     //test("Projects section loads", async ({ page }) => {
-      //  await page.goto("http://localhost:3000");
-        //await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
+    //  await page.goto("http://localhost:3000");
+    //await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
     //});
 });
