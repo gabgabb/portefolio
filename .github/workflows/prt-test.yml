@@ -21,9 +21,6 @@ jobs:
                     cp .env.dist .env
                     cp nextjs/.env.dist nextjs/.env
                     cp strapi/.env.dist strapi/.env
-                    
-                    STRAPI_TOKEN=09b10af59728b9a78707fea42ca3df24f041b40df2c7aec397179ad07ef48a621c62c802359d95e2075f837229c6849d1eeb09ebd3fdbe421321bb48fa8496490c9a7af8471199bb6ee3a248ac2c08b62a5e8944784b62bf9ebae598210152fa1c32d483976e9adb0a5ef9bb371cfe06395b129e9c973c923693932ee010f790
-                    sed -i "s|NEXT_PUBLIC_STRAPI_TOKEN=.*|NEXT_PUBLIC_STRAPI_TOKEN=$STRAPI_TOKEN|" nextjs/.env
                                        
                     echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
                     echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
@@ -31,8 +28,6 @@ jobs:
                     echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "TRANSFER_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
                     echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
-                    
-                    cat nextjs/.env
 
             -   name: Install dependencies
                 run: |
@@ -54,21 +49,8 @@ jobs:
 
             -   name: Wait for services to be ready
                 run: |
-                    sleep 60
+                    sleep 15
                     docker ps -a
-
-            -   name: Check Strapi Logs
-                run: docker logs portefolio-strapi-1
-
-            -   name: Test Strapi API Connection
-                run: |
-                    sleep 10  # Attendre un peu plus longtemps si Strapi met du temps à démarrer
-                    curl -i http://localhost:1337/api/
-
-            -   name: Test Strapi API with Token
-                if: always()
-                run: |        
-                    curl -i -H "Authorization: Bearer $STRAPI_TOKEN" http://localhost:1337/api/
 
             -   name: Run Playwright tests inside Next.js container
                 if: always()
