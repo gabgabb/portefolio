@@ -31,11 +31,6 @@ const nextConfig: NextConfig = {
     },
     compress: true,
     bundlePagesRouterDependencies: true,
-    devIndicators: {
-        appIsrStatus: true,
-        buildActivity: true,
-        buildActivityPosition: "bottom-right",
-    },
     experimental: {
         staleTimes: {
             dynamic: 30,
