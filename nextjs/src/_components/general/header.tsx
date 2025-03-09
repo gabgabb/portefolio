@@ -56,7 +56,11 @@ const Header: React.FC = () => {
                         <MoveUpRight size={18} color="#EAF3F6" />
                     </Link>
                 </div>
-                <div className={"flex flex-row gap-1 text-xl font-bold"}>
+                <div
+                    className={
+                        "flex flex-row gap-1 text-xl font-bold items-center"
+                    }
+                >
                     <Button
                         onPress={() => switchLocale("fr")}
                         className={`cursor-pointer px-2 ${
