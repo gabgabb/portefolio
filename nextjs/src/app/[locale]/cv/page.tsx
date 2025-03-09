@@ -7,6 +7,7 @@ import { saveAs } from "file-saver";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { Download } from "lucide-react";
+import { useLocale } from "next-intl";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
     "//unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs";
@@ -15,6 +16,11 @@ const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
+
+    const locale = useLocale();
+
+    const pdfFile =
+        locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);
@@ -34,8 +40,7 @@ const Cv: React.FC = () => {
     }
 
     const downloadPdf = () => {
-        const fileUrl = "/CV_Gabriel_FR.pdf";
-        saveAs(fileUrl, "CV_Gabriel_FR.pdf");
+        saveAs(pdfFile, `CV_Gabriel_${locale.toUpperCase()}.pdf`);
     };
 
     return (
@@ -51,7 +56,7 @@ const Cv: React.FC = () => {
                             ? "hidden"
                             : "" /* Cache le PDF tant qu'il charge */
                     }`}
-                    file="/CV_Gabriel_FR.pdf"
+                    file={pdfFile}
                     onLoadSuccess={onDocumentLoadSuccess}
                 >
                     <Page pageNumber={pageNumber} scale={1.2} />

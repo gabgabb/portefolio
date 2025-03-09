@@ -1,0 +1,11 @@
+{
+  "Header": {
+    "cv": "CV",
+    "jobs": "Développeur full stack"
+  },
+  "Cards": {
+    "seeMore": "Voir plus",
+    "experience": "Expériences",
+    "projects": "Projets"
+  }
+}

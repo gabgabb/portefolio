@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { useLocale } from "next-intl";
 
 const Footer: React.FC = () => {
+    const locale = useLocale();
+
     return (
         <footer className="border-t border-stroke px-4">
             <div className="flex flex-col items-start py-8 px-4 gap-4 mx-auto w-full max-w-[1000px]">
@@ -63,7 +66,10 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="text-center">
                     <span className="font-medium">
-                        &copy;2024 Gabriel Filiot. Tous droits réservés.
+                        &copy;2024 Gabriel Filiot.
+                        {locale === "fr"
+                            ? " Tous droits réservés."
+                            : " All rights reserved."}
                     </span>
                 </div>
             </div>

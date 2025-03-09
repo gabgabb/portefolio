@@ -6,6 +6,7 @@ services:
             - '1337:1337'
         volumes:
             - ./strapi:/app
+            - strapi-uploads:/app/public/uploads
         environment:
             - NODE_ENV=${NODE_ENV}
             - DATABASE_CLIENT=sqlite
@@ -24,3 +25,6 @@ services:
             - NODE_ENV=${NODE_ENV}
         env_file:
             - .env
+
+volumes:
+    strapi-uploads:
