@@ -1,7 +1,11 @@
 {
-  "title": "Gabriel Filiot",
-  "subtitle": "Développeur full-stack",
-  "cv": "CV",
-  "github": "Github",
-  "linkedin": "LinkedIn"
+  "Header": {
+    "cv": "CV",
+    "jobs": "Développeur full stack"
+  },
+  "Cards": {
+    "seeMore": "Voir plus",
+    "experience": "Expériences",
+    "projects": "Projets"
+  }
 }

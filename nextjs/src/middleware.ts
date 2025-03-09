@@ -1,8 +1,9 @@
 import createMiddleware from "next-intl/middleware";
-import { routing } from "../next-intl.config";
+import { routing } from "./i18n/routing";
 
 export default createMiddleware(routing);
 
 export const config = {
-    matcher: ["/", "/(fr|en)/:path*"], // At this line, define into the matcher all the availables language you have defined into routing.ts
+    // Match only internationalized pathnames
+    matcher: ["/", "/(fr|en)/:path*"],
 };

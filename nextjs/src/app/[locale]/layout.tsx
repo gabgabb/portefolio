@@ -4,6 +4,10 @@ import React from "react";
 import { HeroUIProvider } from "@heroui/system";
 import Header from "@/_components/general/header";
 import Footer from "@/_components/general/footer";
+import { routing } from "@/i18n/routing";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import {getMessages} from "next-intl/server";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
@@ -46,11 +50,19 @@ export const metadata = {
 
 interface RootLayoutProps {
     children: React.ReactNode;
+    params: Promise<{ locale: string }>;
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
+    const { locale } = await params;
+    if (!routing.locales.includes(locale as any)) {
+        notFound();
+    }
+
+    const messages = await getMessages();
+
     return (
-        <html>
+        <html lang={locale}>
             <head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
@@ -60,11 +72,13 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
                 <title>Gabriel Filiot</title>
             </head>
             <body className="!bg-black text-white font-bogart">
-                <HeroUIProvider>
-                    <Header />
-                    {children}
-                    <Footer />
-                </HeroUIProvider>
+                <NextIntlClientProvider messages={messages}>
+                    <HeroUIProvider>
+                        <Header />
+                        {children}
+                        <Footer />
+                    </HeroUIProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

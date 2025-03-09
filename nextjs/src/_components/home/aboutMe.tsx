@@ -3,17 +3,20 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "@heroui/react";
 import { Presentation } from "@/_utils/types";
+import { useLocale } from "next-intl";
 
 const AboutMe = () => {
     const [presentation, setPresentation] = useState<Presentation | null>(null);
 
     const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
 
+    const locale = useLocale();
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/presentation?pLevel`,
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/presentation?pLevel&locale=${locale}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -34,7 +37,7 @@ const AboutMe = () => {
             }
         };
         fetchData();
-    }, [token]);
+    }, [locale, token]);
 
     if (!presentation) return <p>Chargement...</p>;
 

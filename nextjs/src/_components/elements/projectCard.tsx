@@ -5,12 +5,15 @@ import React from "react";
 import Badge from "@/_components/elements/badge";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { Project } from "@/_utils/types";
+import { useTranslations } from "next-intl";
 
 interface ProjectCardProps {
     project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+    const t = useTranslations("Cards");
+
     return (
         <Card>
             <Image
@@ -39,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         endContent={<SquareArrowOutUpRight color={"#EAF3F6"} />}
                     >
                         <span className="font-extrabold text-lg">
-                            Voir plus
+                            {t("seeMore")}
                         </span>
                     </Button>
                 </div>
