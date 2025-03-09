@@ -37,8 +37,6 @@ export const Experiences: React.FC = () => {
 
     if (!experiences.length) return <p>Chargement...</p>;
 
-    console.log(experiences);
-
     return (
         <div className="flex flex-col gap-2 flex-1">
             <h2 className="font-extrabold text-3xl">Expériences</h2>

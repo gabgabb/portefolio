@@ -1,8 +1,9 @@
-import "./globals.css";
+import "../globals.css";
+
 import React from "react";
+import { HeroUIProvider } from "@heroui/system";
 import Header from "@/_components/general/header";
 import Footer from "@/_components/general/footer";
-import { HeroUIProvider } from "@heroui/system";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
@@ -49,7 +50,7 @@ interface RootLayoutProps {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     return (
-        <html lang="fr">
+        <html>
             <head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta

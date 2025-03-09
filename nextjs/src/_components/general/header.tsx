@@ -1,8 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import { MoveUpRight } from "lucide-react";
+import { useLocale } from "next-intl";
 
 const Header: React.FC = () => {
+    const locale = useLocale();
+
     return (
         <header className="flex flex-row items-center justify-between md:px-16 pt-8 text-white sm:px-4">
             <Link href={"/"} className="flex flex-col weightGrow">
@@ -12,7 +15,7 @@ const Header: React.FC = () => {
             <div className={"flex flex-row gap-4"}>
                 <div className="flex flex-row gap-4 text-xl font-bold">
                     <Link
-                        href={"/cv"}
+                        href={`/${locale}/cv`}
                         className="button-primary group transition duration-300 flex justify-center items-center weightGrow"
                     >
                         CV
