@@ -7,7 +7,7 @@ import Footer from "@/_components/general/footer";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import {getMessages} from "next-intl/server";
+import { getMessages } from "next-intl/server";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",

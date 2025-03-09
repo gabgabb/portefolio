@@ -19,7 +19,8 @@ const Cv: React.FC = () => {
 
     const locale = useLocale();
 
-    const pdfFile = locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
+    const pdfFile =
+        locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import ProjectCard from "@/_components/elements/projectCard";
 import { Project } from "@/_utils/types";
-import {useLocale, useTranslations} from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -37,7 +37,7 @@ const Projects: React.FC = () => {
             }
         };
         fetchData();
-    }, [token]);
+    }, [locale, token]);
 
     if (!projects.length) return <p>Chargement...</p>;
 

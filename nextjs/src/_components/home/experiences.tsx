@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Experience from "@/_components/elements/experience";
 import { ExperienceType } from "@/_utils/types";
-import {useLocale, useTranslations} from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export const Experiences: React.FC = () => {
     const [experiences, setExperiences] = useState<ExperienceType[]>([]);
