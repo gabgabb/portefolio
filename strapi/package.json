@@ -11,7 +11,7 @@
     "deploy": "strapi deploy"
   },
   "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^5.0.1",
+    "@_sh/strapi-plugin-ckeditor": "^5.0.2",
     "@strapi/plugin-cloud": "5.10.4",
     "@strapi/plugin-users-permissions": "5.10.4",
     "@strapi/strapi": "5.10.4",
