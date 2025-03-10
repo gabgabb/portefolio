@@ -11,7 +11,6 @@ interface BadgeProps {
 }
 
 const Badge: React.FC<BadgeProps> = ({ image, title, deleteText = false }) => {
-    console.log(deleteText);
     return (
         <div className="flex bg-blue-gray h-max rounded-md px-3 py-2 gap-2 items-center select-all">
             <Image

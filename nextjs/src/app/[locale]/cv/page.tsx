@@ -58,7 +58,6 @@ const Cv: React.FC = () => {
 
         updateScale(); // Initialiser au bon scale
 
-        console.log(scale);
         window.addEventListener("resize", updateScale);
 
         return () => window.removeEventListener("resize", updateScale);
