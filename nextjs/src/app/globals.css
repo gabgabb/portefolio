@@ -23,7 +23,7 @@ html {
 }
 
 .weightGrow:hover {
-    text-shadow: 0px 0px 2px #EAF3F6;
+    text-shadow: 0 0 2px #EAF3F6;
 }
 
 @layer utilities {
@@ -38,11 +38,7 @@ html {
 
 .react-pdf__Page.prevPage {
   position: absolute !important;
-  z-index: 1;
-}
-
-.react-pdf__Document{
-  height: 950px;
+  z-index: 20;
 }
 
 /* Regular and Italic */

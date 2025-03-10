@@ -44,7 +44,7 @@ export const Experiences: React.FC = () => {
     return (
         <div className="flex flex-col gap-2 flex-1">
             <h2 className="font-extrabold text-3xl">{t("experience")}</h2>
-            <div className="h-[220px] flex-col rounded-xl bg-gray border border-stroke p-4 flex flex-wrap gap-2">
+            <div className="md:min-h-[250px] h-fit flex-col rounded-xl bg-gray border border-stroke p-4 flex flex-wrap gap-3">
                 {experiences.map((exp) => (
                     <Experience
                         key={exp.id}

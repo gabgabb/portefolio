@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { Button } from "@heroui/react";
 import { saveAs } from "file-saver";
@@ -16,9 +16,10 @@ const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+    const [scale, setScale] = useState<number>(1.2); // Valeur par défaut
 
     const locale = useLocale();
-
     const pdfFile =
         locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
 
@@ -43,27 +44,52 @@ const Cv: React.FC = () => {
         saveAs(pdfFile, `CV_Gabriel_${locale.toUpperCase()}.pdf`);
     };
 
+    // Ajuster le scale dynamiquement en fonction de la largeur de l'écran
+    useEffect(() => {
+        const updateScale = () => {
+            const width = window.innerWidth;
+            setIsMobile(width < 1024);
+
+            // Réduction progressive : plus la fenêtre est petite, plus le scale est réduit
+            const newScale = Math.min(1.2, 1.2 * (width / 1200));
+
+            setScale(newScale);
+        };
+
+        updateScale(); // Initialiser au bon scale
+
+        console.log(scale);
+        window.addEventListener("resize", updateScale);
+
+        return () => window.removeEventListener("resize", updateScale);
+    }, [scale]);
+
     return (
         <div className="flex flex-col items-center mt-8 relative pb-16">
             {/* Document avec ombre */}
-            <div className="relative group">
-                {/*{loading && (*/}
-                {/*<Skeleton />*/}
-                {/*)}*/}
-                <Document
-                    className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
-                        loading
-                            ? "hidden"
-                            : "" /* Cache le PDF tant qu'il charge */
-                    }`}
-                    file={pdfFile}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                >
-                    <Page pageNumber={pageNumber} scale={1.2} />
-                </Document>
+            <div className="relative group h-fit">
+                <div style={{ height: `${Math.min(950, 830 * scale)}px` }}>
+                    <Document
+                        key={scale}
+                        className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
+                            loading ? "hidden" : ""
+                        }`}
+                        file={pdfFile}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                    >
+                        <Page pageNumber={pageNumber} scale={scale} />
+                    </Document>
+                </div>
 
                 {/* Barre de navigation */}
-                <div className="absolute bottom-[50px] left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-[#1e293b] p-3 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                <div
+                    className={`left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-[#1e293b] p-3 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.6)] transition-opacity duration-300 z-20
+                        ${
+                            scale <= 1 || isMobile
+                                ? "opacity-100 fixed bottom-[20px]" // Fixe en bas si scale ≤ 0.7
+                                : "opacity-0 group-hover:opacity-100 absolute bottom-[50px]"
+                        }`}
+                >
                     <Button
                         onPress={prevPage}
                         disabled={pageNumber <= 1}
