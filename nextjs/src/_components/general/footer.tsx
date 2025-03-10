@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
 import React from "react";
 import { useLocale } from "next-intl";
+import { Image } from "@heroui/react";
 
 const Footer: React.FC = () => {
     const locale = useLocale();
@@ -35,7 +37,7 @@ const Footer: React.FC = () => {
                         />
                     </Link>
                 </div>
-                <div className="flex items-center justify-center font-extrabold gap-2 text-2xl">
+                <div className="flex items-center justify-center font-extrabold gap-2 text-2xl max-sm:text-base">
                     <span>Build with</span>
                     <Link
                         href="https://nextjs.org/"
@@ -45,8 +47,7 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/nextJs.png"}
                             alt={"Next.js image"}
-                            width={40}
-                            height={40}
+                            className="w-[40px] h-[40px] max-sm:w-[30px] max-sm:h-[30px]"
                         />
                     </Link>
                     <span>and</span>
@@ -58,8 +59,7 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/strapi.png"}
                             alt={"Strapi image"}
-                            width={120}
-                            height={30}
+                            className="w-[120px] h-[30px] max-sm:w-[80px] max-sm:h-[20px]"
                         />
                     </Link>
                     <span>with love</span>

@@ -6,6 +6,10 @@
   "Cards": {
     "seeMore": "Voir plus",
     "experience": "Expériences",
-    "projects": "Projets"
+    "projects": "Projets",
+    "mission": "Mission"
+  },
+  "Cv": {
+    "of": "sur"
   }
 }
