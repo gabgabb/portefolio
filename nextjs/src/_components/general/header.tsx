@@ -25,7 +25,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="flex flex-row items-center justify-between md:px-16 pt-8 text-white sm:px-4">
-            <Link href={"/"} className="flex flex-col weightGrow">
+            <Link href={`/${locale}`} className="flex flex-col weightGrow">
                 <h1 className="font-bold text-xl h-5">Gabriel Filiot</h1>
                 <h2 className="font-medium text-sm">{t("jobs")}</h2>
             </Link>
