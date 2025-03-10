@@ -7,7 +7,7 @@ import { saveAs } from "file-saver";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { Download } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
     "//unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs";
@@ -20,8 +20,11 @@ const Cv: React.FC = () => {
     const [scale, setScale] = useState<number>(1.2); // Valeur par défaut
 
     const locale = useLocale();
+
     const pdfFile =
         locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
+
+    const t = useTranslations("Cv");
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);
@@ -67,7 +70,10 @@ const Cv: React.FC = () => {
         <div className="flex flex-col items-center mt-8 relative pb-16">
             {/* Document avec ombre */}
             <div className="relative group h-fit">
-                <div style={{ height: `${Math.min(950, 830 * scale)}px` }}>
+                <div
+                    style={{ height: `${Math.min(950, 830 * scale)}px` }}
+                    data-testid={"cv"}
+                >
                     <Document
                         key={scale}
                         className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
@@ -101,7 +107,7 @@ const Cv: React.FC = () => {
                         ◀
                     </Button>
                     <p className="text-white font-bold">
-                        {pageNumber} of {numPages}
+                        {pageNumber} {t("of")} {numPages}
                     </p>
                     <Button
                         onPress={nextPage}
