@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Image } from "@heroui/react";
+import { useTranslations } from "next-intl";
 
 interface ExperienceProps {
     key?: number;
@@ -21,6 +22,8 @@ const Experience: React.FC<ExperienceProps> = ({
     dateEnd,
     isMission,
 }) => {
+    const t = useTranslations("Cards");
+
     const formatDate = (date: Date | undefined, isMission: boolean) => {
         if (!date) return "N/A";
 
@@ -31,7 +34,7 @@ const Experience: React.FC<ExperienceProps> = ({
     };
 
     return (
-        <div className="flex flex-1 justify-between">
+        <div className="flex sm:flex-1 justify-between max-[430px]:flex-col border-b border-white/20 last:border-none pb-4 last:pb-0">
             <div className="flex gap-2 items-center">
                 <Image
                     alt={"Logo de " + companyName}
@@ -47,7 +50,7 @@ const Experience: React.FC<ExperienceProps> = ({
                         </span>
                         {isMission && (
                             <p className="border-2 border-white/70 rounded-md text-[13px] max-h-max px-1 py-[0.5px] font-normal">
-                                Mission
+                                {t("mission")}
                             </p>
                         )}
                     </div>
@@ -56,7 +59,7 @@ const Experience: React.FC<ExperienceProps> = ({
                     </span>
                 </div>
             </div>
-            <div className="flex gap-1 font-medium text-sm text-white items-center">
+            <div className="flex gap-1 font-medium text-sm text-white items-center max-[430px]:pl-11">
                 <span>{formatDate(dateBegin, isMission)}</span>
                 <span>-</span>
                 <span>{formatDate(dateEnd, isMission)}</span>
