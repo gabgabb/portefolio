@@ -36,8 +36,6 @@ jobs:
                     cd nextjs
                     yarn install
                     npx playwright install
-                    npx playwright install msedge
-                    npx playwright install chrome
                     cd ../strapi
                     npm install
 
