@@ -20,15 +20,17 @@ test.describe("Portfolio Tests", () => {
 
         await page.goto("http://localhost:3000");
 
-        await page.waitForTimeout(5000);
+        await page.waitForTimeout(3000);
 
         // Clique sur le lien "CV"
         await page.getByRole("link", { name: "Resume" }).click();
 
+        await page.waitForTimeout(3000);
+
         // Vérifier que l'URL contient "/cv"
         await expect(page).toHaveURL(/\/cv$/);
 
-        await page.waitForTimeout(5000);
+        await page.waitForTimeout(3000);
 
         // Vérifier que la page affiche un élément propre au CV
         await expect(page.getByTestId("cv")).toBeVisible();
