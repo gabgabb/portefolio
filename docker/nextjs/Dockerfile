@@ -10,8 +10,6 @@ WORKDIR /app
 COPY ./nextjs/package.json ./nextjs/yarn.lock ./
 
 RUN npx playwright install --with-deps
-RUN npx playwright install msedge
-RUN npx playwright install chrome
 
 # Copier le reste du code
 COPY ./nextjs ./
