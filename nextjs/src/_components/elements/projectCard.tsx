@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         ))}
                     </div>
                     <Button
-                        className="rounded-xl bg-purple hover:bg-purple/90 focus:border-none active:border-none md:h-14 sm:h-12 max-sm:h-12 sm:w-1/2 max-sm:w-1/2 sm:mx-auto max-sm:mx-auto flex lg:w-[580px] md:w-full lg:mx-auto items-center mt-4 cursor-pointer"
+                        className="rounded-xl bg-purple hover:bg-purple/90 focus:border-none active:border-none md:h-14 sm:h-12 max-sm:h-12 sm:w-1/2 max-sm:w-1/2 max-[400px]:!w-3/4 sm:mx-auto max-sm:mx-auto flex lg:w-[580px] md:w-full lg:mx-auto items-center mt-4 cursor-pointer"
                         endContent={<SquareArrowOutUpRight color={"#EAF3F6"} />}
                     >
                         <span className="font-extrabold text-lg">

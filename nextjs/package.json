@@ -10,7 +10,9 @@
         "lint:debug": "eslint ./src --debug",
         "lint:fix": "eslint \"src/**/*.+(ts|tsx)\" --fix",
         "format": "prettier . --write",
-        "format:check": "prettier . --check"
+        "format:check": "prettier . --check",
+        "test-line": "npx playwright test  --reporter=line",
+        "test-head": "npx playwright test --ui"
     },
     "dependencies": {
         "@heroui/react": "2.7.5",
