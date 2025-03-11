@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
     return (
         <footer className="border-t border-stroke px-4">
             <div className="flex flex-col items-start py-8 px-4 gap-4 mx-auto w-full max-w-[1000px]">
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-3 max-sm:mx-auto">
                     <Link
                         href="https://github.com/gabgabb"
                         target="_blank"
@@ -37,8 +37,8 @@ const Footer: React.FC = () => {
                         />
                     </Link>
                 </div>
-                <div className="flex items-center justify-center font-extrabold gap-2 text-2xl max-sm:text-base">
-                    <span>Build with</span>
+                <div className="flex flex-wrap items-center justify-center font-extrabold text-2xl text-center gap-x-2 gap-y-1 sm:gap-x-4 sm:gap-y-2 max-sm:text-base max-sm:mx-auto">
+                    <span className="whitespace-nowrap">Build with</span>
                     <Link
                         href="https://nextjs.org/"
                         target="_blank"
@@ -47,10 +47,12 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/nextJs.png"}
                             alt={"Next.js image"}
-                            className="w-[40px] h-[40px] max-sm:w-[30px] max-sm:h-[30px]"
+                            className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px]"
                         />
                     </Link>
-                    <span>and</span>
+
+                    <span className="whitespace-nowrap">and</span>
+
                     <Link
                         href="https://strapi.io/"
                         target="_blank"
@@ -59,12 +61,14 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/strapi.png"}
                             alt={"Strapi image"}
-                            className="w-[120px] h-[30px] max-sm:w-[80px] max-sm:h-[20px]"
+                            className="w-[80px] h-[20px] sm:w-[120px] sm:h-[30px]"
                         />
                     </Link>
-                    <span>with love</span>
+
+                    <span className="whitespace-nowrap">with love</span>
                 </div>
-                <div className="text-center">
+
+                <div className="text-center max-sm:mx-auto">
                     <span className="font-medium">
                         &copy;2024 Gabriel Filiot.
                         {locale === "fr"

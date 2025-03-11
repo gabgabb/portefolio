@@ -29,11 +29,18 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
 
     return (
         <header className="flex flex-row items-center justify-between max-sm:px-8 sm:px-8 pt-8 md:px-12 lg:px-24 text-white">
-            <Link href={`/${locale}`} className="flex flex-col weightGrow">
+            <Link
+                href={`/${locale}`}
+                className="flex flex-col weightGrow max-[350px]:hidden"
+            >
                 <h1 className="font-bold text-xl h-5">Gabriel Filiot</h1>
                 <h2 className="font-medium text-sm">{t("jobs")}</h2>
             </Link>
-            <div className={"flex flex-row gap-4 max-md:gap-2"}>
+            <div
+                className={
+                    "flex flex-row gap-4 max-md:gap-2 max-[350px]:ml-auto"
+                }
+            >
                 <div className="flex flex-row gap-4 text-xl font-bold max-md:hidden">
                     <Link
                         href={`/${locale}/cv`}
