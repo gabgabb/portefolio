@@ -58,8 +58,6 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
         notFound();
     }
 
-    const messages = await getMessages();
-
     return (
         <html lang={locale}>
             <head>
@@ -71,7 +69,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
                 <title>Gabriel Filiot</title>
             </head>
             <body className="!bg-black text-white font-bogart">
-                <NextIntlClientProvider messages={messages}>
+                <NextIntlClientProvider>
                     <HeroUIProvider>
                         <ClientLayout>{children}</ClientLayout>
                     </HeroUIProvider>
