@@ -25,6 +25,5 @@
             "prCreation": "not-pending"
         }
     ],
-    "dependencyDashboard": true,
-    "stabilityThreshold": 0.7
+    "dependencyDashboard": true
 }
