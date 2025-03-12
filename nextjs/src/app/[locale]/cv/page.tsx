@@ -129,7 +129,7 @@ const Cv: React.FC = () => {
                 className="mt-6 cursor-pointer flex items-center px-4 py-2 bg-purple hover:bg-purple/90 shadow-sm shadow-white/40 text-white font-bold rounded-lg"
             >
                 <Download size={20} />
-                <span>Télécharger</span>
+                <span>{t("download")}</span>
             </Button>
         </div>
     );
