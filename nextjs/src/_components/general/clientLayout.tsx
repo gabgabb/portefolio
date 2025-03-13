@@ -1,26 +1,25 @@
 "use client";
 
-import React from "react";
-
-import { useDisclosure } from "@heroui/react";
+import React, { useState } from "react";
 import Header from "@/_components/general/header";
-import DrawerCustom from "@/_components/general/drawer";
 import Footer from "@/_components/general/footer";
+import CustomDrawer from "@/_components/general/drawer";
 
 export default function ClientLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
     return (
         <>
-            {/* Passe `onOpen` au Header pour qu'il ouvre le Drawer */}
-            <Header onOpenDrawer={onOpen} />
-            {/*<DrawerCustom isOpen={isOpen} onOpenChange={onOpenChange} />*/}
+            <Header onOpenDrawer={() => setIsDrawerOpen(true)} />
+            <CustomDrawer
+                isOpen={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+            />
             {children}
-            {/* Drawer accessible partout */}
             <Footer />
         </>
     );

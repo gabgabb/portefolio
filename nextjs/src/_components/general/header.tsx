@@ -29,10 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
 
     return (
         <header className="flex flex-row items-center justify-between max-sm:px-8 sm:px-8 pt-8 md:px-12 lg:px-24 text-white">
-            <Link
-                href={`/${locale}`}
-                className="flex flex-col weightGrow max-[350px]:hidden"
-            >
+            <Link href={`/${locale}`} className="flex flex-col weightGrow">
                 <h1 className="font-bold text-xl h-5">Gabriel Filiot</h1>
                 <h2 className="font-medium text-sm">{t("jobs")}</h2>
             </Link>
@@ -67,7 +64,11 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         <MoveUpRight size={18} color="#EAF3F6" />
                     </Link>
                 </div>
-                <div className={"flex flex-row text-xl font-bold items-center"}>
+                <div
+                    className={
+                        "flex flex-row text-xl font-bold items-center max-[350px]:hidden"
+                    }
+                >
                     <Button
                         onPress={() => switchLocale("fr")}
                         className={`cursor-pointer px-2 ${
