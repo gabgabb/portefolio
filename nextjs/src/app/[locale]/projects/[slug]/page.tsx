@@ -62,7 +62,7 @@ const ProjectDetail = () => {
 
             router.push("/");
         }
-    }, [project, loading, router]);
+    }, [project, loading, router, t]);
 
     if (loading) {
         return <p className="mt-10 text-center">Chargement...</p>;
