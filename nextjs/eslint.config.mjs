@@ -22,7 +22,10 @@ export default [
             prettier,
         },
         rules: {
-            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false, endOfLine: "auto" }],
+            "prettier/prettier": [
+                "error",
+                { tabWidth: 4, useTabs: false, endOfLine: "auto" },
+            ],
             camelcase: "off",
             "import/prefer-default-export": "off",
             "react/jsx-filename-extension": "off",
@@ -42,10 +45,12 @@ export default [
             ],
         },
     },
-    ...compat.extends("plugin:@typescript-eslint/recommended", "prettier").map((config) => ({
-        ...config,
-        files: ["**/*.+(ts|tsx)"],
-    })),
+    ...compat
+        .extends("plugin:@typescript-eslint/recommended", "prettier")
+        .map((config) => ({
+            ...config,
+            files: ["**/*.+(ts|tsx)"],
+        })),
     {
         files: ["**/*.+(ts|tsx)"],
         plugins: {
