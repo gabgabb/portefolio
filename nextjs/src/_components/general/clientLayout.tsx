@@ -4,7 +4,7 @@ import React from "react";
 
 import { useDisclosure } from "@heroui/react";
 import Header from "@/_components/general/header";
-import DrawerCustom from "@/_components/general/Drawer";
+import DrawerCustom from "@/_components/general/drawer";
 import Footer from "@/_components/general/footer";
 
 export default function ClientLayout({

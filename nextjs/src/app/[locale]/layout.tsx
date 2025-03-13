@@ -5,8 +5,7 @@ import { HeroUIProvider } from "@heroui/system";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import ClientLayout from "@/_components/general/ClientLayout";
+import ClientLayout from "@/_components/general/clientLayout";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
