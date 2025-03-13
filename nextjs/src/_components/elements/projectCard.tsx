@@ -6,7 +6,7 @@ import { Button, Card, Image } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SquareArrowOutUpRight, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 interface ProjectCardProps {
@@ -57,6 +57,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             setIsVideoVisible(true);
         }
     };
+
+    const router = useRouter();
 
     return (
         <div className="relative">
@@ -116,8 +118,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             ))}
                         </div>
                         <Button
-                            as={Link}
-                            href={`/${locale}/projects/${project.slug}`}
+                            onPress={() => {
+                                router.push(
+                                    `/${locale}/projects/${project.slug}`,
+                                    { scroll: true },
+                                );
+                                router.refresh(); // Force le rechargement de la page
+                            }}
                             className="bg-purple hover:bg-purple/90 mt-4 flex cursor-pointer items-center rounded-xl focus:border-none active:border-none max-[400px]:!w-3/4 max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
                             endContent={
                                 <SquareArrowOutUpRight color={"#EAF3F6"} />

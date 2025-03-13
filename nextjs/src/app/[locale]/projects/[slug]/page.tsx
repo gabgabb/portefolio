@@ -1,13 +1,12 @@
 "use client";
 
+import Badge from "@/_components/elements/badge";
 import { Project } from "@/_utils/types";
-import { Button, Image } from "@heroui/react";
-import { X } from "lucide-react";
+import { BreadcrumbItem, Breadcrumbs, Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Badge from "@/_components/elements/badge";
 
 const ProjectDetail = () => {
     const { slug } = useParams();
@@ -18,7 +17,7 @@ const ProjectDetail = () => {
     const router = useRouter();
     const token = process.env.NEXT_PUBLIC_STRAPI_TOKEN;
 
-    const t = useTranslations("Projects");
+    const t = useTranslations("ProjectsPage");
 
     useEffect(() => {
         const fetchProject = async () => {
@@ -55,51 +54,51 @@ const ProjectDetail = () => {
         }
     }, [locale, slug, token]);
 
-    console.log(project);
-
     useEffect(() => {
         if (!loading && project === null) {
             toast.error(t("notFound"));
 
             router.push("/");
         }
-    }, [project, loading, router, t]);
+    }, [project, loading, router]);
 
     if (loading) {
         return <p className="mt-10 text-center">Chargement...</p>;
     }
 
     if (!project) {
-        return null; // Retourne `null` pour ne rien afficher après le toast
+        return null;
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <Button
-                href="/"
-                as="a"
-                className="absolute top-4 left-4 flex items-center gap-2 text-white"
-            >
-                <X size={24} />
-                Retour
-            </Button>
+        <div className="container mx-auto px-4 py-12">
+            <Breadcrumbs className="mb-10 text-lg font-semibold">
+                <BreadcrumbItem
+                    className="text-gray-light/90"
+                    href={`/${locale}`}
+                >
+                    {t("home")}
+                </BreadcrumbItem>
+                <BreadcrumbItem className="text-gray-light/90">
+                    {t("projectsBread")}
+                </BreadcrumbItem>
+                <BreadcrumbItem className="truncate text-white" isCurrent>
+                    {project.name}
+                </BreadcrumbItem>
+            </Breadcrumbs>
 
-            <h1 className="text-center text-4xl font-bold">{project.name}</h1>
+            <h1 className="text-center text-4xl font-bold max-sm:text-3xl">{project.name}</h1>
 
             <div className="mt-6 flex flex-col items-center">
                 <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.illustrations[0]?.url}`}
                     alt={project.name}
-                    className="w-full max-w-3xl rounded-lg border border-gray-700"
+                    className="w-full max-w-3xl rounded-2xl border border-gray-700"
                 />
             </div>
 
-            <div className="mt-6 text-center text-lg">
-                {project.shortDescription}
-            </div>
-
             {project.videoPresentation && (
-                <div className="mt-6 flex justify-center">
+                <div className="mx-auto mt-6 flex w-1/2 justify-center lg:w-1/3">
                     <video
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation.url}`}
                         controls

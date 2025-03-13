@@ -13,7 +13,9 @@
         "of": "sur",
         "download": "Télécharger"
     },
-    "Projects": {
+    "ProjectsPage": {
+        "home": "Accueil",
+        "projectsBread": "Projets",
         "notFound": "Aucun projet trouvé."
     }
 }

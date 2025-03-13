@@ -13,7 +13,9 @@
         "of": "of",
         "download": "Download"
     },
-    "Projects": {
+    "ProjectsPage": {
+        "home": "Home",
+        "projectsBread": "Projects",
         "notFound": "No projects found."
     }
 }
