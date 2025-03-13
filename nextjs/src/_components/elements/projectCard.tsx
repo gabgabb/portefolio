@@ -19,8 +19,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const [videoPosition, setVideoPosition] = useState({ x: 0, y: 0 });
     const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
 
-    const [activeBadge, setActiveBadge] = useState<number | null>(null);
-
     useEffect(() => {
         setIsTouchDevice(window.innerWidth < 1024);
 
@@ -90,7 +88,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             viewBox="0 0 24 24"
                             width="50"
                             height="50"
-                            className="slow-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+                            className="slow-pulse absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 transform"
                         >
                             <path d="M8 5v14l11-7z" />
                         </svg>
@@ -100,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 {/* CONTENU */}
                 <div className="bg-gray border-stroke rounded-b-2xl border-x-2 border-b-2 max-sm:h-fit max-sm:px-6 max-sm:py-3 sm:h-fit sm:px-6 sm:py-3 md:px-12 md:py-4">
                     <div className="flex flex-col gap-1 lg:gap-4">
-                        <span className="text-2xl font-bold max-sm:truncate max-sm:text-xl">
+                        <span className="truncate text-2xl font-bold max-sm:text-xl">
                             {project.name}
                         </span>
                         <div className="flex gap-2">
@@ -110,13 +108,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                                     title={tech.name}
                                     image={`${process.env.NEXT_PUBLIC_STRAPI_URL}${tech.logo.url}`}
                                     deleteText
-                                    isActive={activeBadge === tech.id}
-                                    onClick={() =>
-                                        setActiveBadge((prev) =>
-                                            prev === tech.id ? null : tech.id,
-                                        )
-                                    }
-                                    onClose={() => setActiveBadge(null)}
                                 />
                             ))}
                         </div>
