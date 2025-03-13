@@ -1,11 +1,11 @@
 import "../globals.css";
 
-import React from "react";
-import { HeroUIProvider } from "@heroui/system";
-import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
 import ClientLayout from "@/_components/general/clientLayout";
+import { routing } from "@/i18n/routing";
+import { HeroUIProvider } from "@heroui/system";
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import React from "react";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
@@ -67,7 +67,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
                 />
                 <title>Gabriel Filiot</title>
             </head>
-            <body className="!bg-black text-white font-bogart">
+            <body className="font-bogart !bg-black text-white">
                 <NextIntlClientProvider>
                     <HeroUIProvider>
                         <ClientLayout>{children}</ClientLayout>

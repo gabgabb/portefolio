@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import Header from "@/_components/general/header";
-import Footer from "@/_components/general/footer";
 import CustomDrawer from "@/_components/general/drawer";
+import Footer from "@/_components/general/footer";
+import Header from "@/_components/general/header";
+import React, { useState } from "react";
 
 export default function ClientLayout({
     children,

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
 import { Image } from "@heroui/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 
 interface BadgeProps {
     image?: string;
@@ -45,7 +45,7 @@ const Badge: React.FC<BadgeProps> = ({
     return (
         <div
             ref={badgeRef}
-            className={`relative flex bg-blue-gray h-max rounded-md px-3 py-2 gap-2 items-center select-none ${deleteText ? "max-sm:cursor-pointer sm:cursor-pointer md:cursor-default" : ""}`}
+            className={`bg-blue-gray relative flex h-max items-center gap-2 rounded-md px-3 py-2 select-none ${deleteText ? "max-sm:cursor-pointer sm:cursor-pointer md:cursor-default" : ""}`}
             onClick={onClick}
         >
             {/* Tooltip animé (du centre vers l'extérieur) */}
@@ -56,7 +56,7 @@ const Badge: React.FC<BadgeProps> = ({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ duration: 0.15, ease: "easeOut" }}
-                        className="absolute w-max border border-stroke lg:hidden -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-3 py-1 rounded-md shadow-md text-base font-semibold z-10"
+                        className="border-stroke absolute -top-10 left-1/2 z-10 w-max -translate-x-1/2 transform rounded-md border bg-gray-800 px-3 py-1 text-base font-semibold text-white shadow-md lg:hidden"
                     >
                         {title}
                     </motion.div>
@@ -68,10 +68,10 @@ const Badge: React.FC<BadgeProps> = ({
                 width={30}
                 height={30}
                 src={image}
-                className="w-6 h-6 object-contain"
+                className="h-6 w-6 object-contain"
             />
             <span
-                className={`font-semibold text-lg p-0 ${deleteText ? "max-sm:hidden sm:hidden lg:block" : ""}`}
+                className={`p-0 text-lg font-semibold ${deleteText ? "max-sm:hidden sm:hidden lg:block" : ""}`}
             >
                 {title}
             </span>

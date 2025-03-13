@@ -1,11 +1,11 @@
 "use client";
 
-import { Card, Image, Button } from "@heroui/react";
-import React, { useState, useEffect } from "react";
 import Badge from "@/_components/elements/badge";
-import { SquareArrowOutUpRight, X } from "lucide-react";
 import { Project } from "@/_utils/types";
+import { Button, Card, Image } from "@heroui/react";
+import { SquareArrowOutUpRight, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
 
 interface ProjectCardProps {
     project: Project;
@@ -73,7 +73,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 >
                     <Image
                         alt={project.name}
-                        className="object-cover object-top rounded-t-2xl border-stroke border-t-2 border-x-2 max-sm:w-[1200px] sm:w-[1200px] lg:h-[320px] sm:h-[180px] md:h-[250px] max-sm:h-[160px] transition-all duration-300 group-hover:opacity-70"
+                        className="border-stroke rounded-t-2xl border-x-2 border-t-2 object-cover object-top transition-all duration-300 group-hover:opacity-70 max-sm:h-[160px] max-sm:w-[1200px] sm:h-[180px] sm:w-[1200px] md:h-[250px] lg:h-[320px]"
                         src={
                             Array.isArray(project.illustrations) &&
                             project.illustrations.length > 0
@@ -90,7 +90,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             viewBox="0 0 24 24"
                             width="50"
                             height="50"
-                            className="slow-pulse absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                            className="slow-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
                         >
                             <path d="M8 5v14l11-7z" />
                         </svg>
@@ -98,9 +98,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 </div>
 
                 {/* CONTENU */}
-                <div className="bg-gray rounded-b-2xl max-sm:h-fit sm:h-fit md:px-12 md:py-4 sm:px-6 sm:py-3 max-sm:px-6 max-sm:py-3 border-stroke border-b-2 border-x-2">
-                    <div className="flex flex-col lg:gap-4 gap-1">
-                        <span className="font-bold text-2xl max-sm:text-xl max-sm:truncate">
+                <div className="bg-gray border-stroke rounded-b-2xl border-x-2 border-b-2 max-sm:h-fit max-sm:px-6 max-sm:py-3 sm:h-fit sm:px-6 sm:py-3 md:px-12 md:py-4">
+                    <div className="flex flex-col gap-1 lg:gap-4">
+                        <span className="text-2xl font-bold max-sm:truncate max-sm:text-xl">
                             {project.name}
                         </span>
                         <div className="flex gap-2">
@@ -121,12 +121,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             ))}
                         </div>
                         <Button
-                            className="rounded-xl bg-purple hover:bg-purple/90 focus:border-none active:border-none md:h-14 sm:h-12 max-sm:h-12 sm:w-1/2 max-sm:w-1/2 max-[400px]:!w-3/4 sm:mx-auto max-sm:mx-auto flex lg:w-[580px] md:w-full lg:mx-auto items-center mt-4 cursor-pointer"
+                            className="bg-purple hover:bg-purple/90 mt-4 flex cursor-pointer items-center rounded-xl focus:border-none active:border-none max-[400px]:!w-3/4 max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
                             endContent={
                                 <SquareArrowOutUpRight color={"#EAF3F6"} />
                             }
                         >
-                            <span className="font-extrabold text-lg">
+                            <span className="text-lg font-extrabold">
                                 {t("seeMore")}
                             </span>
                         </Button>
@@ -137,7 +137,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             {/* VIDEO FLOTTANTE */}
             {!isTouchDevice && isVideoVisible && isVideoExist && (
                 <div
-                    className="fixed z-50 pointer-events-none"
+                    className="pointer-events-none fixed z-50"
                     style={{
                         top: `${videoPosition.y}px`,
                         left: `${videoPosition.x}px`,
@@ -149,14 +149,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         autoPlay
                         loop
                         muted
-                        className="w-full max-h-[60rem] max-w-xl h-full rounded-xl border border-stroke"
+                        className="border-stroke h-full max-h-[60rem] w-full max-w-xl rounded-xl border"
                     />
                 </div>
             )}
 
             {isTouchDevice && isVideoVisible && isVideoExist && (
                 <div
-                    className="fixed inset-0 bg-opacity-80 backdrop-blur-md flex items-center justify-center z-50 cursor-pointer"
+                    className="bg-opacity-80 fixed inset-0 z-50 flex cursor-pointer items-center justify-center backdrop-blur-md"
                     onClick={() => setIsVideoVisible(false)}
                 >
                     <video
@@ -166,11 +166,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         muted
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen"
-                        className="w-full max-h-full max-w-xl rounded-lg object-contain py-24"
+                        className="max-h-full w-full max-w-xl rounded-lg object-contain py-24"
                     />
                     <Button
                         onPress={() => setIsVideoVisible(false)}
-                        className="absolute top-8 right-8 max-sm:top-4 max-sm:right-4 text-white text-2xl cursor-pointer"
+                        className="absolute top-8 right-8 cursor-pointer text-2xl text-white max-sm:top-4 max-sm:right-4"
                     >
                         <X size={40} />
                     </Button>

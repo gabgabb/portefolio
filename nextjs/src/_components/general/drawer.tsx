@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { MoveUpRight, X } from "lucide-react";
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
+import { MoveUpRight, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 interface DrawerProps {
     isOpen: boolean;
@@ -40,21 +40,21 @@ const CustomDrawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
         <>
             {/* Flou en arrière-plan */}
             <div
-                className={`fixed inset-0 bg-opacity-50 backdrop-blur-md transition-opacity duration-300 z-40 ${
-                    isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                className={`bg-opacity-50 fixed inset-0 z-40 backdrop-blur-md transition-opacity duration-300 ${
+                    isOpen ? "visible opacity-100" : "invisible opacity-0"
                 }`}
                 onClick={onClose}
             />
 
             {/* Drawer qui slide de la droite */}
             <div
-                className={`fixed top-0 right-0 min-[400px]:rounded-bl-xl min-[400px]:rounded-tl-2xl h-full w-[300px] max-[400px]:w-full bg-gray-900 text-white shadow-lg z-50 flex flex-col p-6 transition-transform duration-300 ${
+                className={`fixed top-0 right-0 z-50 flex h-full w-[300px] flex-col bg-gray-900 p-6 text-white shadow-lg transition-transform duration-300 max-[400px]:w-full min-[400px]:rounded-tl-2xl min-[400px]:rounded-bl-xl ${
                     isOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >
                 {/* Bouton de fermeture */}
                 <Button
-                    className="self-end text-white text-3xl"
+                    className="self-end text-3xl text-white"
                     onPress={onClose}
                 >
                     <X size={30} />
@@ -73,7 +73,7 @@ const CustomDrawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
                         <Link
                             href={"https://github.com/gabgabb"}
                             target={"_blank"}
-                            className="flex items-center text-xl gap-2"
+                            className="flex items-center gap-2 text-xl"
                         >
                             Github
                             <MoveUpRight size={18} color="#EAF3F6" />
@@ -83,24 +83,24 @@ const CustomDrawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
                                 "https://www.linkedin.com/in/gabriel-filiot-475277209/"
                             }
                             target={"_blank"}
-                            className="flex items-center text-xl gap-2"
+                            className="flex items-center gap-2 text-xl"
                         >
                             Linkedin
                             <MoveUpRight size={18} color="#EAF3F6" />
                         </Link>
                     </div>
                     {/* Switch de langue */}
-                    <div className="flex gap-1 min-[350px]:hidden text-xl underline-offset-4">
+                    <div className="flex gap-1 text-xl underline-offset-4 min-[350px]:hidden">
                         <Button
                             onPress={() => switchLocale("fr")}
-                            className={`cursor-pointer pl-0 pr-2 ${locale === "fr" ? "underline font-extrabold" : "font-medium"}`}
+                            className={`cursor-pointer pr-2 pl-0 ${locale === "fr" ? "font-extrabold underline" : "font-medium"}`}
                         >
                             FR
                         </Button>
                         <span>•</span>
                         <Button
                             onPress={() => switchLocale("en")}
-                            className={`cursor-pointer px-2 ${locale === "en" ? "underline font-extrabold" : "font-medium"}`}
+                            className={`cursor-pointer px-2 ${locale === "en" ? "font-extrabold underline" : "font-medium"}`}
                         >
                             EN
                         </Button>

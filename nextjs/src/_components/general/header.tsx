@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
+import { Button } from "@heroui/react";
 import { Menu, MoveUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Button } from "@heroui/react";
+import React from "react";
 
 interface HeaderProps {
     onOpenDrawer: () => void;
@@ -28,27 +28,27 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
     };
 
     return (
-        <header className="flex flex-row items-center justify-between max-sm:px-8 sm:px-8 pt-8 md:px-12 lg:px-24 text-white">
-            <Link href={`/${locale}`} className="flex flex-col weightGrow">
-                <h1 className="font-bold text-xl h-5">Gabriel Filiot</h1>
-                <h2 className="font-medium text-sm">{t("jobs")}</h2>
+        <header className="flex flex-row items-center justify-between pt-8 text-white max-sm:px-8 sm:px-8 md:px-12 lg:px-24">
+            <Link href={`/${locale}`} className="weightGrow flex flex-col">
+                <h1 className="h-5 text-xl font-bold">Gabriel Filiot</h1>
+                <h2 className="text-sm font-medium">{t("jobs")}</h2>
             </Link>
             <div
                 className={
-                    "flex flex-row gap-4 max-md:gap-2 max-[350px]:ml-auto"
+                    "flex flex-row gap-4 max-[350px]:ml-auto max-md:gap-2"
                 }
             >
                 <div className="flex flex-row gap-4 text-xl font-bold max-md:hidden">
                     <Link
                         href={`/${locale}/cv`}
-                        className="button-primary group transition duration-300 flex justify-center items-center weightGrow"
+                        className="button-primary group weightGrow flex items-center justify-center transition duration-300"
                     >
                         {t("cv")}
                     </Link>
                     <Link
                         href={"https://github.com/gabgabb"}
                         target={"_blank"}
-                        className="button-primary group transition duration-300 flex justify-center items-center weightGrow"
+                        className="button-primary group weightGrow flex items-center justify-center transition duration-300"
                     >
                         Github
                         <MoveUpRight size={18} color="#EAF3F6" />
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                             "https://www.linkedin.com/in/gabriel-filiot-475277209/"
                         }
                         target={"_blank"}
-                        className="button-primary group transition duration-300 flex justify-center items-center weightGrow"
+                        className="button-primary group weightGrow flex items-center justify-center transition duration-300"
                     >
                         Linkedin
                         <MoveUpRight size={18} color="#EAF3F6" />
@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                 </div>
                 <div
                     className={
-                        "flex flex-row text-xl font-bold items-center max-[350px]:hidden"
+                        "flex flex-row items-center text-xl font-bold max-[350px]:hidden"
                     }
                 >
                     <Button
@@ -74,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         className={`cursor-pointer px-2 ${
                             locale === "fr"
                                 ? "font-extrabold underline underline-offset-4"
-                                : "font-medium weightGrow"
+                                : "weightGrow font-medium"
                         }`}
                     >
                         FR
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         className={`cursor-pointer px-2 ${
                             locale === "en"
                                 ? "font-extrabold underline underline-offset-4"
-                                : "font-normal weightGrow"
+                                : "weightGrow font-normal"
                         }`}
                     >
                         EN
@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                 </div>
                 <Button
                     onPress={onOpenDrawer}
-                    className="max-md:block hidden"
+                    className="hidden max-md:block"
                     isIconOnly
                     startContent={<Menu size={32} />}
                 />
