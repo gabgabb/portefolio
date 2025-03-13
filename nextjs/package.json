@@ -7,10 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "eslint \"src/**/*.+(ts|tsx)\"",
-        "lint:debug": "eslint ./src --debug",
         "lint:fix": "eslint \"src/**/*.+(ts|tsx)\" --fix",
-        "format": "prettier . --write",
-        "format:check": "prettier . --check",
         "test-line": "npx playwright test  --reporter=line",
         "test-head": "npx playwright test --ui"
     },
