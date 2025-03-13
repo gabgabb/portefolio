@@ -18,6 +18,22 @@ html {
   }
 }
 
+@keyframes slow-pulse {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.4;
+        transform: scale(1.1);
+    }
+}
+
+.slow-pulse {
+    animation: slow-pulse 5s infinite ease-in-out;
+}
+
+
 .weightGrow {
     transition: text-shadow 0.2s ease-in-out;
 }
