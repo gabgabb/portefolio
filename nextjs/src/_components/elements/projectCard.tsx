@@ -3,6 +3,7 @@
 import Badge from "@/_components/elements/badge";
 import { Project } from "@/_utils/types";
 import { Button, Card, Image } from "@heroui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SquareArrowOutUpRight, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
@@ -145,28 +146,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 </div>
             )}
 
-            {isTouchDevice && isVideoVisible && isVideoExist && (
-                <div
-                    className="bg-opacity-80 fixed inset-0 z-50 flex cursor-pointer items-center justify-center backdrop-blur-md"
-                    onClick={() => setIsVideoVisible(false)}
-                >
-                    <video
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation?.url}`}
-                        autoPlay
-                        controls
-                        muted
-                        disablePictureInPicture
-                        controlsList="nodownload nofullscreen"
-                        className="max-h-full w-full max-w-xl rounded-lg object-contain py-24"
-                    />
-                    <Button
-                        onPress={() => setIsVideoVisible(false)}
-                        className="absolute top-8 right-8 cursor-pointer text-2xl text-white max-sm:top-4 max-sm:right-4"
+            <AnimatePresence>
+                {isTouchDevice && isVideoVisible && isVideoExist && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.1 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="bg-opacity-80 fixed inset-0 z-50 flex cursor-pointer items-center justify-center backdrop-blur-md"
+                        onClick={() => setIsVideoVisible(false)}
                     >
-                        <X size={40} />
-                    </Button>
-                </div>
-            )}
+                        <video
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation?.url}`}
+                            autoPlay
+                            controls
+                            muted
+                            disablePictureInPicture
+                            controlsList="nodownload nofullscreen"
+                            className="max-h-full w-full max-w-xl rounded-lg object-contain py-24"
+                        />
+                        <Button
+                            onPress={() => setIsVideoVisible(false)}
+                            className="absolute top-8 right-8 cursor-pointer text-2xl text-white max-sm:top-4 max-sm:right-4"
+                        >
+                            <X size={40} />
+                        </Button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
