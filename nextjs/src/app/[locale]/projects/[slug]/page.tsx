@@ -4,9 +4,11 @@ import Badge from "@/_components/elements/badge";
 import { Project } from "@/_utils/types";
 import { BreadcrumbItem, Breadcrumbs, Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import ProjectContent from "@/_components/elements/projectContent";
 
 const ProjectDetail = () => {
     const { slug } = useParams();
@@ -87,7 +89,9 @@ const ProjectDetail = () => {
                 </BreadcrumbItem>
             </Breadcrumbs>
 
-            <h1 className="text-center text-4xl font-bold max-sm:text-3xl">{project.name}</h1>
+            <h1 className="text-center text-4xl font-bold max-sm:text-3xl">
+                {project.name}
+            </h1>
 
             <div className="mt-6 flex flex-col items-center">
                 <Image
@@ -97,12 +101,15 @@ const ProjectDetail = () => {
                 />
             </div>
 
+            <ProjectContent content={project.content} />
+
             {project.videoPresentation && (
-                <div className="mx-auto mt-6 flex w-1/2 justify-center lg:w-1/3">
+                <div className="mx-auto mt-6 flex max-h-[800px] max-w-[750px] justify-center">
                     <video
                         src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation.url}`}
                         controls
-                        className="w-full max-w-2xl rounded-lg border border-gray-700"
+                        muted
+                        disablePictureInPicture
                     />
                 </div>
             )}
@@ -117,6 +124,18 @@ const ProjectDetail = () => {
                     />
                 ))}
             </div>
+            {project.url && (
+                <div className="mt-10 text-center text-xl font-bold">
+                    {t("linkToProject")}{" "}
+                    <Link
+                        className="underline-offset-4 hover:underline"
+                        target={"_blank"}
+                        href={encodeURI(project.url as string)}
+                    >
+                        {project.url}
+                    </Link>
+                </div>
+            )}
         </div>
     );
 };

@@ -115,6 +115,7 @@ export interface Project {
     url: string | null;
     shortDescription: string;
     createdAt: string;
+    content: string;
     updatedAt: string;
     publishedAt: string;
     locale: string;

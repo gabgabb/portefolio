@@ -71,7 +71,11 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
             <body className="font-bogart !bg-black text-white">
                 <NextIntlClientProvider>
                     <HeroUIProvider>
-                        <ToastContainer position={"top-right"} draggable theme={"dark"}/>
+                        <ToastContainer
+                            position={"top-right"}
+                            draggable
+                            theme={"dark"}
+                        />
                         <ClientLayout>{children}</ClientLayout>
                     </HeroUIProvider>
                 </NextIntlClientProvider>

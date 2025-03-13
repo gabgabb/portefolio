@@ -16,6 +16,7 @@
     "ProjectsPage": {
         "home": "Accueil",
         "projectsBread": "Projets",
-        "notFound": "Aucun projet trouvé."
+        "notFound": "Aucun projet trouvé.",
+        "linkToProject": "Lien vers le projet :"
     }
 }
