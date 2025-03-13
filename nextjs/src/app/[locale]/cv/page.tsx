@@ -106,7 +106,7 @@ const Cv: React.FC = () => {
                     >
                         ◀
                     </Button>
-                    <p className="text-white font-bold">
+                    <p className="text-white font-bold w-max">
                         {pageNumber} {t("of")} {numPages}
                     </p>
                     <Button
