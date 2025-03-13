@@ -558,13 +558,6 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    shortDescription: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     technologies: Schema.Attribute.Relation<
       'oneToMany',
