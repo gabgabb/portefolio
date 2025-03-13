@@ -1,16 +1,19 @@
 {
-  "Header": {
-    "cv": "CV",
-    "jobs": "Développeur full stack"
-  },
-  "Cards": {
-    "seeMore": "Voir plus",
-    "experience": "Expériences",
-    "projects": "Projets",
-    "mission": "Mission"
-  },
-  "Cv": {
-    "of": "sur",
-    "download": "Télécharger"
-  }
+    "Header": {
+        "cv": "CV",
+        "jobs": "Développeur full stack"
+    },
+    "Cards": {
+        "seeMore": "Voir plus",
+        "experience": "Expériences",
+        "projects": "Projets",
+        "mission": "Mission"
+    },
+    "Cv": {
+        "of": "sur",
+        "download": "Télécharger"
+    },
+    "Projects": {
+        "notFound": "Aucun projet trouvé."
+    }
 }

@@ -23,7 +23,8 @@
         "next-intl": "^4.0.0",
         "react": "19.0.0",
         "react-dom": "19.0.0",
-        "react-pdf": "^9.2.1"
+        "react-pdf": "^9.2.1",
+        "react-toastify": "^11.0.5"
     },
     "devDependencies": {
         "@eslint/compat": "^1.2.6",

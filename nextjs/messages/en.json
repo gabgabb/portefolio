@@ -1,16 +1,19 @@
 {
-  "Header": {
-    "cv": "Resume",
-    "jobs": "Full stack developer"
-  },
-  "Cards": {
-    "seeMore": "See more",
-    "experience": "Experiences",
-    "projects": "Projects",
-    "mission": "Freelance"
-  },
-  "Cv": {
-    "of": "of",
-    "download": "Download"
-  }
+    "Header": {
+        "cv": "Resume",
+        "jobs": "Full stack developer"
+    },
+    "Cards": {
+        "seeMore": "See more",
+        "experience": "Experiences",
+        "projects": "Projects",
+        "mission": "Freelance"
+    },
+    "Cv": {
+        "of": "of",
+        "download": "Download"
+    },
+    "Projects": {
+        "notFound": "No projects found."
+    }
 }

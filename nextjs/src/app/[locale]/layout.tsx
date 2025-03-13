@@ -6,6 +6,7 @@ import { HeroUIProvider } from "@heroui/system";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 export const metadata = {
     title: "Gabriel Filiot - Full Stack Developer Portfolio",
@@ -70,6 +71,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
             <body className="font-bogart !bg-black text-white">
                 <NextIntlClientProvider>
                     <HeroUIProvider>
+                        <ToastContainer position={"top-right"} draggable theme={"dark"}/>
                         <ClientLayout>{children}</ClientLayout>
                     </HeroUIProvider>
                 </NextIntlClientProvider>
