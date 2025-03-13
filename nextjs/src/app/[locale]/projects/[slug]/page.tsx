@@ -1,6 +1,7 @@
 "use client";
 
 import Badge from "@/_components/elements/badge";
+import ProjectContent from "@/_components/elements/projectContent";
 import { Project } from "@/_utils/types";
 import { BreadcrumbItem, Breadcrumbs, Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -8,7 +9,6 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import ProjectContent from "@/_components/elements/projectContent";
 
 const ProjectDetail = () => {
     const { slug } = useParams();
@@ -103,16 +103,23 @@ const ProjectDetail = () => {
 
             <ProjectContent content={project.content} />
 
-            {project.videoPresentation && (
-                <div className="mx-auto mt-6 flex max-h-[800px] max-w-[750px] justify-center">
-                    <video
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation.url}`}
-                        controls
-                        muted
-                        disablePictureInPicture
-                    />
-                </div>
-            )}
+            {project.videosPresentation &&
+                project.videosPresentation.length > 0 && (
+                    <div className="mx-auto mt-6 flex max-w-[750px] flex-col items-center gap-6">
+                        {project.videosPresentation.map((video, index) => (
+                            <div
+                                key={index}
+                                className="mx-auto flex max-h-[800px] w-full max-w-[750px] justify-center"
+                            >
+                                <video
+                                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${video.url}`}
+                                    controls
+                                    muted
+                                />
+                            </div>
+                        ))}
+                    </div>
+                )}
 
             <div className="mt-6 flex flex-wrap justify-center gap-4">
                 {project.technologies.map((tech, index) => (

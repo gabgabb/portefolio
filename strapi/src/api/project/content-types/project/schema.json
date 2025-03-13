@@ -68,9 +68,9 @@
       "targetField": "name",
       "required": true
     },
-    "videoPresentation": {
+    "videosPresentation": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "files",

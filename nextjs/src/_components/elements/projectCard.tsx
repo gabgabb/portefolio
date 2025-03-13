@@ -26,10 +26,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     useEffect(() => {
         setIsTouchDevice(window.innerWidth < 1024);
 
-        if (project.videoPresentation) {
+        if (project.videosPresentation) {
             setIsVideoExist(true);
         }
-    }, [project.videoPresentation]);
+    }, [project.videosPresentation]);
+
+    const getRandomVideo = () => {
+        if (
+            project.videosPresentation &&
+            project.videosPresentation.length > 0
+        ) {
+            const randomIndex = Math.floor(
+                Math.random() * project.videosPresentation.length,
+            );
+            return project.videosPresentation[randomIndex].url;
+        }
+        return null;
+    };
+
+    const randomVideoUrl = getRandomVideo();
 
     useEffect(() => {
         if (isTouchDevice && isVideoVisible && isVideoExist) {
@@ -139,52 +154,58 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </Card>
 
             {/* VIDEO FLOTTANTE */}
-            {!isTouchDevice && isVideoVisible && isVideoExist && (
-                <div
-                    className="pointer-events-none fixed z-50"
-                    style={{
-                        top: `${videoPosition.y}px`,
-                        left: `${videoPosition.x}px`,
-                        transform: "translate(-50%, -50%)",
-                    }}
-                >
-                    <video
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation?.url}`}
-                        autoPlay
-                        loop
-                        muted
-                        className="border-stroke h-full max-h-[60rem] w-full max-w-xl rounded-xl border"
-                    />
-                </div>
-            )}
-
-            <AnimatePresence>
-                {isTouchDevice && isVideoVisible && isVideoExist && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 1.1 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 1.1 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="bg-opacity-80 fixed inset-0 z-50 flex cursor-pointer items-center justify-center backdrop-blur-md"
-                        onClick={() => setIsVideoVisible(false)}
+            {!isTouchDevice &&
+                isVideoVisible &&
+                isVideoExist &&
+                randomVideoUrl && (
+                    <div
+                        className="pointer-events-none fixed z-50"
+                        style={{
+                            top: `${videoPosition.y}px`,
+                            left: `${videoPosition.x}px`,
+                            transform: "translate(-50%, -50%)",
+                        }}
                     >
                         <video
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.videoPresentation?.url}`}
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${randomVideoUrl}`}
                             autoPlay
-                            controls
+                            loop
                             muted
-                            disablePictureInPicture
-                            controlsList="nodownload nofullscreen"
-                            className="max-h-full w-full max-w-xl rounded-lg object-contain py-24"
+                            className="border-stroke h-full max-h-[60rem] w-full max-w-xl rounded-xl border"
                         />
-                        <Button
-                            onPress={() => setIsVideoVisible(false)}
-                            className="absolute top-8 right-8 cursor-pointer text-2xl text-white max-sm:top-4 max-sm:right-4"
-                        >
-                            <X size={40} />
-                        </Button>
-                    </motion.div>
+                    </div>
                 )}
+
+            <AnimatePresence>
+                {isTouchDevice &&
+                    isVideoVisible &&
+                    isVideoExist &&
+                    randomVideoUrl && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 1.1 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.1 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="bg-opacity-80 fixed inset-0 z-50 flex cursor-pointer items-center justify-center backdrop-blur-md"
+                            onClick={() => setIsVideoVisible(false)}
+                        >
+                            <video
+                                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${randomVideoUrl}`}
+                                autoPlay
+                                controls
+                                muted
+                                disablePictureInPicture
+                                controlsList="nodownload nofullscreen"
+                                className="max-h-full w-full max-w-xl rounded-lg object-contain py-24 max-sm:px-4"
+                            />
+                            <Button
+                                onPress={() => setIsVideoVisible(false)}
+                                className="absolute top-8 right-8 cursor-pointer text-2xl text-white max-sm:top-4 max-sm:right-4"
+                            >
+                                <X size={40} />
+                            </Button>
+                        </motion.div>
+                    )}
             </AnimatePresence>
         </div>
     );

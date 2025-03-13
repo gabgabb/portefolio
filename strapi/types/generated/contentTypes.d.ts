@@ -573,7 +573,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
-    videoPresentation: Schema.Attribute.Media<'files' | 'videos'>;
+    videosPresentation: Schema.Attribute.Media<'files' | 'videos', true>;
   };
 }
 

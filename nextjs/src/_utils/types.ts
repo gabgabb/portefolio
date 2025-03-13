@@ -122,6 +122,6 @@ export interface Project {
     slug: string;
     technologies: Technology[];
     illustrations: Image[];
-    videoPresentation?: Video | null; // Ajout de la vidéo en optionnel
+    videosPresentation?: Video[] | null; // Ajout de la vidéo en optionnel
     localizations: any[];
 }
