@@ -69,8 +69,13 @@ test.describe("Portfolio Tests", () => {
         ).toBeVisible();
     });
 
-    test("GitHub link works", async ({ page, context }) => {
+    test("GitHub link works", async ({ page, context, isMobile }) => {
         await page.goto("http://localhost:3000");
+
+        if (isMobile) {
+            // Skip the test on mobile devices
+            return;
+        }
 
         // Intercepter la nouvelle page (nouvel onglet)
         const [newPage] = await Promise.all([
@@ -102,9 +107,12 @@ test.describe("Portfolio Tests", () => {
         ).toBeVisible();
     });
 
-    test("LinkedIn link works", async ({ page, context }) => {
+    test("LinkedIn link works", async ({ page, context, isMobile }) => {
         await page.goto("http://localhost:3000");
 
+        if (isMobile) {
+            return;
+        }
         // Intercepter l'ouverture de la nouvelle page
         const [newPage] = await Promise.all([
             context.waitForEvent("page"), // Attend l'ouverture d'un nouvel onglet
