@@ -37,6 +37,28 @@ interface Image {
     publishedAt: string;
 }
 
+interface Video {
+    id: number;
+    documentId: string;
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number | null;
+    height: number | null;
+    formats: null; // Peut être mis à jour si des formats sont ajoutés plus tard
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: string | null;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+}
+
 export interface Technology {
     id: number;
     documentId: string;
@@ -93,11 +115,13 @@ export interface Project {
     url: string | null;
     shortDescription: string;
     createdAt: string;
+    content: string;
     updatedAt: string;
     publishedAt: string;
     locale: string;
     slug: string;
     technologies: Technology[];
     illustrations: Image[];
+    videosPresentation?: Video[] | null; // Ajout de la vidéo en optionnel
     localizations: any[];
 }

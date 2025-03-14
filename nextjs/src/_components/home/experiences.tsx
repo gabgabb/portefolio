@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Experience from "@/_components/elements/experience";
 import { ExperienceType } from "@/_utils/types";
 import { useLocale, useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
 
 export const Experiences: React.FC = () => {
     const [experiences, setExperiences] = useState<ExperienceType[]>([]);
@@ -42,9 +42,9 @@ export const Experiences: React.FC = () => {
     if (!experiences.length) return <p>Chargement...</p>;
 
     return (
-        <div className="flex flex-col gap-2 flex-1">
-            <h2 className="font-extrabold text-3xl">{t("experience")}</h2>
-            <div className="md:min-h-[250px] h-fit flex-col rounded-xl bg-gray border border-stroke p-4 flex flex-wrap gap-3">
+        <div className="flex flex-1 flex-col gap-2">
+            <h2 className="text-3xl font-extrabold">{t("experience")}</h2>
+            <div className="bg-gray border-stroke flex h-fit flex-col flex-wrap gap-3 rounded-xl border p-4 md:min-h-[250px]">
                 {experiences.map((exp) => (
                     <Experience
                         key={exp.id}

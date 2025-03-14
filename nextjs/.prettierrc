@@ -1,5 +1,15 @@
 {
-  "endOfLine": "auto",
-  "tabWidth": 4,
-  "useTabs": false
+    "endOfLine": "auto",
+    "tabWidth": 4,
+    "useTabs": false,
+    "plugins": [
+        "prettier-plugin-organize-attributes",
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-tailwindcss"
+    ],
+    "tailwindFunctions": [
+        "clsx",
+        "cn"
+    ],
+    "semi": true
 }

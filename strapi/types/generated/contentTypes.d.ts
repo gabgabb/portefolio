@@ -515,6 +515,18 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -546,13 +558,6 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    shortDescription: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     technologies: Schema.Attribute.Relation<
       'oneToMany',
@@ -568,6 +573,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    videosPresentation: Schema.Attribute.Media<'files' | 'videos', true>;
   };
 }
 

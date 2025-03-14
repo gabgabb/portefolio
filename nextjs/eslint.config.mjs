@@ -1,11 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import typescriptEslintEslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-plugin-prettier";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +22,10 @@ export default [
             prettier,
         },
         rules: {
-            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false, endOfLine: "auto" }],
+            "prettier/prettier": [
+                "error",
+                { tabWidth: 4, useTabs: false, endOfLine: "auto" },
+            ],
             camelcase: "off",
             "import/prefer-default-export": "off",
             "react/jsx-filename-extension": "off",
@@ -42,10 +45,12 @@ export default [
             ],
         },
     },
-    ...compat.extends("plugin:@typescript-eslint/recommended", "prettier").map((config) => ({
-        ...config,
-        files: ["**/*.+(ts|tsx)"],
-    })),
+    ...compat
+        .extends("plugin:@typescript-eslint/recommended", "prettier")
+        .map((config) => ({
+            ...config,
+            files: ["**/*.+(ts|tsx)"],
+        })),
     {
         files: ["**/*.+(ts|tsx)"],
         plugins: {

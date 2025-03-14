@@ -1,16 +1,16 @@
 "use client";
 
+import { Image } from "@heroui/react";
+import { useLocale } from "next-intl";
 import Link from "next/link";
 import React from "react";
-import { useLocale } from "next-intl";
-import { Image } from "@heroui/react";
 
 const Footer: React.FC = () => {
     const locale = useLocale();
 
     return (
-        <footer className="border-t border-stroke px-4">
-            <div className="flex flex-col items-start py-8 px-4 gap-4 mx-auto w-full max-w-[1000px]">
+        <footer className="border-stroke border-t px-4">
+            <div className="mx-auto flex w-full max-w-[1000px] flex-col items-start gap-4 px-4 py-8">
                 <div className="flex items-center justify-center gap-3 max-sm:mx-auto">
                     <Link
                         href="https://github.com/gabgabb"
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                         />
                     </Link>
                 </div>
-                <div className="flex flex-wrap items-center justify-center font-extrabold text-2xl text-center gap-x-2 gap-y-1 sm:gap-x-4 sm:gap-y-2 max-sm:text-base max-sm:mx-auto">
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-2xl font-extrabold max-sm:mx-auto max-sm:text-base sm:gap-x-4 sm:gap-y-2">
                     <span className="whitespace-nowrap">Build with</span>
                     <Link
                         href="https://nextjs.org/"
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/nextJs.png"}
                             alt={"Next.js image"}
-                            className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px]"
+                            className="h-[30px] w-[30px] sm:h-[40px] sm:w-[40px]"
                         />
                     </Link>
 
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                         <Image
                             src={"/strapi.png"}
                             alt={"Strapi image"}
-                            className="w-[80px] h-[20px] sm:w-[120px] sm:h-[30px]"
+                            className="h-[20px] w-[80px] sm:h-[30px] sm:w-[120px]"
                         />
                     </Link>
 

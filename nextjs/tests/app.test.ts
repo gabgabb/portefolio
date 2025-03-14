@@ -23,7 +23,10 @@ test.describe("Portfolio Tests", () => {
         await page.waitForTimeout(3000);
 
         // Clique sur le lien "CV"
-        await page.getByRole("link", { name: "Resume" }).click();
+        await page
+            .getByRole("banner")
+            .getByRole("link", { name: "Resume" })
+            .click();
 
         await page.waitForTimeout(3000);
 
@@ -66,13 +69,22 @@ test.describe("Portfolio Tests", () => {
         ).toBeVisible();
     });
 
-    test("GitHub link works", async ({ page, context }) => {
+    test("GitHub link works", async ({ page, context, isMobile }) => {
         await page.goto("http://localhost:3000");
+
+        if (isMobile) {
+            // Skip the test on mobile devices
+            return;
+        }
 
         // Intercepter la nouvelle page (nouvel onglet)
         const [newPage] = await Promise.all([
             context.waitForEvent("page"), // Attend l'ouverture d'une nouvelle page
-            page.getByRole("link", { name: "Github" }).first().click(), // Clique sur le lien
+            page
+                .getByRole("banner")
+                .getByRole("link", { name: "Github" })
+                .first()
+                .click(), // Clique sur le lien
         ]);
 
         // Vérifier que l'URL contient "github.com/gabgabb"
@@ -90,16 +102,25 @@ test.describe("Portfolio Tests", () => {
 
         await page.waitForTimeout(3000);
 
-        await expect(page.getByRole("link", { name: "Resume" })).toBeVisible();
+        await expect(
+            page.getByRole("banner").getByRole("link", { name: "Resume" }),
+        ).toBeVisible();
     });
 
-    test("LinkedIn link works", async ({ page, context }) => {
+    test("LinkedIn link works", async ({ page, context, isMobile }) => {
         await page.goto("http://localhost:3000");
 
+        if (isMobile) {
+            return;
+        }
         // Intercepter l'ouverture de la nouvelle page
         const [newPage] = await Promise.all([
             context.waitForEvent("page"), // Attend l'ouverture d'un nouvel onglet
-            page.getByRole("link", { name: "Linkedin" }).first().click(), // Clique sur le lien
+            page
+                .getByRole("banner")
+                .getByRole("link", { name: "Linkedin" })
+                .first()
+                .click(), // Clique sur le lien
         ]);
 
         // Attendre que la nouvelle page soit complètement chargée

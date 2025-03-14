@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import ProjectCard from "@/_components/elements/projectCard";
 import { Project } from "@/_utils/types";
 import { useLocale, useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -44,9 +44,9 @@ const Projects: React.FC = () => {
     return (
         <section
             id={"projects"}
-            className="mt-10 w-full pb-10 flex flex-col gap-2"
+            className="mt-10 flex w-full flex-col gap-2 pb-10"
         >
-            <h2 className="font-extrabold text-3xl">{t("projects")}</h2>
+            <h2 className="text-3xl font-extrabold">{t("projects")}</h2>
             <div className="flex flex-col gap-6">
                 {projects.map((project) => (
                     <ProjectCard key={project.id} project={project} />

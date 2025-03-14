@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
 import { Button } from "@heroui/react";
 import { saveAs } from "file-saver";
-import "react-pdf/dist/esm/Page/TextLayer.css";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import { Download } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import React, { useEffect, useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc =
     "//unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs";
@@ -67,16 +67,16 @@ const Cv: React.FC = () => {
     }, [scale]);
 
     return (
-        <div className="flex flex-col items-center mt-8 relative pb-16">
+        <div className="relative mt-8 flex flex-col items-center pb-16">
             {/* Document avec ombre */}
-            <div className="relative group h-fit">
+            <div className="group relative h-fit">
                 <div
                     style={{ height: `${Math.min(950, 830 * scale)}px` }}
                     data-testid={"cv"}
                 >
                     <Document
                         key={scale}
-                        className={`rounded-xl overflow-hidden mt-4 shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
+                        className={`mt-4 overflow-hidden rounded-xl shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
                             loading ? "hidden" : ""
                         }`}
                         file={pdfFile}
@@ -88,33 +88,32 @@ const Cv: React.FC = () => {
 
                 {/* Barre de navigation */}
                 <div
-                    className={`left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-[#1e293b] p-3 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.6)] transition-opacity duration-300 z-20
-                        ${
-                            scale <= 1 || isMobile
-                                ? "opacity-100 fixed bottom-[20px]" // Fixe en bas si scale ≤ 0.7
-                                : "opacity-0 group-hover:opacity-100 absolute bottom-[50px]"
-                        }`}
+                    className={`left-1/2 z-20 flex -translate-x-1/2 transform items-center space-x-4 rounded-lg bg-[#1e293b] p-3 shadow-[0px_4px_20px_rgba(0,0,0,0.6)] transition-opacity duration-300 ${
+                        scale <= 1 || isMobile
+                            ? "fixed bottom-[20px] opacity-100" // Fixe en bas si scale ≤ 0.7
+                            : "absolute bottom-[50px] opacity-0 group-hover:opacity-100"
+                    }`}
                 >
                     <Button
                         onPress={prevPage}
                         disabled={pageNumber <= 1}
-                        className={`px-4 py-2 rounded-md ${
+                        className={`rounded-md px-4 py-2 ${
                             pageNumber <= 1
-                                ? "opacity-50 cursor-not-allowed"
+                                ? "cursor-not-allowed opacity-50"
                                 : "hover:bg-gray-700"
                         }`}
                     >
                         ◀
                     </Button>
-                    <p className="text-white font-bold">
+                    <p className="w-max font-bold text-white">
                         {pageNumber} {t("of")} {numPages}
                     </p>
                     <Button
                         onPress={nextPage}
                         disabled={pageNumber >= (numPages || 1)}
-                        className={`px-4 py-2 rounded-md ${
+                        className={`rounded-md px-4 py-2 ${
                             pageNumber >= (numPages || 1)
-                                ? "opacity-50 cursor-not-allowed"
+                                ? "cursor-not-allowed opacity-50"
                                 : "hover:bg-gray-700"
                         }`}
                     >
@@ -126,7 +125,7 @@ const Cv: React.FC = () => {
             {/* Bouton de téléchargement (placé sous le CV) */}
             <Button
                 onPress={downloadPdf}
-                className="mt-6 cursor-pointer flex items-center px-4 py-2 bg-purple hover:bg-purple/90 shadow-sm shadow-white/40 text-white font-bold rounded-lg"
+                className="bg-purple hover:bg-purple/90 mt-6 flex cursor-pointer items-center rounded-lg px-4 py-2 font-bold text-white shadow-sm shadow-white/40"
             >
                 <Download size={20} />
                 <span>{t("download")}</span>
