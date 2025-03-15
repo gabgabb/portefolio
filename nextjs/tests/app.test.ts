@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Portfolio Tests", () => {
-    // Navigate to the homepage before each test (using relative URL)
+    // Navigate to the homepage before each test using a relative URL
     test.beforeEach(async ({ page }) => {
         await page.goto("/");
     });
@@ -17,18 +17,26 @@ test.describe("Portfolio Tests", () => {
         page,
         isMobile,
     }) => {
-        test.skip(isMobile, "Skipping CV link test on mobile devices");
+        if (isMobile) {
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
 
-        const cvLink = page
-            .getByRole("banner")
-            .getByRole("link", { name: "Resume" });
-        await expect(cvLink).toBeVisible();
-
-        // Click the CV link and wait for URL change (using relative URL matching)
-        await cvLink.click();
+            // Then get the "Resume" link from the drawer.
+            const cvLink = page.getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+            await cvLink.click();
+        } else {
+            // On desktop, get the "Resume" link directly from the banner.
+            const cvLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+            await cvLink.click();
+        }
+        await page.waitForTimeout(3000);
         await expect(page).toHaveURL(/\/cv$/);
-
-        // Verify that the CV element is visible on the page
         await expect(page.getByTestId("cv")).toBeVisible();
     });
 
@@ -49,7 +57,7 @@ test.describe("Portfolio Tests", () => {
     });
 
     test("Switch language to French", async ({ page }) => {
-        // Start from the English version by navigating to /en
+        // Navigate to the English version before switching back to French
         await page.goto("/en");
         const frenchButton = page.getByRole("button", { name: "FR" });
         await expect(frenchButton).toBeVisible();
@@ -63,43 +71,81 @@ test.describe("Portfolio Tests", () => {
     });
 
     test("GitHub link works", async ({ page, context, isMobile }) => {
-        test.skip(isMobile, "Skipping GitHub link test on mobile devices");
+        if (isMobile) {
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
 
-        // Intercept the new page that opens when clicking the GitHub link
-        const githubLink = page
-            .getByRole("banner")
-            .getByRole("link", { name: "Github" })
-            .first();
-        const [newPage] = await Promise.all([
-            context.waitForEvent("page"),
-            githubLink.click(),
-        ]);
-        await newPage.waitForLoadState();
-        expect(newPage.url()).toContain("github.com/gabgabb");
+            // Then, get the GitHub link from the drawer.
+            const githubLink = page
+                .getByRole("link", { name: "Github" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                githubLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("github.com/gabgabb");
+        } else {
+            const githubLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Github" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                githubLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("github.com/gabgabb");
+        }
     });
 
     test("CV link is present", async ({ page, isMobile }) => {
-        test.skip(isMobile, "Skipping CV link test on mobile devices");
+        if (isMobile) {
+            // On mobile, open the drawer menu to access the link.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
 
-        const cvLink = page
-            .getByRole("banner")
-            .getByRole("link", { name: "Resume" });
-        await expect(cvLink).toBeVisible();
+            const cvLink = page.getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+        } else {
+            const cvLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+        }
     });
 
     test("LinkedIn link works", async ({ page, context, isMobile }) => {
-        test.skip(isMobile, "LinkedIn link test on mobile devices");
+        if (isMobile) {
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
 
-        // Intercept the new page that opens when clicking the LinkedIn link
-        const linkedinLink = page
-            .getByRole("banner")
-            .getByRole("link", { name: "Linkedin" })
-            .first();
-        const [newPage] = await Promise.all([
-            context.waitForEvent("page"),
-            linkedinLink.click(),
-        ]);
-        await newPage.waitForLoadState();
-        expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+            // Then, get the LinkedIn link from the drawer.
+            const linkedinLink = page
+                .getByRole("link", { name: "Linkedin" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                linkedinLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+        } else {
+            const linkedinLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Linkedin" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                linkedinLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+        }
     });
 });

@@ -1,7 +1,8 @@
 {
     "Header": {
         "cv": "CV",
-        "jobs": "Développeur full stack"
+        "jobs": "Développeur full stack",
+        "home": "Accueil"
     },
     "Cards": {
         "seeMore": "Voir plus",

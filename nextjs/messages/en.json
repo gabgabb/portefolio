@@ -1,7 +1,8 @@
 {
     "Header": {
         "cv": "Resume",
-        "jobs": "Full stack developer"
+        "jobs": "Full stack developer",
+        "home": "Home"
     },
     "Cards": {
         "seeMore": "See more",
