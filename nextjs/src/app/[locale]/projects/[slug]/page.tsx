@@ -76,7 +76,7 @@ const ProjectDetail = () => {
         <div className="container mx-auto px-4 py-12">
             <Breadcrumbs className="mb-10 text-lg font-semibold">
                 <BreadcrumbItem
-                    className="text-gray-light/90"
+                    className="text-gray-light/90 transition-all hover:text-white"
                     href={`/${locale}`}
                 >
                     {t("home")}
