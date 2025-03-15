@@ -126,7 +126,7 @@ const ProjectDetail = () => {
                     <Badge
                         key={index}
                         title={tech.name}
-                        image={tech.logo.url}
+                        image={`${process.env.NEXT_PUBLIC_STRAPI_URL}${tech.logo.url}`}
                         deleteText
                     />
                 ))}

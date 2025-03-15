@@ -64,6 +64,13 @@ const CustomDrawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
                 <nav className="flex flex-col-reverse justify-start gap-10 text-lg font-bold">
                     <div className="flex flex-col gap-4">
                         <Link
+                            href={`/${locale}`}
+                            className="text-xl"
+                            onClick={onClose}
+                        >
+                            {t("home")}
+                        </Link>
+                        <Link
                             href={`/${locale}/cv`}
                             className="text-xl"
                             onClick={onClose}

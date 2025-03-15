@@ -65,5 +65,8 @@ logs: ## Show logs
 status: ## Show status
 	docker ps -a
 
-test: ## Run tests
+test: ## Run tests in head mode
+	cd nextjs && yarn run test-line
+
+test-head: ## Run tests in headless mode
 	cd nextjs && yarn run test-head

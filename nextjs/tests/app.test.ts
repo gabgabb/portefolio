@@ -1,11 +1,15 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Portfolio Tests", () => {
-    test("Next.js homepage loads correctly", async ({ page }) => {
-        await page.goto("http://localhost:3000");
+    // Navigate to the homepage before each test using a relative URL
+    test.beforeEach(async ({ page }) => {
+        await page.goto("/");
+    });
+
+    test("Homepage loads correctly", async ({ page }) => {
         await expect(page).toHaveTitle(/Gabriel Filiot/);
         await expect(
-            page.getByRole("heading", { name: "Full stack developer" }),
+            page.getByRole("heading", { name: /full stack developer/i }),
         ).toBeVisible();
     });
 
@@ -14,129 +18,134 @@ test.describe("Portfolio Tests", () => {
         isMobile,
     }) => {
         if (isMobile) {
-            // Skip the test on mobile devices
-            return;
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
+
+            // Then get the "Resume" link from the drawer.
+            const cvLink = page.getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+            await cvLink.click();
+        } else {
+            // On desktop, get the "Resume" link directly from the banner.
+            const cvLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+            await cvLink.click();
         }
-
-        await page.goto("http://localhost:3000");
-
         await page.waitForTimeout(3000);
-
-        // Clique sur le lien "CV"
-        await page
-            .getByRole("banner")
-            .getByRole("link", { name: "Resume" })
-            .click();
-
-        await page.waitForTimeout(3000);
-
-        // Vérifier que l'URL contient "/cv"
         await expect(page).toHaveURL(/\/cv$/);
-
-        await page.waitForTimeout(3000);
-
-        // Vérifier que la page affiche un élément propre au CV
         await expect(page.getByTestId("cv")).toBeVisible();
     });
 
     test("Switch language to English", async ({ page }) => {
-        await page.goto("http://localhost:3000");
+        // Click the "EN" button to change language
+        const englishButton = page.getByRole("button", {
+            name: "EN",
+            exact: true,
+        });
+        await expect(englishButton).toBeVisible();
+        await englishButton.click();
 
-        // Clique sur "EN" pour changer la langue
-        await page.getByRole("button", { name: "EN", exact: true }).click();
-
-        // Vérifier que l'URL a bien changé vers "/en"
+        // Verify that the URL changes to include "/en" and that the page displays English text
         await expect(page).toHaveURL(/\/en/);
-
-        // Vérifier que le texte de la page est bien en anglais
         await expect(
-            page.getByRole("heading", { name: "Full stack developer" }),
+            page.getByRole("heading", { name: /full stack developer/i }),
         ).toBeVisible();
     });
 
     test("Switch language to French", async ({ page }) => {
-        await page.goto("http://localhost:3000/en");
+        // Navigate to the English version before switching back to French
+        await page.goto("/en");
+        const frenchButton = page.getByRole("button", { name: "FR" });
+        await expect(frenchButton).toBeVisible();
+        await frenchButton.click();
 
-        // Clique sur "FR" pour revenir en français
-        await page.getByRole("button", { name: "FR" }).click();
-
-        // Vérifier que l'URL a bien changé vers "/fr"
+        // Verify that the URL changes to include "/fr" and that the page displays French text
         await expect(page).toHaveURL(/\/fr/);
-
-        // Vérifier que le texte est bien en français
         await expect(
-            page.getByRole("heading", { name: "Développeur Full Stack" }),
+            page.getByRole("heading", { name: /Développeur Full Stack/i }),
         ).toBeVisible();
     });
 
     test("GitHub link works", async ({ page, context, isMobile }) => {
-        await page.goto("http://localhost:3000");
-
         if (isMobile) {
-            // Skip the test on mobile devices
-            return;
-        }
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
 
-        // Intercepter la nouvelle page (nouvel onglet)
-        const [newPage] = await Promise.all([
-            context.waitForEvent("page"), // Attend l'ouverture d'une nouvelle page
-            page
+            // Then, get the GitHub link from the drawer.
+            const githubLink = page
+                .getByRole("link", { name: "Github" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                githubLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("github.com/gabgabb");
+        } else {
+            const githubLink = page
                 .getByRole("banner")
                 .getByRole("link", { name: "Github" })
-                .first()
-                .click(), // Clique sur le lien
-        ]);
-
-        // Vérifier que l'URL contient "github.com/gabgabb"
-        await newPage.waitForLoadState();
-        expect(newPage.url()).toContain("github.com/gabgabb");
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                githubLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("github.com/gabgabb");
+        }
     });
 
     test("CV link is present", async ({ page, isMobile }) => {
         if (isMobile) {
-            // Skip the test on mobile devices
-            return;
+            // On mobile, open the drawer menu to access the link.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
+
+            const cvLink = page.getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
+        } else {
+            const cvLink = page
+                .getByRole("banner")
+                .getByRole("link", { name: "Resume" });
+            await expect(cvLink).toBeVisible();
         }
-
-        await page.goto("http://localhost:3000");
-
-        await page.waitForTimeout(3000);
-
-        await expect(
-            page.getByRole("banner").getByRole("link", { name: "Resume" }),
-        ).toBeVisible();
     });
 
     test("LinkedIn link works", async ({ page, context, isMobile }) => {
-        await page.goto("http://localhost:3000");
-
         if (isMobile) {
-            return;
-        }
-        // Intercepter l'ouverture de la nouvelle page
-        const [newPage] = await Promise.all([
-            context.waitForEvent("page"), // Attend l'ouverture d'un nouvel onglet
-            page
+            // On mobile, open the drawer menu first.
+            const drawerButton = page.getByRole("button", { name: /menu/i });
+            await expect(drawerButton).toBeVisible();
+            await drawerButton.click();
+
+            // Then, get the LinkedIn link from the drawer.
+            const linkedinLink = page
+                .getByRole("link", { name: "Linkedin" })
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                linkedinLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+        } else {
+            const linkedinLink = page
                 .getByRole("banner")
                 .getByRole("link", { name: "Linkedin" })
-                .first()
-                .click(), // Clique sur le lien
-        ]);
-
-        // Attendre que la nouvelle page soit complètement chargée
-        await newPage.waitForLoadState();
-
-        // Vérifier que l'URL contient "linkedin.com/in/gabriel-filiot"
-        expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+                .first();
+            const [newPage] = await Promise.all([
+                context.waitForEvent("page"),
+                linkedinLink.click(),
+            ]);
+            await newPage.waitForLoadState();
+            expect(newPage.url()).toContain("linkedin.com/in/gabriel-filiot");
+        }
     });
-
-    // test("About Me section is visible", async ({ page }) => {
-    //     await page.goto("http://localhost:3000");
-    //     await expect(page.getByText(/Développeur Full Stack français basé à Nantes/)).toBeVisible();
-    // });
-
-    //test("Projects section loads", async ({ page }) => {
-    //  await page.goto("http://localhost:3000");
-    //await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
-    //});
 });

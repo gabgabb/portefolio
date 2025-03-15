@@ -5,7 +5,7 @@ import { Menu, MoveUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface HeaderProps {
     onOpenDrawer: () => void;
@@ -17,6 +17,12 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
     const router = useRouter();
 
     const t = useTranslations("Header");
+
+    const [mounted, setMounted] = useState<boolean>(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Fonction pour changer de langue
     const switchLocale = (newLocale: string) => {
@@ -91,12 +97,15 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         EN
                     </Button>
                 </div>
-                <Button
-                    onPress={onOpenDrawer}
-                    className="hidden max-md:block"
-                    isIconOnly
-                    startContent={<Menu size={32} />}
-                />
+                {mounted && (
+                    <Button
+                        onPress={onOpenDrawer}
+                        className="hidden max-md:block"
+                        isIconOnly
+                        aria-label="Menu"
+                        startContent={<Menu size={32} />}
+                    />
+                )}
             </div>
         </header>
     );
