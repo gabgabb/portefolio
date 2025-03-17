@@ -140,7 +140,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                                 );
                                 router.refresh(); // Force le rechargement de la page
                             }}
-                            className="bg-purple hover:bg-purple/90 mt-4 flex cursor-pointer items-center rounded-xl focus:border-none active:border-none max-[400px]:!w-3/4 max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
+                            className="bg-purple hover:bg-purple/80 mt-4 flex cursor-pointer items-center rounded-xl transition-all focus:border-none active:border-none max-[400px]:!w-3/4 max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
                             endContent={
                                 <SquareArrowOutUpRight color={"#EAF3F6"} />
                             }

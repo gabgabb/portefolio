@@ -64,7 +64,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ content }) => {
                     }
                     case "strong":
                         return (
-                            <strong className="mt-4 block font-extrabold text-gray-50">
+                            <strong className="mt-4 inline font-extrabold text-gray-50">
                                 {domToReact(
                                     element.children as unknown as DOMNode[],
                                     options,

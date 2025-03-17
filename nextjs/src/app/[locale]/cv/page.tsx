@@ -66,7 +66,7 @@ const Cv: React.FC = () => {
             <Button
                 onPress={prevPage}
                 disabled={pageNumber <= 1}
-                className={`rounded-md px-4 py-2 ${
+                className={`rounded-md px-4 py-2 transition-all ${
                     pageNumber <= 1
                         ? "cursor-not-allowed opacity-50"
                         : "hover:bg-gray-700"
@@ -80,7 +80,7 @@ const Cv: React.FC = () => {
             <Button
                 onPress={nextPage}
                 disabled={pageNumber >= (numPages || 1)}
-                className={`rounded-md px-4 py-2 ${
+                className={`rounded-md px-4 py-2 transition-all ${
                     pageNumber >= (numPages || 1)
                         ? "cursor-not-allowed opacity-50"
                         : "hover:bg-gray-700"
@@ -123,9 +123,9 @@ const Cv: React.FC = () => {
             {/* Bouton de téléchargement */}
             <Button
                 onPress={downloadPdf}
-                className="bg-purple hover:bg-purple/90 mt-6 flex !w-44 cursor-pointer items-center rounded-lg px-6 py-2 text-lg font-bold text-white shadow-sm shadow-white/40"
+                startContent={<Download size={22} />}
+                className="bg-purple hover:bg-purple/80 mt-6 flex !w-46 cursor-pointer items-center gap-2 rounded-lg px-6 py-2 text-lg font-bold text-white shadow-sm shadow-white/40 transition-all"
             >
-                <Download size={24} />
                 <span>{t("download")}</span>
             </Button>
         </div>
