@@ -4,7 +4,7 @@ services:
         ports:
             - '1337:1337'
         environment:
-            - NODE_ENV=dev
+            - NODE_ENV=development
             - DATABASE_CLIENT=sqlite
             - DATABASE_FILENAME=./data/data.db
         env_file:
@@ -14,6 +14,6 @@ services:
         ports:
             - '3000:3000'
         environment:
-            - NODE_ENV=dev
+            - NODE_ENV=development
         env_file:
             - .env
