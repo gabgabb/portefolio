@@ -35,7 +35,7 @@ test.describe("Portfolio Tests", () => {
             await expect(cvLink).toBeVisible();
             await cvLink.click();
         }
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(2000);
         await expect(page).toHaveURL(/\/cv$/);
         await expect(page.getByTestId("cv")).toBeVisible();
     });

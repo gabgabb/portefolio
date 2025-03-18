@@ -9,8 +9,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc =
-    "//unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs";
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
