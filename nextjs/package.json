@@ -12,9 +12,9 @@
         "test-head": "npx playwright test --ui"
     },
     "dependencies": {
-        "@heroui/react": "2.7.5",
-        "@heroui/system": "2.4.12",
-        "@heroui/theme": "2.4.12",
+        "@heroui/react": "2.7.6",
+        "@heroui/system": "2.4.13",
+        "@heroui/theme": "2.4.13",
         "autoprefixer": "^10.4.20",
         "file-saver": "^2.0.5",
         "framer-motion": "^12.0.0",
