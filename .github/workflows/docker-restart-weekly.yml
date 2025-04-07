@@ -1,0 +1,33 @@
+name: Docker Restart Weekly
+
+on:
+  schedule:
+    # Exécution tous les dimanches à 03:00 UTC (ajustez le cron si nécessaire)
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Restart Docker Containers on VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd dev/portefolio/
+            
+            # Nettoyage éventuel du git et mise à jour du code
+            git stash
+            git stash clear
+            git pull
+            
+            # Connexion à Docker et redémarrage des services
+            sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            sudo docker compose down
+            sudo docker compose pull
+            sudo docker compose up -d --remove-orphans
+            sudo docker system prune -f
