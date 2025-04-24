@@ -18,6 +18,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            sudo apt update && sudo apt upgrade -y  
             cd dev/portefolio/
             
             # Nettoyage éventuel du git et mise à jour du code
