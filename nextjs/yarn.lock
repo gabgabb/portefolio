@@ -3714,11 +3714,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^22.13.1":
-  version: 22.15.1
-  resolution: "@types/node@npm:22.15.1"
+  version: 22.15.2
+  resolution: "@types/node@npm:22.15.2"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/80bd7fff7d6f4058875feb2c980fa066266b02ffde51e794cf4b7bea5f1316c08baa135fa7cbffa677efb999b0945b2697b318e84af4563c1ab8d3392a17bf9a
+  checksum: 10c0/39da31d5fc63b14fabd217bb8a921c4a7fc3d99f233440209f9fc2d5d736e8773f7efc65223e2fd0e8db8390b0baab9c0cd2e951c2ece8b237f07313ab3cf295
   languageName: node
   linkType: hard
 
@@ -5444,8 +5444,8 @@ __metadata:
   linkType: hard
 
 "framer-motion@npm:^12.0.0":
-  version: 12.9.1
-  resolution: "framer-motion@npm:12.9.1"
+  version: 12.9.2
+  resolution: "framer-motion@npm:12.9.2"
   dependencies:
     motion-dom: "npm:^12.9.1"
     motion-utils: "npm:^12.8.3"
@@ -5461,7 +5461,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/be47217b01226e30c4be6aff3f217dc145db43a889fb0776fdc3653203cd0954536a472ec85678f7cc624dbc910478e824c356a43ddbeb616ede2bdaddbafc18
+  checksum: 10c0/467a486675b04c612168151f5f8fc66d9f8d85016cff025351b33da8889521e98185e08e43f9ae050f982c810ca9fa22089839afff22ea5d0c602610d8c6f020
   languageName: node
   linkType: hard
 
