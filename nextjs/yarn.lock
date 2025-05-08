@@ -5702,10 +5702,10 @@ __metadata:
   linkType: hard
 
 "framer-motion@npm:^12.0.0":
-  version: 12.10.1
-  resolution: "framer-motion@npm:12.10.1"
+  version: 12.10.3
+  resolution: "framer-motion@npm:12.10.3"
   dependencies:
-    motion-dom: "npm:^12.10.1"
+    motion-dom: "npm:^12.10.3"
     motion-utils: "npm:^12.9.4"
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -5719,7 +5719,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/390da3b05276a938e4d05d4b6f6f5e07e44282e9ae9eb70bb2e1bd1249b34ea707b51d5d095228b73720bb8eb9b90fc50d2e1e1a0866659344e0b158eb5b093f
+  checksum: 10c0/6416e0c0fd406d7f18365fb1906fbef5e4ba2794065b446efc154ad6a3627411bdf432ff7eee2dc24d0a3f83cfe26c9342d4c5fa5dde1ca13e369d8b290ef4e8
   languageName: node
   linkType: hard
 
@@ -6968,12 +6968,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion-dom@npm:^12.10.1":
-  version: 12.10.1
-  resolution: "motion-dom@npm:12.10.1"
+"motion-dom@npm:^12.10.3":
+  version: 12.10.3
+  resolution: "motion-dom@npm:12.10.3"
   dependencies:
     motion-utils: "npm:^12.9.4"
-  checksum: 10c0/819e7fc62249f9c385bf58962333ae3289b7e0ca21ac4f4aa1032bcbe404b97ec900910ed42cbb0183d607abc5481e2e526582baf65c645ace0605a380d02405
+  checksum: 10c0/f0b227bb44e4370606e137fb7ac7fe9ae8a88067bc1452d4b2c600a4d275cbeac945620ebc338c9ef5af077f07b9000119516b37a87bd6bbaeedf48df5362738
   languageName: node
   linkType: hard
 
