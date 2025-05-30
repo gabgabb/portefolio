@@ -46,7 +46,7 @@
         "eslint": "9.27.0",
         "eslint-config-next": "15.3.3",
         "eslint-config-prettier": "10.1.5",
-        "eslint-plugin-prettier": "5.4.0",
+        "eslint-plugin-prettier": "5.4.1",
         "globals": "^16.0.0",
         "playwright-ctrf-json-reporter": "^0.0.20",
         "postcss": "^8.5.1",
