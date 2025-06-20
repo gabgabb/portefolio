@@ -12,8 +12,8 @@
         "test-head": "npx playwright test --ui"
     },
     "dependencies": {
-        "@heroui/react": "2.7.10",
-        "@heroui/system": "2.4.17",
+        "@heroui/react": "2.7.11",
+        "@heroui/system": "2.4.18",
         "@heroui/theme": "2.4.17",
         "autoprefixer": "^10.4.20",
         "file-saver": "^2.0.5",
