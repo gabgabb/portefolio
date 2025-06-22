@@ -6514,12 +6514,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.519.0":
-  version: 0.519.0
-  resolution: "lucide-react@npm:0.519.0"
+"lucide-react@npm:^0.522.0":
+  version: 0.522.0
+  resolution: "lucide-react@npm:0.522.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/38c47d9cd8d98b5d688f5b2cc15e3b889165c2110438742b8b1a918d45c3d583b3f204a319fe28e1eb89d51fe4db3183329a69e12afe8b16c17b9057f08a405a
+  checksum: 10c0/92f18da5ade753c7955a3d0fe3779b62831bf1d6ab15396b6024ef66efe7df7b78e19728e3cf59d1bd01bbee16de0c474a5d6b2741e6b5c97d8374d02f776898
   languageName: node
   linkType: hard
 
@@ -7169,10 +7169,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-ctrf-json-reporter@npm:^0.0.20":
-  version: 0.0.20
-  resolution: "playwright-ctrf-json-reporter@npm:0.0.20"
-  checksum: 10c0/8b2d6d7b9f64fc9ef0b93a978128f9567c6a44acce68ea1cb9a344195cd6d435f05eec97e028b045cceef484b52b2cb981d2035268eac3ef3a19b2b744c15899
+"playwright-ctrf-json-reporter@npm:^0.0.21":
+  version: 0.0.21
+  resolution: "playwright-ctrf-json-reporter@npm:0.0.21"
+  checksum: 10c0/83740242d38a43831ec6ba789f4d6227c7a4babf8c8719af2e069e80bfab78696028437bf6b31644d98cb490dc859c7dfb00a40533ff9701e81a02df9a8ebaf8
   languageName: node
   linkType: hard
 
@@ -7222,10 +7222,10 @@ __metadata:
     framer-motion: "npm:^12.0.0"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
-    lucide-react: "npm:^0.519.0"
+    lucide-react: "npm:^0.522.0"
     next: "npm:15.3.4"
     next-intl: "npm:^4.0.0"
-    playwright-ctrf-json-reporter: "npm:^0.0.20"
+    playwright-ctrf-json-reporter: "npm:^0.0.21"
     postcss: "npm:^8.5.1"
     prettier: "npm:3.5.3"
     prettier-plugin-organize-attributes: "npm:^1.0.0"
