@@ -5508,11 +5508,11 @@ __metadata:
   linkType: hard
 
 "framer-motion@npm:^12.0.0":
-  version: 12.18.1
-  resolution: "framer-motion@npm:12.18.1"
+  version: 12.18.2
+  resolution: "framer-motion@npm:12.18.2"
   dependencies:
-    motion-dom: "npm:^12.18.1"
-    motion-utils: "npm:^12.18.1"
+    motion-dom: "npm:^12.18.2"
+    motion-utils: "npm:^12.18.2"
     tslib: "npm:^2.4.0"
   peerDependencies:
     "@emotion/is-prop-valid": "*"
@@ -5525,7 +5525,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/13aa6030fb619a482cb7d3fdb375a2ced54adcc11d23abf7e42b9dc8a40bc47d32fb3492dbb450e75c465c8469da72db21376719316d945829700f663af18c20
+  checksum: 10c0/df1de2bdcd97bdb93c83c8d067857ff5ea9e93ea0ed53587e1859698d47edb4d19d333acac2dee9626e93221527c71a547a2842720ed2d7d8f08b98369f0db72
   languageName: node
   linkType: hard
 
@@ -6726,19 +6726,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion-dom@npm:^12.18.1":
-  version: 12.18.1
-  resolution: "motion-dom@npm:12.18.1"
+"motion-dom@npm:^12.18.2":
+  version: 12.18.2
+  resolution: "motion-dom@npm:12.18.2"
   dependencies:
-    motion-utils: "npm:^12.18.1"
-  checksum: 10c0/33914f174fc8ff27e65b579d70cb6ae2af320eb3f85d12a29c05fe046dd5966844844fbac59b9e7e98f8a325e7529666173fca7fe5e4a3aff59b9bd1eb1b3266
+    motion-utils: "npm:^12.18.2"
+  checksum: 10c0/7bf6ae98a41f25be9820dd2ac47f46748350919e8540e6c53325e9213c85a2a43a150fc421a44f86a051002f39e1315ec4538d1661a425f5b32bd96756245125
   languageName: node
   linkType: hard
 
-"motion-utils@npm:^12.18.1":
-  version: 12.18.1
-  resolution: "motion-utils@npm:12.18.1"
-  checksum: 10c0/703702d9a82db223f4b0e0437e7c00b9e3f347bf7bffb20b0b7ad171d937db823b2420dbd8bf0764def885ba6c8aac659cc3595bcd8ecd56b5e63a990a1fae07
+"motion-utils@npm:^12.18.2":
+  version: 12.18.2
+  resolution: "motion-utils@npm:12.18.2"
+  checksum: 10c0/a4d5a6f73cef24d7a7df1f91f73598d06a099f6d226f81bf395597a9a6c6c663183f57814c060e671faab982132ba7e53ac520e9d103dcb0d25ff987fb948d76
   languageName: node
   linkType: hard
 
@@ -6789,12 +6789,12 @@ __metadata:
   linkType: hard
 
 "next-intl@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "next-intl@npm:4.1.0"
+  version: 4.2.0
+  resolution: "next-intl@npm:4.2.0"
   dependencies:
     "@formatjs/intl-localematcher": "npm:^0.5.4"
     negotiator: "npm:^1.0.0"
-    use-intl: "npm:^4.1.0"
+    use-intl: "npm:^4.2.0"
   peerDependencies:
     next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
@@ -6802,7 +6802,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/04c32d05e5becd16b9faaeb3954bba66bd8021c7f451c2aefdaeea64ac602d9eedfb7f4a05a435336866696ea39140f61144d56970fe08dd9f18c77548ddc263
+  checksum: 10c0/e909d630e07b664704fb7a05f607afe7c2a916b4f4fd83f87b54b7c88ea22a6c861b53bffd821e047908556dab4b61310f3a227ccf9e8ff51f916286bcb35324
   languageName: node
   linkType: hard
 
@@ -8580,16 +8580,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-intl@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "use-intl@npm:4.1.0"
+"use-intl@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "use-intl@npm:4.2.0"
   dependencies:
     "@formatjs/fast-memoize": "npm:^2.2.0"
     "@schummar/icu-type-parser": "npm:1.21.5"
     intl-messageformat: "npm:^10.5.14"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
-  checksum: 10c0/907e417dc9924df213adb98b9e24bd97370c13dfb20360f5a276189a60e1373718dff36ae7fbe0f7cc398a9b2639c2577661813e7e3ea55215b845c1509dfe29
+  checksum: 10c0/85061b95338e56245f7a7d358bcffdaeb212b3d9bb39b962adc5f173de680f046c1d0350b5ba53afb0578b735febfb09bf5ff5687be9fa5f3e93c88094a3b810
   languageName: node
   linkType: hard
 
