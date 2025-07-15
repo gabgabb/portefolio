@@ -307,14 +307,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/autocomplete@npm:2.3.24":
-  version: 2.3.24
-  resolution: "@heroui/autocomplete@npm:2.3.24"
+"@heroui/autocomplete@npm:2.3.25":
+  version: 2.3.25
+  resolution: "@heroui/autocomplete@npm:2.3.25"
   dependencies:
     "@heroui/aria-utils": "npm:2.2.20"
     "@heroui/button": "npm:2.2.23"
-    "@heroui/form": "npm:2.1.22"
-    "@heroui/input": "npm:2.4.23"
+    "@heroui/form": "npm:2.1.23"
+    "@heroui/input": "npm:2.4.24"
     "@heroui/listbox": "npm:2.3.22"
     "@heroui/popover": "npm:2.3.23"
     "@heroui/react-utils": "npm:2.1.12"
@@ -333,7 +333,7 @@ __metadata:
     framer-motion: ">=11.5.6 || >=12.0.0-alpha.1"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/7fb41b7f20f88f58a6537923a0475f2af077318c813815dbb48e8b45cd20e680ee0cf65fd1cc8db81ed3e4483274e1981e130d79768f3f294e0ea9f4c48e9cfc
+  checksum: 10c0/a9491c80e9f00162efecbf078a398dd7a4e26605310b9f73022f86ab8b9c02f5ab88b3563c363c24a7cbb98a95b1089244fb1f3e07a99b86178dd63856e1c21b
   languageName: node
   linkType: hard
 
@@ -465,11 +465,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/checkbox@npm:2.3.22":
-  version: 2.3.22
-  resolution: "@heroui/checkbox@npm:2.3.22"
+"@heroui/checkbox@npm:2.3.23":
+  version: 2.3.23
+  resolution: "@heroui/checkbox@npm:2.3.23"
   dependencies:
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-utils": "npm:2.1.10"
     "@heroui/use-callback-ref": "npm:2.1.8"
@@ -486,7 +486,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/3acd65740b2db19f229a0b9a626e125627c061a004c1f38e31cea2a4f4947600aa33ed5f04b5f1da7d370ae08bb01f910eb8b3b717c7b57273dcf5e9ea5fa447
+  checksum: 10c0/9e782bbcfd1e50eb26cda5c824cbf94201088952ff299622b81177f685d209c38df0fa33ab114e06370d0a8e145bd7e770e21610e6fbebef09d5ebace0e1478d
   languageName: node
   linkType: hard
 
@@ -523,11 +523,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/date-input@npm:2.3.22":
-  version: 2.3.22
-  resolution: "@heroui/date-input@npm:2.3.22"
+"@heroui/date-input@npm:2.3.23":
+  version: 2.3.23
+  resolution: "@heroui/date-input@npm:2.3.23"
   dependencies:
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-utils": "npm:2.1.10"
     "@internationalized/date": "npm:3.8.2"
@@ -541,19 +541,19 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/a2f8eee2f96e03a6eb290573b8645f97b7675ae2310ee1b561878894412ab6007c918f67cf510b3a28db23910ecaccf699d6c09adc6f093453a90bd0680af0c8
+  checksum: 10c0/914551f9c3d1ef4c862dd6a0d4e41ee22bcea52205c448d70336e4ec887c4cd210c1976a8bc0dd731b7eb5a84d05ba350983356f040af18d473e51c1b8dc8f7d
   languageName: node
   linkType: hard
 
-"@heroui/date-picker@npm:2.3.23":
-  version: 2.3.23
-  resolution: "@heroui/date-picker@npm:2.3.23"
+"@heroui/date-picker@npm:2.3.24":
+  version: 2.3.24
+  resolution: "@heroui/date-picker@npm:2.3.24"
   dependencies:
     "@heroui/aria-utils": "npm:2.2.20"
     "@heroui/button": "npm:2.2.23"
     "@heroui/calendar": "npm:2.2.23"
-    "@heroui/date-input": "npm:2.3.22"
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/date-input": "npm:2.3.23"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/popover": "npm:2.3.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-icons": "npm:2.1.10"
@@ -571,7 +571,7 @@ __metadata:
     framer-motion: ">=11.5.6 || >=12.0.0-alpha.1"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/67dfab39b9b9e27a0c87ddd098bd5507ed1f76b2526be221a9d8309ec81546ddd7133f2bb2878e8ae91ba0ba47c2e1bb27d0dfe48b742204bbcd1bd2bada5f3b
+  checksum: 10c0/f0487046754c63d954515416772c615b1723b4c1414943e8d4b536c5dccdb48fd122c4fb9a7026e4798201eb7beebb2ee924375c8450d3a33076dca8528edcd4
   languageName: node
   linkType: hard
 
@@ -639,13 +639,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/form@npm:2.1.22":
-  version: 2.1.22
-  resolution: "@heroui/form@npm:2.1.22"
+"@heroui/form@npm:2.1.23":
+  version: 2.1.23
+  resolution: "@heroui/form@npm:2.1.23"
   dependencies:
     "@heroui/shared-utils": "npm:2.1.10"
     "@heroui/system": "npm:2.4.19"
-    "@heroui/theme": "npm:2.4.18"
+    "@heroui/theme": "npm:2.4.19"
     "@react-stately/form": "npm:3.1.5"
     "@react-types/form": "npm:3.7.13"
     "@react-types/shared": "npm:3.30.0"
@@ -654,7 +654,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/c5b74264836606e4b8d6fd59ae966f6a07a56f7003e883709cd60395145c17c3452602252a2ddad4aa655f16db4970836f20ccd29dbb8b7966207bb6c78cc251
+  checksum: 10c0/745ac0036f022db99032182f17c5876be881632b0163381da57aa67e05d0b7ca215f6edb1ca488d83ef6ee998ce617bf1b4190f4f6c203102a20faa170602481
   languageName: node
   linkType: hard
 
@@ -688,11 +688,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/input-otp@npm:2.1.22":
-  version: 2.1.22
-  resolution: "@heroui/input-otp@npm:2.1.22"
+"@heroui/input-otp@npm:2.1.23":
+  version: 2.1.23
+  resolution: "@heroui/input-otp@npm:2.1.23"
   dependencies:
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-utils": "npm:2.1.10"
     "@heroui/use-form-reset": "npm:2.0.1"
@@ -707,15 +707,15 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/245da5a742c8c30d7c86469643d8c164ce20f5bb32cd34f4a478bbb6ab2e81998429f1bc1ffb6ac7c12a8c7c6ff817e3f4ac712890cf9b9437b27ab3fd43435b
+  checksum: 10c0/8654db006f42171d49d3c8ea13e6627064cd99efce2773a5a3ff7ace8ea48cafb672ca73de4d970c0343db890a28558c608f5457e6cf488f7250efaaf3f77a69
   languageName: node
   linkType: hard
 
-"@heroui/input@npm:2.4.23":
-  version: 2.4.23
-  resolution: "@heroui/input@npm:2.4.23"
+"@heroui/input@npm:2.4.24":
+  version: 2.4.24
+  resolution: "@heroui/input@npm:2.4.24"
   dependencies:
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-icons": "npm:2.1.10"
     "@heroui/shared-utils": "npm:2.1.10"
@@ -732,7 +732,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/45dfaeadf3fbd1cdee7082a92449c23ecb884864b2b76786aa825af13c579e4399028df5cc95db60d6f69cc3f01186a7c3504f1707faa044b9d8132a55e8afe5
+  checksum: 10c0/7bce0e64c013aa4e585d08ab1aa90baa0286fbacbd3fb679b59eda51453df5de0e1337784f290aa05200fb50c93c9027b0641794c46b1b16e2789b6ce650463e
   languageName: node
   linkType: hard
 
@@ -872,12 +872,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/number-input@npm:2.0.13":
-  version: 2.0.13
-  resolution: "@heroui/number-input@npm:2.0.13"
+"@heroui/number-input@npm:2.0.14":
+  version: 2.0.14
+  resolution: "@heroui/number-input@npm:2.0.14"
   dependencies:
     "@heroui/button": "npm:2.2.23"
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-icons": "npm:2.1.10"
     "@heroui/shared-utils": "npm:2.1.10"
@@ -895,7 +895,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/6a50c005133f1821e79ef012d157703b38f48e3147613dd401d73b2c2cea5b861ef4f334daa0e99eadf85c6a23ffef2b988f242b0b5065391df031631bb786e7
+  checksum: 10c0/1315f652370e1f1ce7a72e4ba83853dc0e9bf4e52ab5b789dcff7890607c6722be9d913260ad502fb0ee007f380234adcdd6a1c508aff32ab1927b6348a2c039
   languageName: node
   linkType: hard
 
@@ -968,11 +968,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/radio@npm:2.3.22":
-  version: 2.3.22
-  resolution: "@heroui/radio@npm:2.3.22"
+"@heroui/radio@npm:2.3.23":
+  version: 2.3.23
+  resolution: "@heroui/radio@npm:2.3.23"
   dependencies:
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-utils": "npm:2.1.10"
     "@react-aria/focus": "npm:3.20.5"
@@ -987,7 +987,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/fccf30cce9bc76c0a38cc784c347f015b0f82387e39ea8b2df2afd096a84f870ff7262c850e0b4debd3df89d6b7f3b2fbb3ad5b9a9b05148bf35af1d5cadc61b
+  checksum: 10c0/6e68415619fb971becfa247d78200b7a4fad4f3be87b6dc900962773b9db1924b82f887b1b89f21876523db9667b03c5113f50564844c2005b286f3b96c5d8a8
   languageName: node
   linkType: hard
 
@@ -1012,46 +1012,46 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/react@npm:2.8.0":
-  version: 2.8.0
-  resolution: "@heroui/react@npm:2.8.0"
+"@heroui/react@npm:2.8.1":
+  version: 2.8.1
+  resolution: "@heroui/react@npm:2.8.1"
   dependencies:
     "@heroui/accordion": "npm:2.2.20"
     "@heroui/alert": "npm:2.2.23"
-    "@heroui/autocomplete": "npm:2.3.24"
+    "@heroui/autocomplete": "npm:2.3.25"
     "@heroui/avatar": "npm:2.2.19"
     "@heroui/badge": "npm:2.2.15"
     "@heroui/breadcrumbs": "npm:2.2.19"
     "@heroui/button": "npm:2.2.23"
     "@heroui/calendar": "npm:2.2.23"
     "@heroui/card": "npm:2.2.22"
-    "@heroui/checkbox": "npm:2.3.22"
+    "@heroui/checkbox": "npm:2.3.23"
     "@heroui/chip": "npm:2.2.19"
     "@heroui/code": "npm:2.2.17"
-    "@heroui/date-input": "npm:2.3.22"
-    "@heroui/date-picker": "npm:2.3.23"
+    "@heroui/date-input": "npm:2.3.23"
+    "@heroui/date-picker": "npm:2.3.24"
     "@heroui/divider": "npm:2.2.16"
     "@heroui/drawer": "npm:2.2.20"
     "@heroui/dropdown": "npm:2.3.23"
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/framer-utils": "npm:2.1.19"
     "@heroui/image": "npm:2.2.15"
-    "@heroui/input": "npm:2.4.23"
-    "@heroui/input-otp": "npm:2.1.22"
+    "@heroui/input": "npm:2.4.24"
+    "@heroui/input-otp": "npm:2.1.23"
     "@heroui/kbd": "npm:2.2.18"
     "@heroui/link": "npm:2.2.20"
     "@heroui/listbox": "npm:2.3.22"
     "@heroui/menu": "npm:2.2.22"
     "@heroui/modal": "npm:2.2.20"
     "@heroui/navbar": "npm:2.2.21"
-    "@heroui/number-input": "npm:2.0.13"
+    "@heroui/number-input": "npm:2.0.14"
     "@heroui/pagination": "npm:2.2.21"
     "@heroui/popover": "npm:2.3.23"
     "@heroui/progress": "npm:2.2.19"
-    "@heroui/radio": "npm:2.3.22"
+    "@heroui/radio": "npm:2.3.23"
     "@heroui/ripple": "npm:2.2.18"
     "@heroui/scroll-shadow": "npm:2.3.16"
-    "@heroui/select": "npm:2.4.23"
+    "@heroui/select": "npm:2.4.24"
     "@heroui/skeleton": "npm:2.2.15"
     "@heroui/slider": "npm:2.4.20"
     "@heroui/snippet": "npm:2.2.24"
@@ -1059,9 +1059,9 @@ __metadata:
     "@heroui/spinner": "npm:2.2.20"
     "@heroui/switch": "npm:2.2.21"
     "@heroui/system": "npm:2.4.19"
-    "@heroui/table": "npm:2.2.22"
+    "@heroui/table": "npm:2.2.23"
     "@heroui/tabs": "npm:2.2.20"
-    "@heroui/theme": "npm:2.4.18"
+    "@heroui/theme": "npm:2.4.19"
     "@heroui/toast": "npm:2.0.13"
     "@heroui/tooltip": "npm:2.2.20"
     "@heroui/user": "npm:2.2.19"
@@ -1070,7 +1070,7 @@ __metadata:
     framer-motion: ">=11.5.6 || >=12.0.0-alpha.1"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/58630c21927453ff851428182f7e41b47f7354063eca5d9c0b8717b02867c2be390ca0ab5cfbb3459de79371c0002ac24e1518c6981bf8043cd336142b463706
+  checksum: 10c0/6a99d15bb6b4b9fe315a77227d4340ae2adeeb4f4182dd77cb2d32808d540fa7d96fdf396365399aac77f61c08f39c3049d22873dc62ddae07baa44f7c7c8436
   languageName: node
   linkType: hard
 
@@ -1106,12 +1106,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/select@npm:2.4.23":
-  version: 2.4.23
-  resolution: "@heroui/select@npm:2.4.23"
+"@heroui/select@npm:2.4.24":
+  version: 2.4.24
+  resolution: "@heroui/select@npm:2.4.24"
   dependencies:
     "@heroui/aria-utils": "npm:2.2.20"
-    "@heroui/form": "npm:2.1.22"
+    "@heroui/form": "npm:2.1.23"
     "@heroui/listbox": "npm:2.3.22"
     "@heroui/popover": "npm:2.3.23"
     "@heroui/react-utils": "npm:2.1.12"
@@ -1135,7 +1135,7 @@ __metadata:
     framer-motion: ">=11.5.6 || >=12.0.0-alpha.1"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/b227d2ff226b0bdeacdaba8fa6c00649ed735865363daa22e2826039431030ff55589a8bdf20b5d3d8ac893e02ce36616e2bd9f70c9be924f2d62d29182a8e68
+  checksum: 10c0/110c22b55e54efa154641990af428988dca2df4671a929734afd8339f1e239750e8668dcf079be81e23d864e5f9fa308a60b9adfb7c92badb0806162cddbd160
   languageName: node
   linkType: hard
 
@@ -1293,11 +1293,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/table@npm:2.2.22":
-  version: 2.2.22
-  resolution: "@heroui/table@npm:2.2.22"
+"@heroui/table@npm:2.2.23":
+  version: 2.2.23
+  resolution: "@heroui/table@npm:2.2.23"
   dependencies:
-    "@heroui/checkbox": "npm:2.3.22"
+    "@heroui/checkbox": "npm:2.3.23"
     "@heroui/react-utils": "npm:2.1.12"
     "@heroui/shared-icons": "npm:2.1.10"
     "@heroui/shared-utils": "npm:2.1.10"
@@ -1316,7 +1316,7 @@ __metadata:
     "@heroui/theme": ">=2.4.17"
     react: ">=18 || >=19.0.0-rc.0"
     react-dom: ">=18 || >=19.0.0-rc.0"
-  checksum: 10c0/5cfdecf126b4144579d58f9c8b6f9659127668b51191dd3e13359cd71579b19b2743ca6e470b6a368be19049fa72b544a24a7e0e24db1ab81fe4d71c2e52e9f7
+  checksum: 10c0/873c4ddf799693dfc41f05b0e40da517f315618a4ca6e996a8f66c2bc61cab4df112d31be53a444a595d8352bb8f7b7c6aad0321b3eb45b7ef73dc258d531e9f
   languageName: node
   linkType: hard
 
@@ -1344,9 +1344,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroui/theme@npm:2.4.18":
-  version: 2.4.18
-  resolution: "@heroui/theme@npm:2.4.18"
+"@heroui/theme@npm:2.4.19":
+  version: 2.4.19
+  resolution: "@heroui/theme@npm:2.4.19"
   dependencies:
     "@heroui/shared-utils": "npm:2.1.10"
     clsx: "npm:^1.2.1"
@@ -1358,7 +1358,7 @@ __metadata:
     tailwind-variants: "npm:1.0.0"
   peerDependencies:
     tailwindcss: ">=4.0.0"
-  checksum: 10c0/c04bcfef3932bce98d94e0daa59854d5eb20897ede0c7ac03257611f08c14e92f8780f38c2351f6c216a9e9144a0ca40f0ff00eea545163227c598c8ee30cf68
+  checksum: 10c0/f5a57b01f2e74bc1f89abab89ea8f79ae2688e88d7c9bed6cda379275268614acd62d1f4d8afee4f3cbf9c0d9a4b5b747cc546341c944b7e7070ebea50738c74
   languageName: node
   linkType: hard
 
@@ -7226,9 +7226,9 @@ __metadata:
     "@eslint/compat": "npm:^1.2.6"
     "@eslint/eslintrc": "npm:3.3.1"
     "@eslint/js": "npm:9.31.0"
-    "@heroui/react": "npm:2.8.0"
+    "@heroui/react": "npm:2.8.1"
     "@heroui/system": "npm:2.4.19"
-    "@heroui/theme": "npm:2.4.18"
+    "@heroui/theme": "npm:2.4.19"
     "@playwright/test": "npm:^1.50.1"
     "@tailwindcss/postcss": "npm:^4.0.6"
     "@types/file-saver": "npm:^2"
