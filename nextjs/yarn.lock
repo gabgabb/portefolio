@@ -5057,14 +5057,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:10.1.5":
-  version: 10.1.5
-  resolution: "eslint-config-prettier@npm:10.1.5"
+"eslint-config-prettier@npm:10.1.8":
+  version: 10.1.8
+  resolution: "eslint-config-prettier@npm:10.1.8"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 10c0/5486255428e4577e8064b40f27db299faf7312b8e43d7b4bc913a6426e6c0f5950cd519cad81ae24e9aecb4002c502bc665c02e3b52efde57af2debcf27dd6e0
+  checksum: 10c0/e1bcfadc9eccd526c240056b1e59c5cd26544fe59feb85f38f4f1f116caed96aea0b3b87868e68b3099e55caaac3f2e5b9f58110f85db893e83a332751192682
   languageName: node
   linkType: hard
 
@@ -5169,9 +5169,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:5.5.1":
-  version: 5.5.1
-  resolution: "eslint-plugin-prettier@npm:5.5.1"
+"eslint-plugin-prettier@npm:5.5.2":
+  version: 5.5.2
+  resolution: "eslint-plugin-prettier@npm:5.5.2"
   dependencies:
     prettier-linter-helpers: "npm:^1.0.0"
     synckit: "npm:^0.11.7"
@@ -5185,7 +5185,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 10c0/6ed93faa7d885af2a987d732f7e716e7aaba55e2da2b091e1b16bacf68425bffe91d784803597bd3f3e6201499fabb89ae28a51ac3986659a46e55e729ed2d55
+  checksum: 10c0/eb5b177e4dd237ef32de758fe7d180bb4ba8185f151abb686c7c949e9b112f5034418fb24bfeb35a88aaa74f6f44e8fe6def3588c9520edce2828e78017438eb
   languageName: node
   linkType: hard
 
@@ -7244,8 +7244,8 @@ __metadata:
     dompurify: "npm:^3.2.4"
     eslint: "npm:9.31.0"
     eslint-config-next: "npm:15.4.1"
-    eslint-config-prettier: "npm:10.1.5"
-    eslint-plugin-prettier: "npm:5.5.1"
+    eslint-config-prettier: "npm:10.1.8"
+    eslint-plugin-prettier: "npm:5.5.2"
     file-saver: "npm:^2.0.5"
     framer-motion: "npm:^12.0.0"
     globals: "npm:^16.0.0"
