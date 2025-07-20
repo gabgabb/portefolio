@@ -4,17 +4,12 @@ import { Button } from "@heroui/react";
 import { saveAs } from "file-saver";
 import { Download } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
-
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
-    const [loading, setLoading] = useState<boolean>(true);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [scale, setScale] = useState<number>(1.2); // Valeur par défaut
 
@@ -25,7 +20,6 @@ const Cv: React.FC = () => {
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);
-        setLoading(false);
     }
 
     function nextPage(): void {
@@ -43,6 +37,13 @@ const Cv: React.FC = () => {
     const downloadPdf = () => {
         saveAs(pdfFile, `CV_Gabriel_${locale.toUpperCase()}.pdf`);
     };
+
+    const PdfViewer = dynamic(
+        () => import("@/_components/elements/pdfViewer"),
+        {
+            ssr: false,
+        },
+    );
 
     // Ajuste le scale et détecte si l'écran est mobile
     useEffect(() => {
@@ -97,16 +98,12 @@ const Cv: React.FC = () => {
                     style={{ height: `${Math.min(950, 830 * scale)}px` }}
                     data-testid="cv"
                 >
-                    <Document
-                        key={scale}
-                        className={`mt-4 overflow-hidden rounded-xl shadow-[0px_0px_40px_rgba(255,255,255,0.2)] ${
-                            loading ? "hidden" : ""
-                        }`}
+                    <PdfViewer
                         file={pdfFile}
-                        onLoadSuccess={onDocumentLoadSuccess}
-                    >
-                        <Page pageNumber={pageNumber} scale={scale} />
-                    </Document>
+                        scale={scale}
+                        pageNumber={pageNumber}
+                        onLoadSuccessAction={onDocumentLoadSuccess}
+                    />
                 </div>
                 {/* Si l'écran n'est pas mobile et que le scale est supérieur à 1,
             on affiche la barre de navigation en mode overlay sur le PDF */}

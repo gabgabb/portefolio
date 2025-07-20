@@ -1,9 +1,9 @@
 {
     "name": "portefolio",
-    "version": "0.1.0",
+    "version": "1.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbopack",
+        "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
         "lint": "eslint \"src/**/*.+(ts|tsx)\"",
@@ -24,7 +24,7 @@
         "next-intl": "^4.0.0",
         "react": "19.1.0",
         "react-dom": "19.1.0",
-        "react-pdf": "^9.2.1",
+        "react-pdf": "^10.0.1",
         "react-toastify": "^11.0.5"
     },
     "devDependencies": {
