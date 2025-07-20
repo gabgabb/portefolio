@@ -95,7 +95,7 @@ const ProjectDetail = () => {
 
             <div className="mt-6 flex flex-col items-center">
                 <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${project.illustrations[0]?.url}`}
+                    src={`${project.illustrations[0]?.url}`}
                     alt={project.name}
                     className="w-full max-w-3xl rounded-2xl border border-gray-700"
                 />
@@ -111,11 +111,7 @@ const ProjectDetail = () => {
                                 key={index}
                                 className="mx-auto flex max-h-[800px] w-full max-w-[750px] justify-center"
                             >
-                                <video
-                                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${video.url}`}
-                                    controls
-                                    muted
-                                />
+                                <video src={`${video.url}`} controls muted />
                             </div>
                         ))}
                     </div>
@@ -126,7 +122,7 @@ const ProjectDetail = () => {
                     <Badge
                         key={index}
                         title={tech.name}
-                        image={`${process.env.NEXT_PUBLIC_STRAPI_URL}${tech.logo.url}`}
+                        image={`${tech.logo.url}`}
                         deleteText
                     />
                 ))}
