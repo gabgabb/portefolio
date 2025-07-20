@@ -3751,7 +3751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/postcss@npm:^4.0.6":
+"@tailwindcss/postcss@npm:^4.1.11":
   version: 4.1.11
   resolution: "@tailwindcss/postcss@npm:4.1.11"
   dependencies:
@@ -7140,7 +7140,7 @@ __metadata:
     "@heroui/system": "npm:2.4.19"
     "@heroui/theme": "npm:2.4.19"
     "@playwright/test": "npm:^1.50.1"
-    "@tailwindcss/postcss": "npm:^4.0.6"
+    "@tailwindcss/postcss": "npm:^4.1.11"
     "@types/file-saver": "npm:^2"
     "@types/js-cookie": "npm:^3.0.6"
     "@types/node": "npm:^22.13.1"
@@ -7168,12 +7168,12 @@ __metadata:
     prettier: "npm:3.6.2"
     prettier-plugin-organize-attributes: "npm:^1.0.0"
     prettier-plugin-organize-imports: "npm:^4.1.0"
-    prettier-plugin-tailwindcss: "npm:^0.6.11"
+    prettier-plugin-tailwindcss: "npm:^0.6.14"
     react: "npm:19.1.0"
     react-dom: "npm:19.1.0"
     react-pdf: "npm:^10.0.1"
     react-toastify: "npm:^11.0.5"
-    tailwindcss: "npm:^4.0.0"
+    tailwindcss: "npm:^4.1.11"
     typescript: "npm:^5.7.3"
     typescript-eslint: "npm:^8.23.0"
   languageName: unknown
@@ -7254,7 +7254,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.6.11":
+"prettier-plugin-tailwindcss@npm:^0.6.14":
   version: 0.6.14
   resolution: "prettier-plugin-tailwindcss@npm:0.6.14"
   peerDependencies:
@@ -8117,7 +8117,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.1.11, tailwindcss@npm:^4.0.0":
+"tailwindcss@npm:4.1.11, tailwindcss@npm:^4.1.11":
   version: 4.1.11
   resolution: "tailwindcss@npm:4.1.11"
   checksum: 10c0/e23eed0a0d6557b3aff8ba320b82758988ca67c351ee9b33dfc646e83a64f6eaeca6183dfc97e931f7b2fab46e925090066edd697d2ede3f396c9fdeb4af24c1

@@ -68,7 +68,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
                 />
                 <title>Gabriel Filiot</title>
             </head>
-            <body className="font-bogart !bg-black text-white">
+            <body className="font-bogart bg-black! text-white">
                 <NextIntlClientProvider>
                     <HeroUIProvider>
                         <ToastContainer
