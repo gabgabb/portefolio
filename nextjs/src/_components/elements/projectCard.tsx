@@ -96,7 +96,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         src={
                             Array.isArray(project.illustrations) &&
                             project.illustrations.length > 0
-                                ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${project.illustrations[0].url}`
+                                ? `${project.illustrations[0].url}`
                                 : "/projet1.png"
                         }
                     />
@@ -127,7 +127,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                                 <Badge
                                     key={tech.id}
                                     title={tech.name}
-                                    image={`${process.env.NEXT_PUBLIC_STRAPI_URL}${tech.logo.url}`}
+                                    image={`${tech.logo.url}`}
                                     deleteText
                                 />
                             ))}
@@ -167,7 +167,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         }}
                     >
                         <video
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${randomVideoUrl}`}
+                            src={`${randomVideoUrl}`}
                             autoPlay
                             loop
                             muted
@@ -190,7 +190,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             onClick={() => setIsVideoVisible(false)}
                         >
                             <video
-                                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${randomVideoUrl}`}
+                                src={`${randomVideoUrl}`}
                                 autoPlay
                                 controls
                                 muted

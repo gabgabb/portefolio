@@ -45,7 +45,7 @@ export const Technologies: React.FC = () => {
                     {technologies.map((tech) => (
                         <Badge
                             key={tech.id}
-                            image={`${process.env.NEXT_PUBLIC_STRAPI_URL}${tech.logo.url}`}
+                            image={`${tech.logo.url}`}
                             title={tech.name}
                         />
                     ))}

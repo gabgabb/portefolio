@@ -42,7 +42,7 @@ const AboutMe = () => {
     if (!presentation) return <p>Chargement...</p>;
 
     const imageUrl = presentation.image
-        ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${presentation.image.url}`
+        ? `${presentation.image.url}`
         : "/placeholder.jpg";
 
     return (
