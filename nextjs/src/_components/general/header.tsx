@@ -76,6 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                     }
                 >
                     <div
+                        data-testid="locale-fr"
                         onClick={() => switchLocale("fr")}
                         className={`cursor-pointer px-2 ${
                             locale === "fr"
@@ -87,6 +88,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                     </div>
                     <div>•</div>
                     <div
+                        data-testid="locale-en"
                         onClick={() => switchLocale("en")}
                         className={`cursor-pointer px-2 ${
                             locale === "en"
