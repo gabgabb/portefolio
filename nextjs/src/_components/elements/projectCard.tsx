@@ -123,16 +123,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         <span className="truncate text-2xl font-bold max-sm:text-xl">
                             {project.name}
                         </span>
-                        <div className="flex gap-2">
-                            {project.technologies.map((tech) => (
-                                <Badge
-                                    key={tech.id}
-                                    title={tech.name}
-                                    image={`${tech.logo.url}`}
-                                    deleteText
-                                />
-                            ))}
+                        <div className="relative w-full max-sm:overflow-hidden">
+                            <div className="max-w-full max-sm:overflow-x-auto max-sm:overflow-y-hidden">
+                                <div className="flex w-max gap-2 px-2 py-1">
+                                    {project.technologies.map((tech) => (
+                                        <Badge
+                                            key={tech.id}
+                                            title={tech.name}
+                                            image={`${tech.logo.url}`}
+                                            deleteText
+                                        />
+                                    ))}
+                                </div>
+                            </div>
                         </div>
+
                         <Button
                             onPress={() => {
                                 router.push(
