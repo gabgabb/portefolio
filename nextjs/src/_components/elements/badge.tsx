@@ -64,7 +64,7 @@ const Badge: React.FC<BadgeProps> = ({ image, title, deleteText = false }) => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 10 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="border-stroke absolute top-[-40px] left-1/2 z-50 w-max -translate-x-1/2 rounded-md border bg-gray-800 px-3 py-1 text-base font-semibold text-white shadow-md"
+                        className="border-stroke absolute top-[-40px] left-1/2 z-50 w-max -translate-x-1/2 rounded-md border bg-gray-800 px-3 py-1 text-base font-semibold text-white shadow-md max-sm:hidden"
                     >
                         {title}
                     </motion.div>
@@ -74,6 +74,7 @@ const Badge: React.FC<BadgeProps> = ({ image, title, deleteText = false }) => {
     ) : (
         <div className="bg-blue-gray relative flex h-max items-center gap-2 rounded-md px-3 py-2 select-none">
             <Image
+                radius={"none"}
                 alt={`Badge de ${title}`}
                 width={30}
                 height={30}

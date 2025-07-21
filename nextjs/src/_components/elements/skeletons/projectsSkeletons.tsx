@@ -2,14 +2,19 @@
 
 import BadgeSkeleton from "@/_components/elements/skeletons/badgeSkeleton";
 import { Skeleton } from "@heroui/react";
+import { useTranslations } from "next-intl";
 
 const ProjectsSkeleton = () => {
+    const t = useTranslations("Cards");
+
     return (
         <section
             id="projects"
             className="mt-10 flex w-full flex-col gap-2 pb-10"
         >
-            <h2 className="text-3xl font-extrabold text-white">Projects</h2>
+            <h2 className="text-3xl font-extrabold text-white">
+                {t("projects")}
+            </h2>
             <div className="flex flex-col gap-6">
                 {[...Array(2)].map((_, i) => (
                     <div key={i} className="overflow-hidden rounded-2xl">
