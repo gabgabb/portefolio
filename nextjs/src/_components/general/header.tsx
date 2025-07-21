@@ -75,8 +75,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         "flex flex-row items-center text-xl font-bold max-[350px]:hidden"
                     }
                 >
-                    <Button
-                        onPress={() => switchLocale("fr")}
+                    <div
+                        onClick={() => switchLocale("fr")}
                         className={`cursor-pointer px-2 ${
                             locale === "fr"
                                 ? "font-extrabold underline underline-offset-4"
@@ -84,10 +84,10 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         }`}
                     >
                         FR
-                    </Button>
+                    </div>
                     <div>•</div>
-                    <Button
-                        onPress={() => switchLocale("en")}
+                    <div
+                        onClick={() => switchLocale("en")}
                         className={`cursor-pointer px-2 ${
                             locale === "en"
                                 ? "font-extrabold underline underline-offset-4"
@@ -95,12 +95,12 @@ const Header: React.FC<HeaderProps> = ({ onOpenDrawer }) => {
                         }`}
                     >
                         EN
-                    </Button>
+                    </div>
                 </div>
                 {mounted && (
                     <Button
                         onPress={onOpenDrawer}
-                        className="hidden max-md:block"
+                        className="hidden bg-transparent text-white max-md:block"
                         isIconOnly
                         aria-label="Menu"
                         startContent={<Menu size={32} />}

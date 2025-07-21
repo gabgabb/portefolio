@@ -62,32 +62,30 @@ const Cv: React.FC = () => {
 
     // Extrait le contenu de la barre de navigation pour pouvoir le réutiliser
     const navigationContent = (
-        <div className="flex items-center space-x-4 rounded-lg bg-[#1e293b] p-3 shadow-[0px_4px_20px_rgba(0,0,0,0.6)] transition-opacity duration-300">
-            <Button
-                onPress={prevPage}
-                disabled={pageNumber <= 1}
-                className={`rounded-md px-4 py-2 transition-all ${
+        <div className="flex items-center space-x-4 rounded-lg bg-[#1e293b] p-3 shadow-[0px_4px_20px_rgba(0,0,0,0.6)] transition-opacity duration-300 select-none">
+            <div
+                onClick={prevPage}
+                className={`rounded-md px-4 py-2 transition-all hover:cursor-pointer ${
                     pageNumber <= 1
-                        ? "cursor-not-allowed opacity-50"
+                        ? "cursor-not-allowed! opacity-50"
                         : "hover:bg-gray-700"
                 }`}
             >
                 ◀
-            </Button>
+            </div>
             <p className="w-max font-bold text-white">
                 {pageNumber} {t("of")} {numPages}
             </p>
-            <Button
-                onPress={nextPage}
-                disabled={pageNumber >= (numPages || 1)}
-                className={`rounded-md px-4 py-2 transition-all ${
+            <div
+                onClick={nextPage}
+                className={`rounded-md px-4 py-2 transition-all hover:cursor-pointer ${
                     pageNumber >= (numPages || 1)
-                        ? "cursor-not-allowed opacity-50"
+                        ? "cursor-not-allowed! opacity-50"
                         : "hover:bg-gray-700"
                 }`}
             >
                 ▶
-            </Button>
+            </div>
         </div>
     );
 

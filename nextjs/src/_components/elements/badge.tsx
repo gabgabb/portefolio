@@ -37,12 +37,13 @@ const Badge: React.FC<BadgeProps> = ({ image, title, deleteText = false }) => {
         <div className="relative">
             <Button
                 ref={buttonRef}
-                className="bg-blue-gray relative flex h-max items-center gap-2 rounded-md px-3 py-2 select-none focus:outline-none"
+                className="bg-blue-gray relative flex h-max min-w-12 items-center gap-2 rounded-md px-4 py-2 select-none focus:outline-none"
                 onPress={() => {
                     setIsActive((prev) => !prev);
                 }}
             >
                 <Image
+                    radius={"none"}
                     alt={`Badge de ${title}`}
                     width={30}
                     height={30}
@@ -50,7 +51,7 @@ const Badge: React.FC<BadgeProps> = ({ image, title, deleteText = false }) => {
                     className="h-6 w-6 object-contain"
                 />
                 <span
-                    className={`p-0 text-lg font-semibold ${deleteText ? "max-sm:hidden sm:hidden lg:block" : ""}`}
+                    className={`p-0 text-lg font-semibold text-white ${deleteText ? "max-sm:hidden sm:hidden lg:block" : ""}`}
                 >
                     {title}
                 </span>

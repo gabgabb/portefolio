@@ -74,15 +74,16 @@ const ProjectDetail = () => {
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <Breadcrumbs className="mb-10 text-lg font-semibold">
-                <BreadcrumbItem
-                    className="text-gray-light/90 transition-all hover:text-white"
-                    href={`/${locale}`}
-                >
-                    {t("home")}
+            <Breadcrumbs className="mb-10 text-lg font-bold" size={"lg"}>
+                <BreadcrumbItem href={`/${locale}`}>
+                    <div className="text-gray-light/90 transition-all hover:text-white">
+                        {t("home")}
+                    </div>
                 </BreadcrumbItem>
-                <BreadcrumbItem className="text-gray-light/90">
-                    {t("projectsBread")}
+                <BreadcrumbItem>
+                    <div className="text-gray-light/90">
+                        {t("projectsBread")}
+                    </div>
                 </BreadcrumbItem>
                 <BreadcrumbItem className="truncate text-white" isCurrent>
                     {project.name}
