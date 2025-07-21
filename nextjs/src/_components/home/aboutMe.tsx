@@ -1,5 +1,6 @@
 "use client";
 
+import AboutMeSkeleton from "@/_components/elements/skeletons/aboutMeSkeleton";
 import { Presentation } from "@/_utils/types";
 import { Image } from "@heroui/react";
 import { useLocale } from "next-intl";
@@ -39,7 +40,7 @@ const AboutMe = () => {
         fetchData();
     }, [locale, token]);
 
-    if (!presentation) return <p>Chargement...</p>;
+    if (!presentation) return <AboutMeSkeleton />;
 
     const imageUrl = presentation.image
         ? `${presentation.image.url}`

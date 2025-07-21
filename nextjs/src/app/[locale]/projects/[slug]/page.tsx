@@ -2,6 +2,7 @@
 
 import Badge from "@/_components/elements/badge";
 import ProjectContent from "@/_components/elements/projectContent";
+import ArticleSkeleton from "@/_components/elements/skeletons/articleSkeleton";
 import { Project } from "@/_utils/types";
 import { BreadcrumbItem, Breadcrumbs, Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -64,12 +65,8 @@ const ProjectDetail = () => {
         }
     }, [project, loading, router, t]);
 
-    if (loading) {
-        return <p className="mt-10 text-center">Chargement...</p>;
-    }
-
-    if (!project) {
-        return null;
+    if (loading || !project) {
+        return <ArticleSkeleton />;
     }
 
     return (
