@@ -53,7 +53,7 @@ const ArticleSkeleton = () => {
                 <Skeleton className="h-6 w-full rounded-md" />
                 <Skeleton className="h-6 w-2/3 rounded-md" />
             </div>
-            <div className="flex flex-col gap-2 mt-8">
+            <div className="mt-8 flex flex-col gap-2">
                 <Skeleton className="h-6 w-full rounded-md" />
                 <Skeleton className="h-6 w-5/6 rounded-md" />
                 <Skeleton className="h-6 w-3/4 rounded-md" />
