@@ -1,51 +1,47 @@
 import "../globals.css";
 
+import BackgroundGradient from "@/_components/elements/backgroundGradient";
 import ClientLayout from "@/_components/general/clientLayout";
 import { routing } from "@/i18n/routing";
 import { HeroUIProvider } from "@heroui/system";
+import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
-export const metadata = {
-    title: "Gabriel Filiot - Full Stack Developer Portfolio",
-    description:
-        "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
-    authors: [{ name: "Gabriel Filiot" }],
-    keywords: [
-        "Gabriel Filiot",
-        "Développeur Full Stack",
-        "Portfolio",
-        "Développement Web",
-        "Projets",
-        "Compétences",
-        "Expérience Professionnelle",
-        "JavaScript",
-        "React",
-        "Node.js",
-        "HTML",
-        "CSS",
-        "Tailwind CSS",
-        "Next.js",
-    ],
-    openGraph: {
-        title: "Gabriel Filiot - Full Stack Developer Portfolio",
-        description:
-            "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
-        url: "https://gabriaile.dev/",
-        type: "website",
-        images: ["https://www.gabrielfiliot.com/og-image.jpg"],
-    },
-    twitter: {
-        card: "summary_large_image",
-        site: "@gabrielfiliot",
-        title: "Gabriel Filiot - Full Stack Developer Portfolio",
-        description:
-            "Découvrez le portfolio de Gabriel Filiot, développeur full stack. Explorez ses projets, compétences et expériences professionnelles.",
-        images: ["https://www.gabrielfiliot.com/twitter-image.jpg"],
-    },
-};
+export async function generateMetadata({
+    params,
+}: {
+    params: { locale: string };
+}): Promise<Metadata> {
+    const t = await getTranslations({
+        locale: params.locale,
+        namespace: "Metadata",
+    });
+
+    return {
+        title: t("title"),
+        description: t("description"),
+        keywords: t("keywords"),
+        authors: [{ name: "Gabriel Filiot" }],
+        openGraph: {
+            title: t("title"),
+            description: t("description"),
+            url: "https://gabrielfiliot.dev/",
+            type: "website",
+            images: ["https://gabrielfiliot.dev/og-image.jpg"],
+        },
+        twitter: {
+            card: "summary_large_image",
+            site: "@gabrielfiliot",
+            title: t("title"),
+            description: t("description"),
+            images: ["https://gabrielfiliot.dev/twitter-image.jpg"],
+        },
+    };
+}
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -76,7 +72,10 @@ const RootLayout: React.FC<RootLayoutProps> = async ({ children, params }) => {
                             draggable
                             theme={"dark"}
                         />
-                        <ClientLayout>{children}</ClientLayout>
+                        <BackgroundGradient />
+                        <div className="relative z-10">
+                            <ClientLayout>{children}</ClientLayout>
+                        </div>
                     </HeroUIProvider>
                 </NextIntlClientProvider>
             </body>

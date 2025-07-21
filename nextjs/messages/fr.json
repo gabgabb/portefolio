@@ -19,5 +19,10 @@
         "projectsBread": "Projets",
         "notFound": "Aucun projet trouvé.",
         "linkToProject": "Lien vers le projet :"
+    },
+    "Metadata": {
+        "title": "Gabriel Filiot - Développeur Full Stack",
+        "description": "Découvrez le portfolio de Gabriel Filiot, développeur full stack passionné par React, Next.js et Symfony.",
+        "keywords": "Gabriel Filiot, Développeur Web, Full Stack, Portfolio, React, Next.js, Symfony, Tailwind"
     }
 }
