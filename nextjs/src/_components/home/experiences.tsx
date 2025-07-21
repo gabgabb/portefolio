@@ -1,6 +1,7 @@
 "use client";
 
 import Experience from "@/_components/elements/experience";
+import ExperiencesSkeleton from "@/_components/elements/skeletons/experiencesSkeleton";
 import { ExperienceType } from "@/_utils/types";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ export const Experiences: React.FC = () => {
         fetchData();
     }, [locale, token]);
 
-    if (!experiences.length) return <p>Chargement...</p>;
+    if (!experiences.length) return <ExperiencesSkeleton />;
 
     return (
         <div className="flex flex-1 flex-col gap-2">

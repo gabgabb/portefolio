@@ -2,7 +2,7 @@
 
 import Badge from "@/_components/elements/badge";
 import { Project } from "@/_utils/types";
-import { Button, Card, Image } from "@heroui/react";
+import { Button, Image } from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SquareArrowOutUpRight, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -77,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
     return (
         <div className="relative">
-            <Card>
+            <div>
                 {/* IMAGE */}
                 <div
                     className="relative"
@@ -91,6 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     onClick={handleClick}
                 >
                     <Image
+                        radius={"none"}
                         alt={project.name}
                         className="border-stroke rounded-t-2xl border-x-2 border-t-2 object-cover object-top transition-all duration-300 group-hover:opacity-70 max-sm:h-[160px] max-sm:w-[1200px] sm:h-[180px] sm:w-[1200px] md:h-[250px] lg:h-[320px]"
                         src={
@@ -140,7 +141,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                                 );
                                 router.refresh(); // Force le rechargement de la page
                             }}
-                            className="bg-purple hover:bg-purple/80 mt-4 flex cursor-pointer items-center rounded-xl transition-all focus:border-none active:border-none max-[400px]:!w-3/4 max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
+                            className="bg-purple hover:bg-purple/80 mt-4 flex cursor-pointer items-center rounded-xl text-white transition-all focus:border-none active:border-none max-[400px]:w-3/4! max-sm:mx-auto max-sm:h-12 max-sm:w-1/2 sm:mx-auto sm:h-12 sm:w-1/2 md:h-14 md:w-full lg:mx-auto lg:w-[580px]"
                             endContent={
                                 <SquareArrowOutUpRight color={"#EAF3F6"} />
                             }
@@ -151,7 +152,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         </Button>
                     </div>
                 </div>
-            </Card>
+            </div>
 
             {/* VIDEO FLOTTANTE */}
             {!isTouchDevice &&
@@ -171,7 +172,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             autoPlay
                             loop
                             muted
-                            className="border-stroke h-full max-h-[60rem] w-full max-w-xl rounded-xl border"
+                            className="border-stroke h-full max-h-240 w-full max-w-xl rounded-xl border"
                         />
                     </div>
                 )}

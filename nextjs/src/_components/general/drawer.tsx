@@ -54,7 +54,7 @@ const CustomDrawer: React.FC<DrawerProps> = ({ isOpen, onClose }) => {
             >
                 {/* Bouton de fermeture */}
                 <Button
-                    className="self-end text-3xl text-white"
+                    className="self-end bg-transparent text-3xl text-white"
                     onPress={onClose}
                 >
                     <X size={30} />

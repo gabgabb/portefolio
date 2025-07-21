@@ -1,6 +1,7 @@
 "use client";
 
 import Badge from "@/_components/elements/badge";
+import TechnologiesSkeleton from "@/_components/elements/skeletons/technologiesSkeleton";
 import { Technology } from "@/_utils/types";
 import React, { useEffect, useState } from "react";
 
@@ -35,7 +36,7 @@ export const Technologies: React.FC = () => {
         fetchData();
     }, [token]);
 
-    if (!technologies.length) return <p>Chargement...</p>;
+    if (!technologies.length) return <TechnologiesSkeleton />;
 
     return (
         <div className="flex flex-col gap-2 lg:w-[55%]">

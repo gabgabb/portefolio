@@ -1,6 +1,7 @@
 "use client";
 
 import ProjectCard from "@/_components/elements/projectCard";
+import ProjectsSkeletons from "@/_components/elements/skeletons/projectsSkeletons";
 import { Project } from "@/_utils/types";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ const Projects: React.FC = () => {
         fetchData();
     }, [locale, token]);
 
-    if (!projects.length) return <p>Chargement...</p>;
+    if (!projects.length) return <ProjectsSkeletons />;
 
     return (
         <section

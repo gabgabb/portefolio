@@ -29,17 +29,6 @@ const nextConfig: NextConfig = {
     },
     compress: true,
     bundlePagesRouterDependencies: true,
-    experimental: {
-        staleTimes: {
-            dynamic: 30,
-        },
-        turbo: {
-            resolveAlias: {
-                "next-intl/config": "./path/to/i18n.ts",
-                canvas: "./empty-module.ts",
-            },
-        },
-    },
 };
 
 export default withNextIntl(nextConfig);

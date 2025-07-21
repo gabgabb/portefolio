@@ -30,6 +30,7 @@ const Footer: React.FC = () => {
                         rel="noopener noreferrer"
                     >
                         <Image
+                            radius={"none"}
                             src="/linkedin.png"
                             width="40"
                             height="40"
@@ -59,6 +60,7 @@ const Footer: React.FC = () => {
                         rel="noopener noreferrer"
                     >
                         <Image
+                            radius={"none"}
                             src={"/strapi.png"}
                             alt={"Strapi image"}
                             className="h-[20px] w-[80px] sm:h-[30px] sm:w-[120px]"

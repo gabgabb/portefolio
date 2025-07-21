@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@config "../../tailwind.config.ts";
+
 html {
   scroll-behavior: smooth;
 }
@@ -139,6 +141,8 @@ html {
     --color-gray-light: rgba(234, 243, 246, 0.7);
     --color-blue-gray: rgba(123, 126, 252, 0.14);
     --color-purple: #5469BA;
+
+    --color-foreground: #EAF3F6;
 
     --font-bogart: "Bogart", sans-serif;
 }

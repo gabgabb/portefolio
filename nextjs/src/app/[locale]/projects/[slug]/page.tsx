@@ -2,6 +2,7 @@
 
 import Badge from "@/_components/elements/badge";
 import ProjectContent from "@/_components/elements/projectContent";
+import ArticleSkeleton from "@/_components/elements/skeletons/articleSkeleton";
 import { Project } from "@/_utils/types";
 import { BreadcrumbItem, Breadcrumbs, Image } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -64,25 +65,22 @@ const ProjectDetail = () => {
         }
     }, [project, loading, router, t]);
 
-    if (loading) {
-        return <p className="mt-10 text-center">Chargement...</p>;
-    }
-
-    if (!project) {
-        return null;
+    if (loading || !project) {
+        return <ArticleSkeleton />;
     }
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <Breadcrumbs className="mb-10 text-lg font-semibold">
-                <BreadcrumbItem
-                    className="text-gray-light/90 transition-all hover:text-white"
-                    href={`/${locale}`}
-                >
-                    {t("home")}
+            <Breadcrumbs className="mb-10 text-lg font-bold" size={"lg"}>
+                <BreadcrumbItem href={`/${locale}`}>
+                    <div className="text-gray-light/90 transition-all hover:text-white">
+                        {t("home")}
+                    </div>
                 </BreadcrumbItem>
-                <BreadcrumbItem className="text-gray-light/90">
-                    {t("projectsBread")}
+                <BreadcrumbItem>
+                    <div className="text-gray-light/90">
+                        {t("projectsBread")}
+                    </div>
                 </BreadcrumbItem>
                 <BreadcrumbItem className="truncate text-white" isCurrent>
                     {project.name}

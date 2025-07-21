@@ -42,10 +42,7 @@ test.describe("Portfolio Tests", () => {
 
     test("Switch language to English", async ({ page }) => {
         // Click the "EN" button to change language
-        const englishButton = page.getByRole("button", {
-            name: "EN",
-            exact: true,
-        });
+        const englishButton = page.getByTestId("locale-en");
         await expect(englishButton).toBeVisible();
         await englishButton.click();
 
@@ -59,7 +56,7 @@ test.describe("Portfolio Tests", () => {
     test("Switch language to French", async ({ page }) => {
         // Navigate to the English version before switching back to French
         await page.goto("/en");
-        const frenchButton = page.getByRole("button", { name: "FR" });
+        const frenchButton = page.getByTestId("locale-fr");
         await expect(frenchButton).toBeVisible();
         await frenchButton.click();
 
