@@ -2254,13 +2254,13 @@ __metadata:
   linkType: hard
 
 "@playwright/test@npm:^1.50.1":
-  version: 1.54.1
-  resolution: "@playwright/test@npm:1.54.1"
+  version: 1.54.2
+  resolution: "@playwright/test@npm:1.54.2"
   dependencies:
-    playwright: "npm:1.54.1"
+    playwright: "npm:1.54.2"
   bin:
     playwright: cli.js
-  checksum: 10c0/1b414356bc1049927d7b9efc14d5b3bf000ef6483313926bb795b4f27fe3707e8e0acf0db59063a452bb4f7e34559758d17640401b6f3e2f5290f299a8d8d02f
+  checksum: 10c0/a032d9714a91d6dc40405575ca65ec52f95b0ca95974cd0140e2c12b6c39fbe5311239b2d581b289acaa1e227dd871cf5c43a537f32457f6329723e4add6e6f1
   languageName: node
   linkType: hard
 
@@ -6658,12 +6658,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.535.0":
-  version: 0.535.0
-  resolution: "lucide-react@npm:0.535.0"
+"lucide-react@npm:^0.536.0":
+  version: 0.536.0
+  resolution: "lucide-react@npm:0.536.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/688439e202b36866ee40479b9f1093a144cc249690c2710b463cdd6c5b00006b439d763840d8d1f4cfe91d51e036c30024ccff5290cd7842dd20ebe5c9e4a8b2
+  checksum: 10c0/643d6960630c5e8678c8140ccb60710b019a385c847f4ad089b2598ae3321f80ddc7f73c2b3a648576674c3e475a6effa2fc58665da9c07e568a010e677cab42
   languageName: node
   linkType: hard
 
@@ -7244,12 +7244,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.54.1":
-  version: 1.54.1
-  resolution: "playwright-core@npm:1.54.1"
+"playwright-core@npm:1.54.2":
+  version: 1.54.2
+  resolution: "playwright-core@npm:1.54.2"
   bin:
     playwright-core: cli.js
-  checksum: 10c0/b821262b024d7753b1bfa71eb2bc99f2dda12a869d175b2e1bc6ac2764bd661baf36d9d42f45caf622854ad7e4a6077b9b57014c74bb5a78fe339c9edf1c9019
+  checksum: 10c0/44850e20bf35237c8c3dedf1096c655f8af939dde53c5469f72cae3dd744966858a302419b909a73d7a2093323123e7ebcc0fdd55151b4193afb7812c1fd2c88
   languageName: node
   linkType: hard
 
@@ -7260,18 +7260,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:1.54.1":
-  version: 1.54.1
-  resolution: "playwright@npm:1.54.1"
+"playwright@npm:1.54.2":
+  version: 1.54.2
+  resolution: "playwright@npm:1.54.2"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.54.1"
+    playwright-core: "npm:1.54.2"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 10c0/c5fedae31a03a1f4c4846569aef3ffb98da23000a4d255abfc8c2ede15b43cc7cd87b80f6fa078666c030373de8103787cf77ef7653ae9458aabbbd4320c2599
+  checksum: 10c0/6f642fa70179eee5d5bf8a90df2a6147c9638ff926f4f3ad0a0517396b8a3fe00ccebf13377e032a75b3f0b2610ec1562293e0cfc3bde234181c7a50af8af80a
   languageName: node
   linkType: hard
 
@@ -7306,7 +7306,7 @@ __metadata:
     framer-motion: "npm:12.23.12"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
-    lucide-react: "npm:^0.535.0"
+    lucide-react: "npm:^0.536.0"
     next: "npm:15.4.5"
     next-intl: "npm:^4.0.0"
     playwright-ctrf-json-reporter: "npm:^0.0.22"
