@@ -3863,12 +3863,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.1.10":
-  version: 19.1.10
-  resolution: "@types/react@npm:19.1.10"
+"@types/react@npm:19.1.11":
+  version: 19.1.11
+  resolution: "@types/react@npm:19.1.11"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10c0/fb583deacd0a815e2775dc1b9f764532d8cacb748ddd2c2914805a46c257ce6c237b4078f44009692074db212ab61a390301c6470f07f5aa5bfdeb78a2acfda1
+  checksum: 10c0/639b225c2bbcd4b8a30e1ea7a73aec81ae5b952a4c432460b48c9881c9d12e76645c9032d24f15eefae9985a12d5cb26557fe10e9850b2da0fabfb0a1e2d16bd
   languageName: node
   linkType: hard
 
@@ -6649,12 +6649,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.540.0":
-  version: 0.540.0
-  resolution: "lucide-react@npm:0.540.0"
+"lucide-react@npm:^0.541.0":
+  version: 0.541.0
+  resolution: "lucide-react@npm:0.541.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/f4dc8a540b1b079958fdf7a1804dfb3f9093a9393f0c0a4b32a7e839869df5e29946c4fe226f06edd3056f6eccfa77b53e44be89f42379e7fe31c4e59caee3fa
+  checksum: 10c0/ffa23a9c9ead0832c7e0bb1eb7ed44e9f38bbf083d94b4d36a66eb23fa2099d4a52e1677c91eb7e8ea922621fa98e730f5d513bc56b3111b14b835bd8ab823ab
   languageName: node
   linkType: hard
 
@@ -7281,7 +7281,7 @@ __metadata:
     "@types/file-saver": "npm:^2"
     "@types/js-cookie": "npm:^3.0.6"
     "@types/node": "npm:^22.13.1"
-    "@types/react": "npm:19.1.10"
+    "@types/react": "npm:19.1.11"
     "@types/react-dom": "npm:19.1.7"
     "@types/react-transition-group": "npm:^4.4.12"
     "@types/uuid": "npm:^10.0.0"
@@ -7297,7 +7297,7 @@ __metadata:
     framer-motion: "npm:12.23.12"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
-    lucide-react: "npm:^0.540.0"
+    lucide-react: "npm:^0.541.0"
     next: "npm:15.5.0"
     next-intl: "npm:^4.0.0"
     playwright-ctrf-json-reporter: "npm:^0.0.23"
