@@ -36,7 +36,7 @@
         "@types/file-saver": "^2",
         "@types/js-cookie": "^3.0.6",
         "@types/node": "^22.13.1",
-        "@types/react": "19.1.11",
+        "@types/react": "19.1.12",
         "@types/react-dom": "19.1.8",
         "@types/react-transition-group": "^4.4.12",
         "@types/uuid": "^10.0.0",
@@ -60,7 +60,7 @@
     },
     "packageManager": "yarn@4.9.4",
     "resolutions": {
-        "@types/react": "19.1.11",
+        "@types/react": "19.1.12",
         "@types/react-dom": "19.1.8"
     },
     "license": "MIT"
