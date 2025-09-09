@@ -6714,12 +6714,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.542.0":
-  version: 0.542.0
-  resolution: "lucide-react@npm:0.542.0"
+"lucide-react@npm:^0.543.0":
+  version: 0.543.0
+  resolution: "lucide-react@npm:0.543.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/3ccdb898a480f0194f93abef0b6f0347bc2647db24051e65a17c1dbd22ca0d10a7636d9af68c92665b42b6c9e761567a0d65944fe8568fb0e30a7ea57281ccec
+  checksum: 10c0/76bb54f9c602ff5d44ec66f2786c035d92aaabca1e1abb380b0c8101dfb3290e52c82fa4d630e286ef07c05b63696e187f0ca3ae186535d9c5b4de7aa8825bd3
   languageName: node
   linkType: hard
 
@@ -6967,12 +6967,12 @@ __metadata:
   linkType: hard
 
 "next-intl@npm:^4.0.0":
-  version: 4.3.6
-  resolution: "next-intl@npm:4.3.6"
+  version: 4.3.7
+  resolution: "next-intl@npm:4.3.7"
   dependencies:
     "@formatjs/intl-localematcher": "npm:^0.5.4"
     negotiator: "npm:^1.0.0"
-    use-intl: "npm:^4.3.6"
+    use-intl: "npm:^4.3.7"
   peerDependencies:
     next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
@@ -6980,7 +6980,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/10f5eccf31abb32078f7dce8f11e691b910b564509a9d7d96f1cf9505188d51230565223776bd0e6bc8dc58dfd63d5c5a8a99630d19d173f8a7a97aaa951e228
+  checksum: 10c0/00a2df0622f8f6474778ceefbb5e119459ab91a9d586abd94cbbd831affb187117689181eddc45ecedb1f1967ef2215485334b9eb6a039ad22a92ce6447cc738
   languageName: node
   linkType: hard
 
@@ -7362,7 +7362,7 @@ __metadata:
     framer-motion: "npm:12.23.12"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
-    lucide-react: "npm:^0.542.0"
+    lucide-react: "npm:^0.543.0"
     next: "npm:15.5.2"
     next-intl: "npm:^4.0.0"
     playwright-ctrf-json-reporter: "npm:^0.0.23"
@@ -8639,16 +8639,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-intl@npm:^4.3.6":
-  version: 4.3.6
-  resolution: "use-intl@npm:4.3.6"
+"use-intl@npm:^4.3.7":
+  version: 4.3.7
+  resolution: "use-intl@npm:4.3.7"
   dependencies:
     "@formatjs/fast-memoize": "npm:^2.2.0"
     "@schummar/icu-type-parser": "npm:1.21.5"
     intl-messageformat: "npm:^10.5.14"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
-  checksum: 10c0/72f01cba7bfd5b9c23b746e09c0014c6ba7481457a05b41f6057b28d89b5593c914c4d2c28e1cdfef28ca101ef685821d317496e2f4c36535fe5784c1318e257
+  checksum: 10c0/d98caa7d0a55eea323a9403dbf32e6d3aebbb1e666ca6e76ba5a755e5838d3262177dbe49474c8c5dd6df752a529ca35f85a9aabd8eb5a6508330c9c9a38adeb
   languageName: node
   linkType: hard
 
