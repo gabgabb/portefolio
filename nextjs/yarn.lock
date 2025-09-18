@@ -3902,11 +3902,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^22.13.1":
-  version: 22.18.4
-  resolution: "@types/node@npm:22.18.4"
+  version: 22.18.6
+  resolution: "@types/node@npm:22.18.6"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/3869c65f8c79029bf6a692fbe03aac412d01b7e6e544a3670a32963591d885e0d139b0ccca996e22ef98645713f018e47ac6f8d6840cfe4761adde5612286eb9
+  checksum: 10c0/7ba190da2e64e56c59270661af8cd682c830a1375b6f965ab153be90baabfdaa867aa1d63f87b42de80956996d46dfe1cf93ecefe982d9a16e485b6756949f9a
   languageName: node
   linkType: hard
 
@@ -4995,14 +4995,14 @@ __metadata:
   linkType: hard
 
 "dompurify@npm:^3.2.4":
-  version: 3.2.6
-  resolution: "dompurify@npm:3.2.6"
+  version: 3.2.7
+  resolution: "dompurify@npm:3.2.7"
   dependencies:
     "@types/trusted-types": "npm:^2.0.7"
   dependenciesMeta:
     "@types/trusted-types":
       optional: true
-  checksum: 10c0/c8f8e5b0879a0d93c84a2e5e78649a47d0c057ed0f7850ca3d573d2cca64b84fb1ff85bd4b20980ade69c4e5b80ae73011340f1c2ff375c7ef98bb8268e1d13a
+  checksum: 10c0/d41bb31a72f1acdf9b84c56723c549924b05d92a39a15bd8c40bec9007ff80d5fccf844bc53ee12af5b69044f9a7ce24a1e71c267a4f49cf38711379ed8c1363
   languageName: node
   linkType: hard
 
@@ -5737,9 +5737,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:12.23.13":
-  version: 12.23.13
-  resolution: "framer-motion@npm:12.23.13"
+"framer-motion@npm:12.23.14":
+  version: 12.23.14
+  resolution: "framer-motion@npm:12.23.14"
   dependencies:
     motion-dom: "npm:^12.23.12"
     motion-utils: "npm:^12.23.6"
@@ -5755,7 +5755,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/3dc9df0f2746275ebd70d035a8ee5d37d06b2c0ad6433b477d08bf71aeeb89886c8e3282668565398f4c89668261611a84cd7b1f1e1c7a4e6745fee5f7698e0a
+  checksum: 10c0/a960ebdc04ad8bf3141ee88ab5a36fce26fafafa1d34796e41b0d1c221f2a46fcda3eab30aaa179cb05212c47e09ce710345e87449a6f042816c237a02f73437
   languageName: node
   linkType: hard
 
@@ -7361,7 +7361,7 @@ __metadata:
     eslint-config-prettier: "npm:10.1.8"
     eslint-plugin-prettier: "npm:5.5.4"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:12.23.13"
+    framer-motion: "npm:12.23.14"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
     lucide-react: "npm:^0.544.0"
