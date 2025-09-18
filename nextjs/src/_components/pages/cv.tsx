@@ -20,6 +20,7 @@ const Cv: React.FC = () => {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [scale, setScale] = useState<number>(1.2);
+    const [pdfFile, setPdfFile] = useState<string>();
 
     const locale = useLocale();
     const t = useTranslations("Cv");
@@ -44,7 +45,11 @@ const Cv: React.FC = () => {
     }
 
     const downloadPdf = () => {
-        saveAs(pdfFile, `CV_Gabriel_${locale.toUpperCase()}.pdf`);
+        const fileName = `CV_Gabriel_${locale.toUpperCase()}.pdf`;
+        saveAs(
+            locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf",
+            fileName,
+        );
     };
 
     useEffect(() => {
