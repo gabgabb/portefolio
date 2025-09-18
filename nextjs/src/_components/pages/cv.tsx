@@ -3,26 +3,38 @@
 import { Button } from "@heroui/react";
 import { saveAs } from "file-saver";
 import { Download } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
 import CvSkeleton from "@/_components/elements/skeletons/cvSkeleton";
+import { useLocale, useTranslations } from "next-intl";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+if (typeof window !== "undefined") {
+    pdfjs.GlobalWorkerOptions.workerSrc = `${window.location.origin}/pdf.worker.min.js`;
+}
 
 const Cv: React.FC = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [scale, setScale] = useState<number>(1.2);
+    const [pdfFile, setPdfFile] = useState<string>();
 
     const locale = useLocale();
     const t = useTranslations("Cv");
-    const pdfFile =
-        locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
+
+    useEffect(() => {
+        const filePath =
+            locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
+
+        fetch(filePath)
+            .then((res) => res.blob())
+            .then((blob) => {
+                setPdfFile(URL.createObjectURL(blob));
+            });
+    }, [locale]);
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
         setNumPages(numPages);
@@ -41,7 +53,11 @@ const Cv: React.FC = () => {
     }
 
     const downloadPdf = () => {
-        saveAs(pdfFile, `CV_Gabriel_${locale.toUpperCase()}.pdf`);
+        const fileName = `CV_Gabriel_${locale.toUpperCase()}.pdf`;
+        saveAs(
+            locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf",
+            fileName,
+        );
     };
 
     useEffect(() => {
