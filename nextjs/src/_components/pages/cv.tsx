@@ -20,7 +20,6 @@ const Cv: React.FC = () => {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [scale, setScale] = useState<number>(1.2);
-    const [pdfFile, setPdfFile] = useState<string>();
 
     const locale = useLocale();
     const t = useTranslations("Cv");
