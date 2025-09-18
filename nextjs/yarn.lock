@@ -5737,9 +5737,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:12.23.14":
-  version: 12.23.14
-  resolution: "framer-motion@npm:12.23.14"
+"framer-motion@npm:12.23.15":
+  version: 12.23.15
+  resolution: "framer-motion@npm:12.23.15"
   dependencies:
     motion-dom: "npm:^12.23.12"
     motion-utils: "npm:^12.23.6"
@@ -5755,7 +5755,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/a960ebdc04ad8bf3141ee88ab5a36fce26fafafa1d34796e41b0d1c221f2a46fcda3eab30aaa179cb05212c47e09ce710345e87449a6f042816c237a02f73437
+  checksum: 10c0/472bd4a0c9d293f1a309109fbe055b83cf5524af03fb01afa05a7d34dc425b00906df8b4d4797cf6a18d31f6dcde925b3e28c4325ec7e7f67a8cfcdb5a440ee7
   languageName: node
   linkType: hard
 
@@ -7361,7 +7361,7 @@ __metadata:
     eslint-config-prettier: "npm:10.1.8"
     eslint-plugin-prettier: "npm:5.5.4"
     file-saver: "npm:^2.0.5"
-    framer-motion: "npm:12.23.14"
+    framer-motion: "npm:12.23.15"
     globals: "npm:^16.0.0"
     html-react-parser: "npm:^5.2.2"
     lucide-react: "npm:^0.544.0"
