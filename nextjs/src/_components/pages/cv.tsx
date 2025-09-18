@@ -12,7 +12,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
 if (typeof window !== "undefined") {
-    pdfjs.GlobalWorkerOptions.workerSrc = `${window.location.origin}/pdf.worker.min.js`;
+    pdfjs.GlobalWorkerOptions.workerSrc = `${window.location.origin}/pdf.worker.min.mjs`;
 }
 
 const Cv: React.FC = () => {
@@ -25,16 +25,8 @@ const Cv: React.FC = () => {
     const locale = useLocale();
     const t = useTranslations("Cv");
 
-    useEffect(() => {
-        const filePath =
-            locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
-
-        fetch(filePath)
-            .then((res) => res.blob())
-            .then((blob) => {
-                setPdfFile(URL.createObjectURL(blob));
-            });
-    }, [locale]);
+    const pdfFile =
+        locale === "fr" ? "/CV_Gabriel_FR.pdf" : "/CV_Gabriel_EN.pdf";
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
         setNumPages(numPages);
