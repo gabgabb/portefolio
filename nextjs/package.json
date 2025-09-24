@@ -17,7 +17,7 @@
         "@heroui/theme": "2.4.22",
         "autoprefixer": "^10.4.20",
         "file-saver": "^2.0.5",
-        "framer-motion": "12.23.19",
+        "framer-motion": "12.23.21",
         "html-react-parser": "^5.2.2",
         "lucide-react": "^0.544.0",
         "next": "15.5.4",
