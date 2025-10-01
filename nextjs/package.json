@@ -36,8 +36,8 @@
         "@types/file-saver": "^2",
         "@types/js-cookie": "^3.0.6",
         "@types/node": "^22.13.1",
-        "@types/react": "19.1.16",
-        "@types/react-dom": "19.1.9",
+        "@types/react": "19.1.17",
+        "@types/react-dom": "19.1.11",
         "@types/react-transition-group": "^4.4.12",
         "@types/uuid": "^11.0.0",
         "@typescript-eslint/eslint-plugin": "8.45.0",
@@ -54,14 +54,14 @@
         "prettier-plugin-organize-attributes": "^1.0.0",
         "prettier-plugin-organize-imports": "^4.1.0",
         "prettier-plugin-tailwindcss": "^0.6.14",
-        "tailwindcss": "4.1.13",
+        "tailwindcss": "4.1.14",
         "typescript": "^5.7.3",
         "typescript-eslint": "^8.23.0"
     },
     "packageManager": "yarn@4.10.3",
     "resolutions": {
-        "@types/react": "19.1.16",
-        "@types/react-dom": "19.1.9"
+        "@types/react": "19.1.17",
+        "@types/react-dom": "19.1.11"
     },
     "license": "MIT"
 }
