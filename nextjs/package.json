@@ -36,8 +36,8 @@
         "@types/file-saver": "^2",
         "@types/js-cookie": "^3.0.6",
         "@types/node": "^22.13.1",
-        "@types/react": "19.2.1",
-        "@types/react-dom": "19.2.0",
+        "@types/react": "19.2.2",
+        "@types/react-dom": "19.2.1",
         "@types/react-transition-group": "^4.4.12",
         "@types/uuid": "^11.0.0",
         "@typescript-eslint/eslint-plugin": "8.46.0",
@@ -60,8 +60,8 @@
     },
     "packageManager": "yarn@4.10.3",
     "resolutions": {
-        "@types/react": "19.2.1",
-        "@types/react-dom": "19.2.0"
+        "@types/react": "19.2.2",
+        "@types/react-dom": "19.2.1"
     },
     "license": "MIT"
 }
