@@ -23,6 +23,13 @@
                 "major"
             ],
             "prCreation": "not-pending"
+        },
+        {
+          "matchPackageNames": [
+            "pdfjs-dist",
+            "react-pdf"
+          ],
+          "enabled": false
         }
     ],
     "dependencyDashboard": true
