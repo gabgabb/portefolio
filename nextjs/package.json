@@ -30,7 +30,7 @@
     "devDependencies": {
         "@eslint/compat": "^1.2.6",
         "@eslint/eslintrc": "3.3.1",
-        "@eslint/js": "9.38.0",
+        "@eslint/js": "9.39.0",
         "@playwright/test": "^1.50.1",
         "@tailwindcss/postcss": "^4.1.11",
         "@types/file-saver": "^2",
@@ -43,7 +43,7 @@
         "@typescript-eslint/eslint-plugin": "8.46.2",
         "@typescript-eslint/parser": "8.46.2",
         "dompurify": "^3.2.4",
-        "eslint": "9.38.0",
+        "eslint": "9.39.0",
         "eslint-config-next": "16.0.1",
         "eslint-config-prettier": "10.1.8",
         "eslint-plugin-prettier": "5.5.4",
