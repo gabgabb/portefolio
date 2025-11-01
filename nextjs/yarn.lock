@@ -7485,10 +7485,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-ctrf-json-reporter@npm:^0.0.25":
-  version: 0.0.25
-  resolution: "playwright-ctrf-json-reporter@npm:0.0.25"
-  checksum: 10c0/eaf0bd243ea872e6e58ded6304cd2e5a0d762d60cab3a7b64139f64ac05d3f5b18091a8d9b15e137a65686d358127bbbcd620cee6148a14b46d6232d172bf806
+"playwright-ctrf-json-reporter@npm:^0.0.26":
+  version: 0.0.26
+  resolution: "playwright-ctrf-json-reporter@npm:0.0.26"
+  checksum: 10c0/a22fb31fb5ecd1fef885854916fa501b429c27b7bb7bd60fdfc6ce3dfbcfcc369f84cc8a90a01dae82b93d0330657b199909c71221b8c19530ac3b573497abf7
   languageName: node
   linkType: hard
 
@@ -7541,7 +7541,7 @@ __metadata:
     lucide-react: "npm:^0.552.0"
     next: "npm:16.0.1"
     next-intl: "npm:^4.0.0"
-    playwright-ctrf-json-reporter: "npm:^0.0.25"
+    playwright-ctrf-json-reporter: "npm:^0.0.26"
     postcss: "npm:^8.5.1"
     prettier: "npm:3.6.2"
     prettier-plugin-organize-attributes: "npm:^1.0.0"
