@@ -1,71 +1,59 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { FlatCompat } from "@eslint/eslintrc";
+// eslint.config.mjs
 import js from "@eslint/js";
-import typescriptEslintEslintPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import prettier from "eslint-plugin-prettier";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import next from "eslint-config-next";
+import tseslint from "typescript-eslint";
+import globals from "globals";
+import importPlugin from 'eslint-plugin-import';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
+// Optionnel: activer la règle "prettier/prettier"
+// -> nécessite `eslint-plugin-prettier` déjà présent chez toi
+import prettierPlugin from "eslint-plugin-prettier";
 
 export default [
-    ...compat.extends("next", "next/core-web-vitals", "prettier"),
+    { ignores: [".next/**", "node_modules/**", "dist/**", "coverage/**"] },
+
+    js.configs.recommended,
+
+    // TypeScript "non type-checked" (simple et rapide)
+    ...tseslint.configs.recommended,
+
+    // Preset officiel Next 16 (inclut react, react-hooks, import, etc.)
+    ...next,
+
     {
-        plugins: {
-            prettier,
-        },
-        rules: {
-            "prettier/prettier": [
-                "error",
-                { tabWidth: 4, useTabs: false, endOfLine: "auto" },
-            ],
-            camelcase: "off",
-            "import/prefer-default-export": "off",
-            "react/jsx-filename-extension": "off",
-            "react/jsx-props-no-spreading": "off",
-            "react/no-unused-prop-types": "off",
-            "react/require-default-props": "off",
-            "react/no-unescaped-entities": "off",
-            "import/extensions": [
-                "error",
-                "ignorePackages",
-                {
-                    ts: "never",
-                    tsx: "never",
-                    js: "never",
-                    jsx: "never",
-                },
-            ],
-        },
-    },
-    ...compat
-        .extends("plugin:@typescript-eslint/recommended", "prettier")
-        .map((config) => ({
-            ...config,
-            files: ["**/*.+(ts|tsx)"],
-        })),
-    {
-        files: ["**/*.+(ts|tsx)"],
-        plugins: {
-            "@typescript-eslint": typescriptEslintEslintPlugin,
-        },
+        files: ["**/*.{ts,tsx,js,jsx}"],
         languageOptions: {
-            parser: tsParser,
+            globals: { ...globals.browser, ...globals.node }
+        },
+        plugins: {
+            prettier: prettierPlugin
         },
         rules: {
+            // Remets ici seulement ce dont tu as VRAIMENT besoin
+            "prettier/prettier": ["error", { tabWidth: 4, useTabs: false, endOfLine: "auto" }],
+
+            // Évite de recharger des règles "react/*" ou "import/*" non nécessaires :
+            // eslint-config-next en apporte déjà un bon set.
+            camelcase: "off",
             "@typescript-eslint/explicit-function-return-type": "off",
             "@typescript-eslint/explicit-module-boundary-types": "off",
-            "no-use-before-define": [0],
-            "@typescript-eslint/no-use-before-define": [1],
+            "no-use-before-define": "off",
+            "@typescript-eslint/no-use-before-define": "warn",
             "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-var-requires": "off",
-        },
+            "@typescript-eslint/no-var-requires": "off"
+        }
     },
+    {
+        files: ["**/*.{ts,tsx,js,jsx}"],
+        plugins: { import: importPlugin },
+        settings: {
+            "import/resolver": {
+                typescript: true
+            }
+        },
+        rules: {
+            "import/extensions": ["error", "ignorePackages", { ts: "never", tsx: "never", js: "never", jsx: "never" }],
+            "import/prefer-default-export": "off"
+        }
+    }
 ];

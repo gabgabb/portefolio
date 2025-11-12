@@ -28,8 +28,6 @@
         "react-toastify": "^11.0.5"
     },
     "devDependencies": {
-        "@eslint/compat": "^1.2.6",
-        "@eslint/eslintrc": "3.3.1",
         "@eslint/js": "9.39.1",
         "@playwright/test": "^1.50.1",
         "@tailwindcss/postcss": "^4.1.11",
@@ -46,6 +44,8 @@
         "eslint": "9.39.1",
         "eslint-config-next": "16.0.1",
         "eslint-config-prettier": "10.1.8",
+        "eslint-import-resolver-typescript": "^4.4.4",
+        "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-prettier": "5.5.4",
         "globals": "^16.0.0",
         "playwright-ctrf-json-reporter": "^0.0.26",

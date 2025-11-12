@@ -11,9 +11,6 @@ const nextConfig: NextConfig = {
         STRAPI_TOKEN: process.env.NEXT_PUBLIC_STRAPI_TOKEN,
         NEXT_ENV: process.env.NEXT_ENV,
     },
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
     typescript: {
         ignoreBuildErrors: false,
     },
