@@ -1,5 +1,5 @@
 # Dockerfile pour Strapi
-FROM node:24
+FROM node:22
 
 # Set working directory
 WORKDIR /app
