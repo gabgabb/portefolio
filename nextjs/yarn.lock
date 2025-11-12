@@ -4222,11 +4222,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^24.0.0":
-  version: 24.10.0
-  resolution: "@types/node@npm:24.10.0"
+  version: 24.10.1
+  resolution: "@types/node@npm:24.10.1"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10c0/f82ed7194e16f5590ef7afdc20c6d09068c76d50278b485ede8f0c5749683536e3064ffa8def8db76915196afb3724b854aa5723c64d6571b890b14492943b46
+  checksum: 10c0/d6bca7a78f550fbb376f236f92b405d676003a8a09a1b411f55920ef34286ee3ee51f566203920e835478784df52662b5b2af89159d9d319352e9ea21801c002
   languageName: node
   linkType: hard
 
@@ -4248,12 +4248,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.2.2":
-  version: 19.2.2
-  resolution: "@types/react@npm:19.2.2"
+"@types/react@npm:19.2.3":
+  version: 19.2.3
+  resolution: "@types/react@npm:19.2.3"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10c0/f830b1204aca4634ce3c6cb3477b5d3d066b80a4dd832a4ee0069acb504b6debd2416548a43a11c1407c12bc60e2dc6cf362934a18fe75fe06a69c0a98cba8ab
+  checksum: 10c0/12db8df36b9a0c8f7a602d0684e53731a43da4519f963fa3d1f4d4cac10b3bd31f2c838be74fe111174fff631e80b8e3d645fdfed477eb0632ab972241d05d67
   languageName: node
   linkType: hard
 
@@ -7304,13 +7304,13 @@ __metadata:
   linkType: hard
 
 "next-intl@npm:^4.0.0":
-  version: 4.5.0
-  resolution: "next-intl@npm:4.5.0"
+  version: 4.5.1
+  resolution: "next-intl@npm:4.5.1"
   dependencies:
     "@formatjs/intl-localematcher": "npm:^0.5.4"
     "@swc/core": "npm:^1.13.19"
     negotiator: "npm:^1.0.0"
-    use-intl: "npm:^4.5.0"
+    use-intl: "npm:^4.5.1"
   peerDependencies:
     next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
@@ -7318,7 +7318,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/88941f1e66249519a1776c0e70fcfa66afd2a67e94e9d9e93f8bf20d92c051b476cdcf9baa6097263809b7f7ae2ad06a235e40a94fe8b8d26011c4a137dc37ef
+  checksum: 10c0/2c2b6f5f46797258ae0ce7d9f224d53f2dee579fd319ab94f91fb3e043879407b79d24c092a7bdbf6dcad94837faf2c6c8237b297fef15d36ddd7aa7eaa353c0
   languageName: node
   linkType: hard
 
@@ -7691,7 +7691,7 @@ __metadata:
     "@types/file-saver": "npm:^2"
     "@types/js-cookie": "npm:^3.0.6"
     "@types/node": "npm:^24.0.0"
-    "@types/react": "npm:19.2.2"
+    "@types/react": "npm:19.2.3"
     "@types/react-dom": "npm:19.2.2"
     "@types/react-transition-group": "npm:^4.4.12"
     "@types/uuid": "npm:^11.0.0"
@@ -8978,16 +8978,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-intl@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "use-intl@npm:4.5.0"
+"use-intl@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "use-intl@npm:4.5.1"
   dependencies:
     "@formatjs/fast-memoize": "npm:^2.2.0"
     "@schummar/icu-type-parser": "npm:1.21.5"
     intl-messageformat: "npm:^10.5.14"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
-  checksum: 10c0/940f0fc51065fc0795f98b8e4bcf349de0a26f4fa15a57956a8ec5975f46b6ba241344e7b0531d9bb8850978230fa3b650763aa503919d5d5c8fbcff2252a94e
+  checksum: 10c0/eba4a124eb84da9278611f295be28ade26f95377386073df41c1ddc9218a4711f94d4ae7604d6c87142bcf35cb0d0b2e2f9538c34a3d6143632c066801c92c41
   languageName: node
   linkType: hard
 
