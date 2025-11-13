@@ -5,6 +5,8 @@ services:
             dockerfile: ../docker/strapi/Dockerfile.dev
         ports:
             - "1337:1337"
+        environment:
+            ADMIN_AUTH_SECRET: "ci-secret-12345"
         healthcheck:
             test: [ "CMD", "wget", "-qO-", "http://localhost:1337/admin" ]
             interval: 5s
