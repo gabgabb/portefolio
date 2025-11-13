@@ -5,12 +5,12 @@ services:
             dockerfile: ../docker/strapi/Dockerfile.dev
         ports:
             - "1337:1337"
-        volumes:
-            - ./strapi:/app
-            - /app/node_modules
         environment:
             NODE_ENV: development
-
+            DATABASE_CLIENT: sqlite
+            DATABASE_FILENAME: /app/data/data.db
+        volumes:
+            - ./strapi:/app
     nextjs:
         build:
             context: ./nextjs
