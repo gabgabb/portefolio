@@ -5,13 +5,15 @@ services:
             dockerfile: ../docker/strapi/Dockerfile.dev
         ports:
             - "1337:1337"
-        environment:
-            ADMIN_AUTH_SECRET: "ci-secret-12345"
         healthcheck:
             test: [ "CMD", "wget", "-qO-", "http://localhost:1337/admin" ]
             interval: 5s
             timeout: 2s
             retries: 30
+        env_file:
+            - .env
+        environment:
+            - NODE_ENV=development
 
     nextjs:
         build:
@@ -24,6 +26,10 @@ services:
             interval: 5s
             timeout: 2s
             retries: 20
+        env_file:
+            - .env
+        environment:
+            - NODE_ENV=development
 
     tests:
         image: mcr.microsoft.com/playwright:v1.56.1-noble
