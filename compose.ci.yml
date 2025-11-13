@@ -24,4 +24,9 @@ services:
             - ./nextjs:/tests
         working_dir: /tests
         command: >
-            sh -c "yarn install && npx playwright test --config=playwright.config.ts"
+            sh -c "
+              corepack enable &&
+              corepack prepare yarn@4.11.0 --activate &&
+              yarn install --immutable &&
+              npx playwright test --config=playwright.config.ts
+            "
