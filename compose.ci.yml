@@ -15,16 +15,18 @@ services:
 
     tests:
         image: mcr.microsoft.com/playwright:v1.56.1-noble
+        network_mode: "service:nextjs"
         depends_on:
             nextjs:
                 condition: service_started
             strapi:
                 condition: service_started
+        working_dir: /tests
         volumes:
             - ./nextjs:/tests
-        working_dir: /tests
         environment:
-            PLAYWRIGHT_BASE_URL: http://nextjs:3000
+            # 👇 dans ce mode, localhost:3000 = Next.js
+            PLAYWRIGHT_BASE_URL: http://localhost:3000
         command: >
             sh -c "
               corepack enable &&
