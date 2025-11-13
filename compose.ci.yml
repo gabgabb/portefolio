@@ -23,6 +23,8 @@ services:
         volumes:
             - ./nextjs:/tests
         working_dir: /tests
+        environment:
+            PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
             sh -c "
               corepack enable &&
