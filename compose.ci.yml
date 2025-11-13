@@ -41,11 +41,14 @@ services:
         working_dir: /tests
         volumes:
             - ./nextjs/tests:/tests/tests
+            - ./nextjs/playwright.config.ts:/tests/playwright.config.ts
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
             sh -c "
+              corepack enable &&
+              corepack prepare yarn@4.11.0 --activate &&
               yarn add -D @playwright/test &&
               npx playwright install --with-deps &&
-              npx playwright test --config=/tests/tests/playwright.config.ts
-            "
+              npx playwright test --config=/tests/playwright.config.ts
+            " 
