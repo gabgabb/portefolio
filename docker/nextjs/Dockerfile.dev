@@ -3,10 +3,10 @@ WORKDIR /app
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN apt-get update && apt-get install -y wget
-
 COPY package.json yarn.lock ./
-RUN corepack enable && yarn install
+RUN corepack enable \
+ && corepack prepare yarn@4.11.0 --activate \
+ && yarn install
 
 COPY . .
 

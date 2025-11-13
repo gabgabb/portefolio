@@ -15,18 +15,16 @@ jobs:
 
             -   name: Create missing .env files
                 run: |
-                    cp .env.dist .env || true
-                    cp nextjs/.env.dist nextjs/.env || true
-                    cp strapi/.env.dist strapi/.env || true
-
-            -   name: Generate Strapi secrets for CI
-                run: |
-                    echo "APP_KEYS=$(node -e 'console.log(require(\"crypto\").randomBytes(32).toString(\"base64\"))'),$(node -e 'console.log(require(\"crypto\").randomBytes(32).toString(\"base64\"))')" >> strapi/.env
-                    echo "API_TOKEN_SALT=$(node -e 'console.log(require(\"crypto\").randomBytes(16).toString(\"base64\"))')" >> strapi/.env
-                    echo "ADMIN_AUTH_SECRET=$(node -e 'console.log(require(\"crypto\").randomBytes(16).toString(\"base64\"))')" >> strapi/.env
-                    echo "TRANSFER_TOKEN_SALT=$(node -e 'console.log(require(\"crypto\").randomBytes(16).toString(\"base64\"))')" >> strapi/.env
-                    echo "JWT_SECRET=$(node -e 'console.log(require(\"crypto\").randomBytes(16).toString(\"base64\"))')" >> strapi/.env
-
+                    cp .env.dist .env
+                    cp nextjs/.env.dist nextjs/.env
+                    cp strapi/.env.dist strapi/.env
+                    
+                    echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
+                    echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "TRANSFER_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
 
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v3
