@@ -23,16 +23,22 @@ jobs:
                 uses: docker/setup-buildx-action@v3
 
             -   name: Build images for current branch
-                run: |
-                    docker compose -f compose.ci.yml build
+                run: docker compose -f compose.ci.yml build
 
             -   name: Start services
-                run: docker compose -f compose.ci.yml up -d strapi nextjs
+                run: docker compose -f compose.ci.yml up -d nextjs strapi
 
             -   name: Wait for services to be healthy
+                run: docker compose -f compose.ci.yml wait
+
+            -   name: Show service logs (debug)
+                if: always()
                 run: |
-                    # exemple: attendre Strapi & Next (si tu as mis des healthchecks)
-                    docker compose -f compose.ci.yml ps
+                    echo "==== NEXTJS LOGS ===="
+                    docker compose -f compose.ci.yml logs nextjs --tail=200
+                    echo ""
+                    echo "==== STRAPI LOGS ===="
+                    docker compose -f compose.ci.yml logs strapi --tail=200
 
             -   name: Run Playwright tests
                 run: docker compose -f compose.ci.yml run --rm tests

@@ -5,6 +5,11 @@ services:
             dockerfile: ../docker/strapi/Dockerfile.dev
         ports:
             - "1337:1337"
+        healthcheck:
+            test: [ "CMD", "wget", "-qO-", "http://localhost:1337/admin" ]
+            interval: 5s
+            timeout: 2s
+            retries: 30
 
     nextjs:
         build:
@@ -13,7 +18,7 @@ services:
         ports:
             - "3000:3000"
         healthcheck:
-            test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+            test: [ "CMD", "wget", "-qO-", "http://localhost:3000" ]
             interval: 5s
             timeout: 2s
             retries: 20
@@ -24,10 +29,13 @@ services:
             nextjs:
                 condition: service_healthy
             strapi:
-                condition: service_started
+                condition: service_healthy
         working_dir: /tests
         volumes:
-            - ./nextjs:/tests
+            - ./nextjs/tests:/tests/tests
+            - ./nextjs/playwright.config.ts:/tests/playwright.config.ts
+            - ./nextjs/package.json:/tests/package.json
+            - ./nextjs/yarn.lock:/tests/yarn.lock
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
@@ -35,5 +43,5 @@ services:
               corepack enable &&
               corepack prepare yarn@4.11.0 --activate &&
               yarn install --immutable &&
-              npx playwright test --config=playwright.config.ts
+              npx playwright test --config=/tests/playwright.config.ts
             "
