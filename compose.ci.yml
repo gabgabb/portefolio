@@ -14,7 +14,7 @@ services:
             - "3000:3000"
 
     tests:
-        image: mcr.microsoft.com/playwright:v1.50.0-noble
+        image: mcr.microsoft.com/playwright:v1.56.1-noble
         depends_on:
             nextjs:
                 condition: service_started
