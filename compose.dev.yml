@@ -8,7 +8,7 @@ services:
         environment:
             NODE_ENV: development
             DATABASE_CLIENT: sqlite
-            DATABASE_FILENAME: /app/data/data.db
+            DATABASE_FILENAME: /data/data.db
         volumes:
             - ./strapi:/app
     nextjs:

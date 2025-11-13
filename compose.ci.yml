@@ -23,4 +23,5 @@ services:
         volumes:
             - ./nextjs:/tests
         working_dir: /tests
-        command: [ "npx","playwright","test","--config=playwright.config.ts" ]
+        command: >
+            sh -c "yarn install && npx playwright test --config=playwright.config.ts"
