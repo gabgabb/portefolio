@@ -12,21 +12,24 @@ services:
             dockerfile: ../docker/nextjs/Dockerfile.dev
         ports:
             - "3000:3000"
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+            interval: 5s
+            timeout: 2s
+            retries: 20
 
     tests:
         image: mcr.microsoft.com/playwright:v1.56.1-noble
-        network_mode: "service:nextjs"
         depends_on:
             nextjs:
-                condition: service_started
+                condition: service_healthy
             strapi:
                 condition: service_started
         working_dir: /tests
         volumes:
             - ./nextjs:/tests
         environment:
-            # 👇 dans ce mode, localhost:3000 = Next.js
-            PLAYWRIGHT_BASE_URL: http://localhost:3000
+            PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
             sh -c "
               corepack enable &&
