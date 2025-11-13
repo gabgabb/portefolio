@@ -3,7 +3,10 @@ WORKDIR /app
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn
+
+# 1️⃣ Installer EXACTEMENT la même version de Yarn qu’au runtime
 RUN corepack enable \
  && corepack prepare yarn@4.11.0 --activate \
  && yarn install
