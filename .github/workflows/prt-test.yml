@@ -35,9 +35,6 @@ jobs:
             -   name: Start services
                 run: docker compose -f compose.ci.yml up -d nextjs strapi
 
-            -   name: Wait for services to be healthy
-                run: docker compose -f compose.ci.yml wait strapi nextjs
-
             -   name: Show service logs (debug)
                 if: always()
                 run: |
