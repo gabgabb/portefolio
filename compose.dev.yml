@@ -1,0 +1,24 @@
+services:
+    strapi:
+        build:
+            context: ./strapi
+            dockerfile: ../docker/strapi/Dockerfile.dev
+        ports:
+            - "1337:1337"
+        volumes:
+            - ./strapi:/app
+            - /app/node_modules
+        environment:
+            NODE_ENV: development
+
+    nextjs:
+        build:
+            context: ./nextjs
+            dockerfile: ../docker/nextjs/Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./nextjs:/app
+            - /app/node_modules
+        environment:
+            NODE_ENV: development

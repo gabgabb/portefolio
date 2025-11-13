@@ -39,6 +39,9 @@ push: ## Push Docker images to Docker Hub
 start: ## Start services
 	docker compose up -d
 
+start-dev: ## Start services in development mode
+	docker compose -f compose.dev.yml up -d
+
 stop: ## Stop services
 	docker compose down
 
@@ -57,7 +60,6 @@ install: ## Install dependencies
 clean: ## Clean Docker
 	docker system prune -af
 	docker volume prune -f
-
 
 logs: ## Show logs
 	docker compose logs -f

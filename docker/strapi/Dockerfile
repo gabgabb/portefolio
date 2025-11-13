@@ -1,22 +1,27 @@
-# Dockerfile pour Strapi
-FROM node:20
-
-# Set working directory
+# docker/strapi/Dockerfile
+FROM node:20-bookworm AS deps
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY ./strapi/package.json ./strapi/package-lock.json ./
+# On installe les deps (avec cache npm)
+COPY package.json package-lock.json* ./
+RUN --mount=type=cache,target=/root/.npm npm ci
 
-# Install dependencies
-RUN npm install --force
-RUN npm install -g @strapi/strapi
-RUN npm install @strapi/provider-upload-cloudinary
+FROM node:20-bookworm AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+# Build Strapi (génère .cache, build admin, etc.)
+RUN npm run build
 
-# Copy the rest of the application code
-COPY ./strapi ./
+FROM node:20-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
 
-# Expose the Strapi port
+# Copie tout ce qui a été build
+COPY --from=build /app ./
+
+# (Optionnel) si tu veux ne garder que les deps prod :
+# RUN npm ci --omit=dev --prefer-offline --no-audit --no-fund
+
 EXPOSE 1337
-
-# Start the Strapi server
-CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build && npm run start; else npm run dev; fi"]
+CMD ["npm", "start"]

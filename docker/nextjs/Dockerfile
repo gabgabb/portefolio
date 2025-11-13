@@ -1,23 +1,24 @@
-FROM node:24
-
-# Enable Corepack
-RUN corepack enable
-
-# Set working directory
+FROM node:22-bookworm AS deps
 WORKDIR /app
+COPY package.json yarn.lock ./
+RUN corepack enable && yarn install --immutable
 
-# Copier package.json et yarn.lock en premier (meilleur cache Docker)
-COPY ./nextjs/package.json ./nextjs/yarn.lock ./
+FROM node:22-bookworm AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN yarn build
 
-RUN npx playwright install --with-deps
-
-# Copier le reste du code
-COPY ./nextjs ./
-
+FROM node:22-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Expose le port Next.js
-EXPOSE 3000
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/node_modules ./node_modules
 
-# Commande de lancement
-CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"production\" ]; then corepack yarn build && corepack yarn start; else corepack yarn dev; fi"]
+EXPOSE 3000
+CMD ["node", "node_modules/next/dist/bin/next", "start", "-p", "3000"]

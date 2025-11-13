@@ -1,0 +1,12 @@
+FROM node:20-bookworm
+WORKDIR /app
+
+ENV NODE_ENV=development
+
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 1337
+CMD ["npm", "run", "develop"]

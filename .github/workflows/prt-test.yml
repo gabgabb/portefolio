@@ -2,8 +2,7 @@ name: CI Test for PRs
 
 on:
     pull_request:
-        branches:
-            - main
+        branches: [ main ]
 
 jobs:
     test:
@@ -13,101 +12,30 @@ jobs:
             -   name: Checkout code
                 uses: actions/checkout@v5
 
+            -   name: Create missing .env files
+                run: |
+                    cp .env.dist .env || true
+                    cp nextjs/.env.dist nextjs/.env || true
+                    cp strapi/.env.dist strapi/.env || true
+
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v3
 
-            -   name: Create missing .env files
+            -   name: Build images for current branch
                 run: |
-                    cp .env.dist .env
-                    cp nextjs/.env.dist nextjs/.env
-                    cp strapi/.env.dist strapi/.env
-                                       
-                    echo "APP_KEYS=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"),$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")" >> strapi/.env
-                    echo "API_TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
-                    echo "API_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
-                    echo "ADMIN_JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
-                    echo "TRANSFER_TOKEN_SALT=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
-                    echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
+                    docker compose -f compose.ci.yml build
 
-            -   name: Install dependencies
+            -   name: Start services
+                run: docker compose -f compose.ci.yml up -d strapi nextjs
+
+            -   name: Wait for services to be healthy
                 run: |
-                    corepack enable
-                    corepack prepare yarn@stable --activate
-                    cd nextjs
-                    yarn install
-                    npx playwright install
-                    cd ../strapi
-                    npm install
+                    # exemple: attendre Strapi & Next (si tu as mis des healthchecks)
+                    docker compose -f compose.ci.yml ps
 
-            -   name: Build Docker images
-                run: |
-                    docker build -t portefolio-nextjs -f docker/nextjs/Dockerfile .
-                    docker build -t portefolio-strapi -f docker/strapi/Dockerfile .
-
-            -   name: Start services with local images
-                run: docker compose -f compose.ci.yml up -d
-
-            -   name: Wait for services to be ready
-                run: |
-                    sleep 15
-                    docker ps -a
-
-            -   name: Run Playwright tests inside Next.js container
-                if: always()
-                id: tests
-                run: |
-                    mkdir -p test-results
-                    docker exec portefolio-nextjs-1 npx playwright test || TEST_FAILED=true
-                    
-                    # Toujours essayer de copier le fichier de rapport Playwright
-                    docker cp portefolio-nextjs-1:/app/ctrf/ctrf-report.json test-results/ || echo '{}' > test-results/ctrf-report.json
-                    
-                    # Stocker le statut d'échec pour plus tard
-                    if [ "$TEST_FAILED" = true ]; then
-                      echo "TEST_FAILED=true" >> $GITHUB_ENV
-                    fi
-
-            -   name: Publish Test Summary Results
-                if: always()  # S'exécute même si les tests échouent
-                run: |
-                    if [ -f "test-results/ctrf-report.json" ]; then
-                      npx github-actions-ctrf test-results/ctrf-report.json
-                    else
-                      echo "⚠️ Aucun fichier de résultats trouvé, skipping..."
-                    fi          
-
-            -   name: Fail if tests failed
-                if: env.TEST_FAILED == 'true'
-                run: exit 1
-
+            -   name: Run Playwright tests
+                run: docker compose -f compose.ci.yml run --rm tests
 
             -   name: Stop and clean up
                 if: always()
-                run: |
-                    docker compose -f compose.ci.yml down -v
-
-    auto-approve:
-        needs: test
-        runs-on: ubuntu-latest
-        if: github.actor == 'renovate[bot]'
-        steps:
-            -   name: Checkout code
-                uses: actions/checkout@v5
-
-            -   name: Auto-approve PR
-                uses: hmarr/auto-approve-action@v4
-                with:
-                    github-token: ${{ secrets.GH_PAT }}
-
-    auto-merge:
-        needs: auto-approve
-        runs-on: ubuntu-latest
-        if: github.actor == 'renovate[bot]'
-        steps:
-            -   name: Checkout code
-                uses: actions/checkout@v5
-
-            -   name: Enable auto-merge for Renovate PRs
-                run: gh pr merge --auto --squash "$GITHUB_HEAD_REF"
-                env:
-                    GH_TOKEN: ${{ secrets.GH_PAT }}
+                run: docker compose -f compose.ci.yml down -v
