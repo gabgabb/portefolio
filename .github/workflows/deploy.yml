@@ -7,7 +7,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04-arm
 
         steps:
             -   name: Checkout code
@@ -30,7 +30,9 @@ jobs:
                     platforms: linux/arm64
                     tags: gabgabb/portefolio-strapi:latest
                     push: true
-                    cache-from: type=gha
+                    cache-from: |
+                        type=gha
+                        type=registry,ref=gabgabb/portefolio-strapi:latest
                     cache-to: type=gha,mode=max
 
             -   name: Build & push Next.js
@@ -38,10 +40,12 @@ jobs:
                 with:
                     context: ./nextjs
                     file: ./docker/nextjs/Dockerfile
-                    platforms: linux/arm64          # ✅ idem
+                    platforms: linux/arm64
                     tags: gabgabb/portefolio-nextjs:latest
                     push: true
-                    cache-from: type=gha
+                    cache-from: |
+                        type=gha
+                        type=registry,ref=gabgabb/portefolio-nextjs:latest
                     cache-to: type=gha,mode=max
 
             -   name: Deploy to VPS
