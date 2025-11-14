@@ -1,7 +1,7 @@
 # -----------------------------
 # 1. Install dependencies
 # -----------------------------
-FROM node:20-bookworm AS deps
+FROM node:24-bookworm AS deps
 WORKDIR /app
 
 # Copier les fichiers nécessaires à Yarn 4
@@ -17,7 +17,7 @@ RUN corepack enable && \
 # -----------------------------
 # 2. Build
 # -----------------------------
-FROM node:20-bookworm AS build
+FROM node:24-bookworm AS build
 WORKDIR /app
 
 COPY --from=deps /app /app
@@ -27,7 +27,7 @@ RUN yarn build
 # -----------------------------
 # 3. Production image
 # -----------------------------
-FROM node:20-bookworm-slim AS runner
+FROM node:24-bookworm-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
