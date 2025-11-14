@@ -45,6 +45,9 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+RUN corepack enable && \
+    corepack prepare yarn@4.11.0 --activate
+
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn ./.yarn
 
