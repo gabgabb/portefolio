@@ -38,15 +38,16 @@ services:
                 condition: service_healthy
             strapi:
                 condition: service_healthy
-        working_dir: /tests
+        working_dir: /app
         volumes:
-            - ./nextjs/tests:/tests/tests
-            - ./nextjs/playwright.config.ts:/tests/playwright.config.ts
+            - ./nextjs:/app
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
             sh -c "
-                  npm init -y &&
-                  npm install --no-fund --no-audit @playwright/test@1.56.1 &&
-                  npx playwright test --config=/tests/playwright.config.ts
-                "
+              corepack enable &&
+              corepack prepare yarn@4.11.0 --activate &&
+              yarn install &&
+              npx playwright install --with-deps &&
+              npx playwright test
+            "
