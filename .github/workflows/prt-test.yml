@@ -50,10 +50,18 @@ jobs:
                     flaky-rate-report: true
                     fail-rate-report: true
                     slowest-report: true
-                    upload-artifact: true
+                    upload-artifact: false
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 if: always()
+
+            -   name: Upload Playwright screenshots & traces
+                if: always()
+                uses: actions/upload-artifact@v5
+                with:
+                    name: playwright-artifacts
+                    path: |
+                        test-results/**
 
             -   name: Stop and clean up
                 if: always()

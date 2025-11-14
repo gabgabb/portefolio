@@ -42,6 +42,7 @@ services:
         volumes:
             - ./nextjs:/app
             - ./ctrf:/app/ctrf
+            - ./test-results:/app/test-results
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
