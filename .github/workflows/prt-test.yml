@@ -8,6 +8,9 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
+        permissions:
+            actions: read
+            contents: read
 
         steps:
             -   name: Checkout code
@@ -56,6 +59,8 @@ jobs:
                     fail-rate-report: true
                     slowest-report: true
                     upload-artifact: true
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 if: always()
 
             -   name: Stop and clean up
