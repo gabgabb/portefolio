@@ -35,14 +35,25 @@ jobs:
             -   name: Start services
                 run: docker compose -f compose.ci.yml up -d nextjs strapi
 
-            -   name: Show service logs (debug)
+            -   name: Upload CTRF test report
                 if: always()
-                run: |
-                    echo "==== NEXTJS LOGS ===="
-                    docker compose -f compose.ci.yml logs nextjs --tail=200
-                    echo ""
-                    echo "==== STRAPI LOGS ===="
-                    docker compose -f compose.ci.yml logs strapi --tail=200
+                uses: actions/upload-artifact@v4
+                with:
+                    name: ctrf-report
+                    path: playwright-report/ctrf-report.json
+                    retention-days: 7
+
+            -   name: Publish Test Report
+                uses: ctrf-io/github-test-reporter@v1
+                with:
+                    report-path: 'playwright-report/ctrf-report.json'
+                    summary-delta-report: true
+                    insights-report: true
+                    flaky-rate-report: true
+                    fail-rate-report: true
+                    slowest-report: true
+                    upload-artifact: true
+                if: always()
 
             -   name: Run Playwright tests
                 run: docker compose -f compose.ci.yml run --rm tests
