@@ -45,4 +45,8 @@ services:
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
-            npx playwright test --config=/tests/playwright.config.ts
+            sh -c "
+                  npm init -y &&
+                  npm install --no-fund --no-audit @playwright/test@1.56.1 &&
+                  npx playwright test --config=/tests/playwright.config.ts
+                "
