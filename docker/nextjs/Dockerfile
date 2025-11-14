@@ -24,10 +24,11 @@ COPY .yarn ./.yarn
 
 COPY src ./src
 COPY public ./public
-COPY next.config.* ./        # ton next.config.ts
-COPY tsconfig.json ./        # si tu l’as
-COPY tailwind.config.* ./    # idem
-COPY postcss.config.* ./     # idem
+
+COPY next.config.ts ./next.config.ts
+COPY tsconfig.json ./tsconfig.json
+COPY tailwind.config.ts ./tailwind.config.ts
+COPY postcss.config.mjs ./postcss.config.mjs
 
 RUN corepack enable && \
     corepack prepare yarn@4.11.0 --activate && \
