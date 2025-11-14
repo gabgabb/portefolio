@@ -41,7 +41,7 @@ services:
         working_dir: /app
         volumes:
             - ./nextjs:/app
-            - ./playwright-report:/app/ctrf/playwright-report
+            - ./playwright-report:/app/ctrf
         environment:
             PLAYWRIGHT_BASE_URL: http://nextjs:3000
         command: >
