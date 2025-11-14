@@ -24,6 +24,7 @@ COPY .yarn ./.yarn
 
 COPY src ./src
 COPY public ./public
+COPY messages ./messages
 
 COPY next.config.ts ./next.config.ts
 COPY tsconfig.json ./tsconfig.json
