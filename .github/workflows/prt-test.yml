@@ -35,6 +35,9 @@ jobs:
             -   name: Start services
                 run: docker compose -f compose.ci.yml up -d nextjs strapi
 
+            -   name: Run Playwright tests
+                run: docker compose -f compose.ci.yml run --rm tests
+
             -   name: Upload CTRF test report
                 if: always()
                 uses: actions/upload-artifact@v4
@@ -54,9 +57,6 @@ jobs:
                     slowest-report: true
                     upload-artifact: true
                 if: always()
-
-            -   name: Run Playwright tests
-                run: docker compose -f compose.ci.yml run --rm tests
 
             -   name: Stop and clean up
                 if: always()
