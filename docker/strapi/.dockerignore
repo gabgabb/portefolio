@@ -1,0 +1,8 @@
+**
+!strapi/**
+strapi/node_modules
+strapi/build
+.git
+.gitignore
+docker-compose.yml
+*.log

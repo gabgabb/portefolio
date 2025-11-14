@@ -1,19 +1,55 @@
 services:
-    nextjs:
-        image: portefolio-nextjs
-        ports:
-            - '1337:1337'
-        environment:
-            - NODE_ENV=development
-            - DATABASE_CLIENT=sqlite
-            - DATABASE_FILENAME=./data/data.db
-        env_file:
-            - .env
     strapi:
-        image: portefolio-strapi
+        build:
+            context: ./strapi
+            dockerfile: ../docker/strapi/Dockerfile.dev
         ports:
-            - '3000:3000'
-        environment:
-            - NODE_ENV=development
+            - "1337:1337"
+        healthcheck:
+            test: [ "CMD", "wget", "-qO-", "http://localhost:1337/admin" ]
+            interval: 5s
+            timeout: 2s
+            retries: 30
         env_file:
             - .env
+        environment:
+            - NODE_ENV=development
+
+    nextjs:
+        build:
+            context: ./nextjs
+            dockerfile: ../docker/nextjs/Dockerfile.dev
+        ports:
+            - "3000:3000"
+        healthcheck:
+            test: [ "CMD", "wget", "-qO-", "http://localhost:3000" ]
+            interval: 5s
+            timeout: 2s
+            retries: 20
+        env_file:
+            - .env
+        environment:
+            - NODE_ENV=development
+
+    tests:
+        image: mcr.microsoft.com/playwright:v1.56.1-noble
+        depends_on:
+            nextjs:
+                condition: service_healthy
+            strapi:
+                condition: service_healthy
+        working_dir: /app
+        volumes:
+            - ./nextjs:/app
+            - ./ctrf:/app/ctrf
+            - ./test-results:/app/test-results
+        environment:
+            PLAYWRIGHT_BASE_URL: http://nextjs:3000
+        command: >
+            sh -c "
+              corepack enable &&
+              corepack prepare yarn@4.11.0 --activate &&
+              yarn install &&
+              npx playwright install --with-deps &&
+              npx playwright test
+            "
