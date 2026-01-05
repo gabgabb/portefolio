@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+public/CV_Gabriel_EN.pdf
+public/CV_Gabriel_FR.pdf
+
 # testing
 /coverage
 
