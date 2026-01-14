@@ -1,7 +1,7 @@
 # -----------------------------
 # 1. Install dependencies
 # -----------------------------
-FROM node:20-bookworm AS deps
+FROM node:24-bookworm AS deps
 WORKDIR /app
 
 COPY package.json yarn.lock .yarnrc.yml ./
@@ -15,7 +15,7 @@ RUN corepack enable && \
 # -----------------------------
 # 2. Build
 # -----------------------------
-FROM node:20-bookworm AS build
+FROM node:24-bookworm AS build
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
@@ -39,7 +39,7 @@ RUN corepack enable && \
 # -----------------------------
 # 3. Production image
 # -----------------------------
-FROM node:20-bookworm-slim AS runner
+FROM node:24-bookworm-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production

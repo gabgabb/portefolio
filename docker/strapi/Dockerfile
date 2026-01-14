@@ -1,19 +1,19 @@
 # docker/strapi/Dockerfile
-FROM node:20-bookworm AS deps
+FROM node:24-bookworm AS deps
 WORKDIR /app
 
 # On installe les deps (avec cache npm)
 COPY package.json package-lock.json* ./
 RUN --mount=type=cache,target=/root/.npm npm ci
 
-FROM node:20-bookworm AS build
+FROM node:24-bookworm AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Build Strapi (génère .cache, build admin, etc.)
 RUN npm run build
 
-FROM node:20-bookworm-slim AS runner
+FROM node:24-bookworm-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
