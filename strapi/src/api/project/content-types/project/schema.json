@@ -27,13 +27,13 @@
     },
     "isDisplay": {
       "type": "boolean",
-      "default": false,
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true,
+      "default": false
     },
     "url": {
       "type": "string",
@@ -51,17 +51,17 @@
     },
     "illustrations": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
       "multiple": true,
       "required": true,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      ]
     },
     "slug": {
       "type": "uid",
@@ -79,15 +79,25 @@
     },
     "content": {
       "type": "customField",
-      "options": {
-        "preset": "defaultHtml"
-      },
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "customField": "plugin::ckeditor5.CKEditor"
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "order": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": false,
+      "unique": true
     }
   }
 }
