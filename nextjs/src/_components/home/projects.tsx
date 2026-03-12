@@ -17,7 +17,7 @@ const Projects: React.FC = () => {
         const fetchData = async () => {
             try {
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?pLevel&locale=${locale}`,
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/projects?sort=order:asc&pLevel&locale=${locale}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
