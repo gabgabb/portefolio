@@ -32,7 +32,7 @@ services:
             - NODE_ENV=development
 
     tests:
-        image: mcr.microsoft.com/playwright:v1.56.1-noble
+        image: mcr.microsoft.com/playwright:v1.58.2-noble
         depends_on:
             nextjs:
                 condition: service_healthy
