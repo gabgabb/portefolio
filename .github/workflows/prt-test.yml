@@ -30,7 +30,7 @@ jobs:
                     echo "JWT_SECRET=$(node -e "console.log(require('crypto').randomBytes(16).toString('base64'))")" >> strapi/.env
 
             -   name: Set up Docker Buildx
-                uses: docker/setup-buildx-action@v3
+                uses: docker/setup-buildx-action@v4
 
             -   name: Build images for current branch
                 run: docker compose -f compose.ci.yml build
